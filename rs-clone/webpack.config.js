@@ -27,8 +27,8 @@ const baseConfig = {
                 type: 'asset/resource',
                 generator: {
                     filename: 'assets/[name][ext]',
-                }
-            }
+                },
+            },
         ],
     },
     resolve: {
@@ -37,7 +37,7 @@ const baseConfig = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, '../dist'),
-        assetModuleFilename: 'assets/[name][ext]'
+        assetModuleFilename: 'assets/[name][ext]',
     },
     plugins: [
         new HtmlWebpackPlugin({
