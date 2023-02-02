@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -27,8 +28,8 @@ const baseConfig = {
                 type: 'asset/resource',
                 generator: {
                     filename: 'assets/[name][ext]',
-                }
-            }
+                },
+            },
         ],
     },
     resolve: {
@@ -37,7 +38,7 @@ const baseConfig = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, '../dist'),
-        assetModuleFilename: 'assets/[name][ext]'
+        assetModuleFilename: 'assets/[name][ext]',
     },
     plugins: [
         new HtmlWebpackPlugin({
