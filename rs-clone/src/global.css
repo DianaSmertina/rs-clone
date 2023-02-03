@@ -6,4 +6,8 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.gmnoprint {
+  display: none;
 }/*# sourceMappingURL=global.css.map */
