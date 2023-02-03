@@ -12,7 +12,7 @@ class Header extends Component {
         const logo = document.createElement('a');
         logo.className = 'header__logo_link';
         logo.href = '#';
-        logo.innerHTML = '<div class="header__logo_ico ico"></div>';
+        logo.innerHTML = `<div class ="header__logo_ico ico"></div>`;
 
         const navigation = document.createElement('nav');
         navigation.className = 'header__nav';
