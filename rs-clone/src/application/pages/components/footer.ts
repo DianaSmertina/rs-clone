@@ -27,8 +27,10 @@ class Footer extends Component {
         year.className = 'year';
         year.innerHTML = '2023';
 
-        const rsSchool = document.createElement('div');
-        rsSchool.className = 'rs-icon ico';
+        const rsSchool = document.createElement('a');
+        rsSchool.className = 'rs-link';
+        rsSchool.href = 'https://rs.school/js/';
+        rsSchool.innerHTML = `<div class="rs-icon ico"></div>`;
 
         footerWrapper.append(developers, year, rsSchool);
         this.container.append(footerWrapper);
