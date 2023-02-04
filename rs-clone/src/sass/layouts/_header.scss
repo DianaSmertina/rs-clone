@@ -1,0 +1,70 @@
+.header {
+    background-color: $color-light1;
+}
+
+.header__wrapper {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.header__logo_ico {
+    background-image: url(../assets/icons/logo-header.svg);
+    width: 75px;
+    height: 75px;
+}
+.switcher-theme {
+   padding-left: 30px;
+   padding-right: 30px;
+}
+
+.nav__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.nav__item {
+    padding: 0 15px;
+}
+
+.theme__light {
+    background-image: url(../assets/icons/sun.svg);
+    width: 35px;
+    height: 35px;
+    display: none;
+}
+
+.theme__dark {
+    background-image: url(../assets/icons/moon.svg);
+    width: 30px;
+    height: 30px;
+}
+
+.header__lang {
+    display: flex;
+}
+
+.radio-btn > input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.radio-btn > span {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    font-weight: bold;
+    color: $color-dark1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.radio-btn > span:hover {
+    color: $color-hover;
+}
+
+.radio-btn > input:checked + span {
+    color: $color-bright;
+}
