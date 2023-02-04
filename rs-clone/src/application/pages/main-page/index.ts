@@ -1,5 +1,6 @@
 import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
+import { initMap } from '../../patterns/geo';
 
 class MainPage extends Component {
     constructor(tagName: string, className: string) {
@@ -36,8 +37,13 @@ class MainPage extends Component {
       </div>`
         );
 
+        // const script = document.createElement('script');
+        // script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg&map_id=f3695c8185093af4&callback=initMap`;
+        // script.defer = true;
+
         mainWrapper.append(mapWrapper, promo, menu);
-        this.container.append(mainWrapper);
+        this.container.append(mainWrapper); //, script);
+        setTimeout(() => initMap(), 0);
         return this.container;
     }
 }
