@@ -200,6 +200,20 @@ a:hover {
   padding-top: 10px;
 }
 
+.main-map {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.gmnoprint {
+  display: none;
+}
+
+#map {
+  height: 100%;
+}
+
 .promo {
   width: 950px;
 }
