@@ -1,8 +1,5 @@
-import '../../sass/global.css';
-let map: google.maps.Map;
-
 export function initMap(): void {
-    map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+    const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
         center: { lat: 0, lng: 0 },
         zoom: 2,
         mapId: 'f3695c8185093af4',
@@ -39,5 +36,3 @@ declare global {
         initMap: () => void;
     }
 }
-
-window.initMap = initMap;

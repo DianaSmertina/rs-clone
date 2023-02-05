@@ -8,13 +8,20 @@ class MainPage extends Component {
     }
 
     render() {
+        window.initMap = initMap;
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const mapWrapper = createOurElement('div', 'main__map');
 
         const map = document.createElement('div');
         map.id = 'map';
 
-        mapWrapper.append(map);
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg&map_id=f3695c8185093af4&callback=initMap`;
+        script.async = true;
+        script.defer = true;
+        script.type = 'text/javascript';
+
+        mapWrapper.append(map, script);
 
         const promo = createOurElement('div', 'promo');
         const mainTitle = createOurElement('h1', 'main__title', 'World Map - приложение для изучения стран мира');
@@ -39,13 +46,8 @@ class MainPage extends Component {
       </div>`
         );
 
-        // const script = document.createElement('script');
-        // script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg&map_id=f3695c8185093af4&callback=initMap`;
-        // script.defer = true;
-
         mainWrapper.append(mapWrapper, promo, menu);
-        this.container.append(mainWrapper); //, script);
-        initMap();
+        this.container.append(mainWrapper);
         return this.container;
     }
 }
