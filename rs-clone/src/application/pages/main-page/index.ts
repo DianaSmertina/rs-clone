@@ -45,7 +45,7 @@ class MainPage extends Component {
 
         mainWrapper.append(mapWrapper, promo, menu);
         this.container.append(mainWrapper); //, script);
-        setTimeout(() => initMap(), 0);
+        initMap();
         return this.container;
     }
 }
