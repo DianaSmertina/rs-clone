@@ -9,7 +9,15 @@ class App {
     private static container: HTMLElement = document.body;
 
     run() {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg&map_id=f3695c8185093af4&callback=initMap`;
+        script.defer = true;
+        App.container.append(script);
+
         App.container.append(App.header.render());
+        const map = document.createElement('div');
+        map.id = 'map';
+        App.container.append(map);
         App.container.append(App.mainPage.render());
         App.container.append(App.footer.render());
     }

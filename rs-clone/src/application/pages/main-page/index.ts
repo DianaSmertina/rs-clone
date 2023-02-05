@@ -14,6 +14,8 @@ class MainPage extends Component {
         const map = document.createElement('div');
         map.id = 'map';
 
+        mapWrapper.append(map);
+
         const promo = createOurElement('div', 'promo');
         const mainTitle = createOurElement('h1', 'main__title', 'World Map - приложение для изучения стран мира');
         const text = createOurElement(
