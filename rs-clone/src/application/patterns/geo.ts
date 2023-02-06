@@ -89,13 +89,13 @@ export function initMap(): void {
 }
 
 function _createMarker(map: google.maps.Map, position: { lat: number; lng: number }, title: string, content: string) {
-    const contentString = `<div id="content">
-        <div id="siteNotice">
-        </div>
-        <h1 id="firstHeading" class="firstHeading">${title}</h1>
-        <div id="bodyContent">
-        <p>${content}</p>
-        </div>
+    const contentString = `
+        <div id="content">
+          <div id="siteNotice"></div>
+          <h1 id="firstHeading" class="firstHeading">${title}</h1>
+          <div id="bodyContent">
+            <p>${content}</p>
+          </div>
         </div>`;
     const infowindow = new google.maps.InfoWindow({
         content: contentString,
