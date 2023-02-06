@@ -1,9 +1,5 @@
-.none {
-    display: none;
-}
-
 .modal {
-    background-color: rgba(28, 28, 28, 0.37);
+    background-color: rgba(28, 28, 28, 0.822);
     position: fixed;
     top: 0;
     left: 0;
@@ -15,8 +11,8 @@
 
 .form-wrap {
     width: 50%;
-    height: 100px;
-    background-color: rgb(243, 177, 55);
+    height: calc(100vh * 0.6);
+    background-color: $color-light4;
     position: absolute;
     top: 0;
     left: 0;
@@ -24,6 +20,24 @@
     right: 0;
     margin: auto;
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     align-items: center;
     justify-content: center;
+}
+
+.none {
+    display: none;
+}
+
+.input-wrap {
+    display: flex;
+    width: 80%;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-wrap__label {
+    width: 60px;
 }
