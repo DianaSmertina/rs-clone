@@ -1,9 +1,31 @@
 import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
+import { ModalWindow } from './modal-window';
 
 class Header extends Component {
     constructor(tagname: string, className: string) {
         super(tagname, className);
+    }
+
+    private modalRegistration = new ModalWindow('div', 'none');
+    private modalAuthorization = new ModalWindow('div', 'none');
+
+    private createRegBtn() {
+        const btn = createOurElement('button', 'btn btn__colored btn__reg', 'Регистрация');
+        return btn;
+    }
+
+    private createAuthBtn() {
+        const btn = createOurElement('button', 'btn btn__colored btn__signIn', 'Войти');
+        return btn;
+    }
+
+    private createAuthBlock() {
+        const authorization = createOurElement('div', 'autho');
+        const btnsWrap = createOurElement('div', 'account-btns flex-rows');
+        btnsWrap.append(this.createRegBtn(), this.createAuthBtn());
+        authorization.append(btnsWrap);
+        return authorization;
     }
 
     render() {
@@ -13,7 +35,6 @@ class Header extends Component {
         logo.className = 'header__logo_link';
         logo.href = '#';
         logo.innerHTML = `<div class ="header__logo_ico ico"></div>`;
-
         const navigation = createOurElement(
             'nav',
             'header__nav',
@@ -43,17 +64,9 @@ class Header extends Component {
             `<div class="theme__light ico"></div>
             <div class="theme__dark ico"></div>`
         );
-        const authorization = createOurElement(
-            'div',
-            'autho',
-            `<div class="account-btns flex-rows">
-              <a href="#"> <button class="btn btn__colored btn__reg">Регистрация</button> </a>
-              <a href="#"><button class="btn btn__bordered btn__signIn">Войти</button></a>
-            </div>`
-        );
 
-        rightBlock.append(headerLang, switcherTheme, authorization);
-        headerWrapper.append(logo, navigation, rightBlock);
+        rightBlock.append(headerLang, switcherTheme, this.createAuthBlock());
+        headerWrapper.append(logo, navigation, rightBlock, this.modalRegistration.render());
         this.container.append(headerWrapper);
         return this.container;
     }

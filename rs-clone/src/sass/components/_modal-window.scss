@@ -1,0 +1,29 @@
+.none {
+    display: none;
+}
+
+.modal {
+    background-color: rgba(28, 28, 28, 0.37);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 5;
+}
+
+.form-wrap {
+    width: 50%;
+    height: 100px;
+    background-color: rgb(243, 177, 55);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
