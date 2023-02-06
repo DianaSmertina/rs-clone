@@ -11,13 +11,19 @@ export class ModalWindow extends Component {
         const div = createOurElement('div', 'input-wrap');
         const label = createOurElement('label', 'form-wrap__label', text);
         const input = createOurElement('input', 'form-wrap__input');
+        input.setAttribute('required', 'true');
+        if (text === 'Пароль') {
+            input.setAttribute('type', 'password');
+            input.setAttribute('pattern', '^\\S{5}\\S+$');
+        }
         div.append(label, input);
         return div;
     }
 
     private createForm() {
-        const wrap = createOurElement('div', 'form-wrap');
-        const btn = createOurElement('button', 'btn btn__colored', this.btnText);
+        const form = createOurElement('form', 'form-wrap');
+        const btn = createOurElement('input', 'btn btn__colored', this.btnText);
+        btn.setAttribute('type', 'submit');
         const greetings = createOurElement('h3', 'form-wrap__greetings');
         const text = createOurElement('p', 'form-wrap__text');
         if (this.btnText === 'Регистрация') {
@@ -27,8 +33,8 @@ export class ModalWindow extends Component {
             greetings.innerText = 'Рады видеть тебя снова!';
             text.innerText = 'Пожалуйста, введи логин и пароль от своей учетной записи';
         }
-        wrap.append(greetings, text, this.createInput('Логин'), this.createInput('Пароль'), btn);
-        return wrap;
+        form.append(greetings, text, this.createInput('Логин'), this.createInput('Пароль'), btn);
+        return form;
     }
 
     openModal() {
