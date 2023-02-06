@@ -7,23 +7,20 @@ class Header extends Component {
         super(tagname, className);
     }
 
-    private modalRegistration = new ModalWindow('div', 'none');
-    private modalAuthorization = new ModalWindow('div', 'none');
-
-    private createRegBtn() {
-        const btn = createOurElement('button', 'btn btn__colored btn__reg', 'Регистрация');
-        return btn;
-    }
-
-    private createAuthBtn() {
-        const btn = createOurElement('button', 'btn btn__colored btn__signIn', 'Войти');
+    private createBtn(type: string) {
+        const btn = createOurElement('button', 'btn btn__colored', type);
+        btn.addEventListener('click', () => {
+            const modal = new ModalWindow('div', 'none', type);
+            btn.after(modal.render());
+            modal.openModal();
+        });
         return btn;
     }
 
     private createAuthBlock() {
         const authorization = createOurElement('div', 'autho');
         const btnsWrap = createOurElement('div', 'account-btns flex-rows');
-        btnsWrap.append(this.createRegBtn(), this.createAuthBtn());
+        btnsWrap.append(this.createBtn('Регистрация'), this.createBtn('Войти'));
         authorization.append(btnsWrap);
         return authorization;
     }
@@ -66,7 +63,7 @@ class Header extends Component {
         );
 
         rightBlock.append(headerLang, switcherTheme, this.createAuthBlock());
-        headerWrapper.append(logo, navigation, rightBlock, this.modalRegistration.render());
+        headerWrapper.append(logo, navigation, rightBlock);
         this.container.append(headerWrapper);
         return this.container;
     }
