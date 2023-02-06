@@ -38,11 +38,11 @@ class MainPage extends Component {
             'div',
             'menu flex-rows',
             `<div class="menu__item">
-        <h3>Игра-1</h3>
-      </div>
-      <div class="menu__item">
-        <h3>Игра-2</h3>
-      </div>`
+                <h3>Игра-1</h3>
+            </div>
+            <div class="menu__item">
+                <h3>Игра-2</h3>
+            </div>`
         );
 
         mainWrapper.append(mapWrapper, promo, menu);

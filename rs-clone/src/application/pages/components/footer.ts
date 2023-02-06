@@ -12,16 +12,16 @@ class Footer extends Component {
             'div',
             'developers',
             `<ul>
-        <li>
-          <a href="https://github.com/DianaSmertina">Diana Smertina</a>  
-        </li>
-        <li>
-          <a href="https://github.com/PetrAlexkulakov">Petr Kulakov</a>  
-        </li>
-        <li>
-          <a href="https://github.com/Elena-Amelia">Elena Ivanova</a>  
-        </li>
-    </ul>`
+              <li>
+                <a href="https://github.com/DianaSmertina">Diana Smertina</a>  
+              </li>
+              <li>
+                <a href="https://github.com/PetrAlexkulakov">Petr Kulakov</a>  
+              </li>
+              <li>
+                <a href="https://github.com/Elena-Amelia">Elena Ivanova</a>  
+              </li>
+            </ul>`
         );
         const year = createOurElement('p', 'year', '2023');
         const rsSchool = document.createElement('a');
