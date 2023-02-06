@@ -17,7 +17,6 @@ class MainPage extends Component {
 
         const script = document.createElement('script');
         script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg&map_id=f3695c8185093af4&callback=initMap`;
-        script.async = true;
         script.defer = true;
         script.type = 'text/javascript';
 
