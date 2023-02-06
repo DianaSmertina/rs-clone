@@ -1,6 +1,6 @@
 import Component from '../../patterns/component';
 import { ModalWindow } from './modal-window';
-import { createDocElement } from '../../utilites/utilites';
+import { createOurElement } from '../../patterns/createElement';
 
 class Header extends Component {
     constructor(tagname: string, className: string) {
@@ -11,18 +11,18 @@ class Header extends Component {
     private modalAuthorization = new ModalWindow('div', 'none');
 
     private createRegBtn() {
-        const btn = createDocElement('button', 'btn btn__colored btn__reg', 'Регистрация');
+        const btn = createOurElement('button', 'btn btn__colored btn__reg', 'Регистрация');
         return btn;
     }
 
     private createAuthBtn() {
-        const btn = createDocElement('button', 'btn btn__colored btn__signIn', 'Войти');
+        const btn = createOurElement('button', 'btn btn__colored btn__signIn', 'Войти');
         return btn;
     }
 
     private createAuthBlock() {
-        const authorization = createDocElement('div', 'autho');
-        const btnsWrap = createDocElement('div', 'account-btns flex-rows');
+        const authorization = createOurElement('div', 'autho');
+        const btnsWrap = createOurElement('div', 'account-btns flex-rows');
         btnsWrap.append(this.createRegBtn(), this.createAuthBtn());
         authorization.append(btnsWrap);
         return authorization;
