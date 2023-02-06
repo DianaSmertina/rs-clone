@@ -3,7 +3,10 @@ export class Api {
 
     async signIn(data: { username: string; password: string }): Promise<string> {
         const response = await fetch(`${Api.base}/sign-in`, {
-            method: 'GET',
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
             body: JSON.stringify(data),
         });
         return response.json();

@@ -32,6 +32,7 @@ export class ModalWindow extends Component {
         btn.setAttribute('type', 'submit');
         const greetings = createOurElement('h3', 'form-wrap__greetings');
         const text = createOurElement('p', 'form-wrap__text');
+
         let submitRes: string;
         if (this.btnText === 'Регистрация') {
             greetings.innerText = 'Рады приветсвовать нового знатока стран!';
@@ -42,12 +43,19 @@ export class ModalWindow extends Component {
                 const login = form.querySelector<HTMLInputElement>('.login')?.value;
                 if (password && login) {
                     submitRes = await this.api.signUp({ username: login, password: password });
-                    console.log(submitRes);
                 }
             });
         } else {
             greetings.innerText = 'Рады видеть тебя снова!';
             text.innerText = 'Пожалуйста, введи логин и пароль от своей учетной записи';
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const password = form.querySelector<HTMLInputElement>('.password')?.value;
+                const login = form.querySelector<HTMLInputElement>('.login')?.value;
+                if (password && login) {
+                    submitRes = await this.api.signIn({ username: login, password: password });
+                }
+            });
         }
         form.append(greetings, text, this.createInput('Логин'), this.createInput('Пароль'), btn);
         return form;
