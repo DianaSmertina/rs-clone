@@ -92,7 +92,7 @@ export class ModalWindow extends Component {
         });
     }
 
-    render() {
+    public render() {
         this.container.append(this.createForm());
         return this.container;
     }
