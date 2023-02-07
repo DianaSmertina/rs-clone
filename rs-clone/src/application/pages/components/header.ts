@@ -1,9 +1,28 @@
 import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
+import { ModalWindow } from './modal-window';
 
 class Header extends Component {
     constructor(tagname: string, className: string) {
         super(tagname, className);
+    }
+
+    private createBtn(type: string) {
+        const btn = createOurElement('button', 'btn btn__colored', type);
+        btn.addEventListener('click', () => {
+            const modal = new ModalWindow('div', 'none', type);
+            btn.after(modal.render());
+            modal.openModal();
+        });
+        return btn;
+    }
+
+    private createAuthBlock() {
+        const authorization = createOurElement('div', 'autho');
+        const btnsWrap = createOurElement('div', 'account-btns flex-rows');
+        btnsWrap.append(this.createBtn('Регистрация'), this.createBtn('Войти'));
+        authorization.append(btnsWrap);
+        return authorization;
     }
 
     render() {
@@ -13,7 +32,6 @@ class Header extends Component {
         logo.className = 'header__logo_link';
         logo.href = '#';
         logo.innerHTML = `<div class ="header__logo_ico ico"></div>`;
-
         const navigation = createOurElement(
             'nav',
             'header__nav',
@@ -43,16 +61,8 @@ class Header extends Component {
             `<div class="theme__light ico"></div>
             <div class="theme__dark ico"></div>`
         );
-        const authorization = createOurElement(
-            'div',
-            'autho',
-            `<div class="account-btns flex-rows">
-              <a href="#"> <button class="btn btn__colored btn__reg">Регистрация</button> </a>
-              <a href="#"><button class="btn btn__bordered btn__signIn">Войти</button></a>
-            </div>`
-        );
 
-        rightBlock.append(headerLang, switcherTheme, authorization);
+        rightBlock.append(headerLang, switcherTheme, this.createAuthBlock());
         headerWrapper.append(logo, navigation, rightBlock);
         this.container.append(headerWrapper);
         return this.container;
