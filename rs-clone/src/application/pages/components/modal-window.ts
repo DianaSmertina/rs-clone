@@ -79,7 +79,7 @@ export class ModalWindow extends Component {
         return form;
     }
 
-    openModal() {
+    public openModal() {
         this.container.className = 'modal';
         this.closeModal();
     }
