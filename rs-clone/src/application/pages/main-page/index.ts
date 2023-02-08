@@ -1,13 +1,29 @@
-import Component from '../../patterns/component';
+import Page from '../../patterns/pagePattern';
 import { createOurElement } from '../../patterns/createElement';
 import { initMap } from '../../patterns/geo';
 
-class MainPage extends Component {
-    constructor(tagName: string, className: string) {
-        super(tagName, className);
+class MainPage extends Page {
+    static TextObject = {
+        MainTitle: 'Main page',
+    };
+
+    constructor(id: string) {
+        super(id);
     }
 
     render() {
+        const promo = createOurElement('div', 'promo');
+        const mainTitle = createOurElement('h1', 'main__title', 'World Map - приложение для изучения стран мира');
+        const text = createOurElement(
+            'p',
+            'main__text',
+            `С помощью нашего приложения вы сможете легко 
+        запомнить расположение всех стран, а так же узнать их столицы, 
+        флаги, валюту и численность населения...`
+        );
+
+        promo.append(mainTitle, text);
+
         window.initMap = initMap;
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const mapWrapper = createOurElement('div', 'main__map');
@@ -22,30 +38,7 @@ class MainPage extends Component {
 
         mapWrapper.append(map, script);
 
-        const promo = createOurElement('div', 'promo');
-        const mainTitle = createOurElement('h1', 'main__title', 'World Map - приложение для изучения стран мира');
-        const text = createOurElement(
-            'p',
-            'main__text',
-            `С помощью нашего приложения вы сможете легко 
-        запомнить расположение всех стран, а так же узнать их столицы, 
-        флаги, валюту и численность населения...`
-        );
-
-        promo.append(mainTitle, text);
-
-        const menu = createOurElement(
-            'div',
-            'menu flex-rows',
-            `<div class="menu__item">
-                <h3>Игра-1</h3>
-            </div>
-            <div class="menu__item">
-                <h3>Игра-2</h3>
-            </div>`
-        );
-
-        mainWrapper.append(mapWrapper, promo, menu);
+        mainWrapper.append(promo, mapWrapper);
         this.container.append(mainWrapper);
         return this.container;
     }

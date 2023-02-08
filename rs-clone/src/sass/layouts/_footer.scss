@@ -1,6 +1,12 @@
 .footer {
+    position: absolute;
+    bottom: calc(100vh - 1000px);
+    right: 0;
+    width: 100%;
+    align-items: end;
+    align-self: flex-end;
     background-color: $color-light1;
-     padding-top: 20px;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
