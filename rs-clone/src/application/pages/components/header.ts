@@ -36,9 +36,9 @@ class Header extends Component {
             'nav',
             'header__nav',
             `<ul class="nav__list">
-              <li class="nav__item"><a href="#" class="nav__item_link">Главная</a></li>
-              <li class="nav__item"><a href="#" class="nav__item_link">Игры</a></li>
-              <li class="nav__item"><a href="#" class="nav__item_link">Достижения</a></li>
+              <li class="nav__item"><a href="/" class="nav__item_link">Главная</a></li>
+              <li class="nav__item"><a href="/games" class="nav__item_link">Игры</a></li>
+              <li class="nav__item"><a href="/wins" class="nav__item_link">Достижения</a></li>
             </ul>`
         );
         const rightBlock = createOurElement('div', 'header__right-block flex-rows');
