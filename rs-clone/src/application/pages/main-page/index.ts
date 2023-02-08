@@ -1,6 +1,7 @@
 import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
 import { initMap } from '../../patterns/geo';
+import { drawChart } from '../../patterns/geoChart';
 
 class MainPage extends Component {
     constructor(tagName: string, className: string) {
@@ -15,12 +16,17 @@ class MainPage extends Component {
         const map = document.createElement('div');
         map.id = 'map';
 
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg&map_id=f3695c8185093af4&callback=initMap`;
-        script.defer = true;
-        script.type = 'text/javascript';
+        const scriptGoogleApi = document.createElement('script');
+        scriptGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg&map_id=f3695c8185093af4&callback=initMap`;
+        scriptGoogleApi.defer = true;
+        scriptGoogleApi.type = 'text/javascript';
 
-        mapWrapper.append(map, script);
+        // const scriptGeoChart = document.createElement('script');
+        // scriptGeoChart.src = 'https://www.gstatic.com/charts/loader.js';
+        // scriptGeoChart.defer = true;
+        // scriptGeoChart.type = 'text/javascript';
+
+        mapWrapper.append(map, scriptGoogleApi);
 
         const promo = createOurElement('div', 'promo');
         const mainTitle = createOurElement('h1', 'main__title', 'World Map - приложение для изучения стран мира');
@@ -45,7 +51,10 @@ class MainPage extends Component {
             </div>`
         );
 
-        mainWrapper.append(mapWrapper, promo, menu);
+        const geoChartWrap = document.createElement('div');
+        geoChartWrap.id = 'regions_div';
+        mainWrapper.append(mapWrapper, promo, menu, geoChartWrap);
+        drawChart(geoChartWrap);
         this.container.append(mainWrapper);
         return this.container;
     }
