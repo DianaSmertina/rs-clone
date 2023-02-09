@@ -11,8 +11,8 @@
 }
 .levels {
     position: absolute;
-    top: 250px;
-    right: 100px;
+    top: 50%;
+    right: calc(50% - 450px);
     display: flex;
     flex-flow: column;
     align-self: center;
@@ -62,7 +62,7 @@
 .menu {
     row-gap: 20px;
     column-gap: 20px;
-    padding: 30px 0 150px;
+    padding: 50px 0 130px;
     justify-content: center;
 }
 
