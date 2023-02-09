@@ -1,15 +1,15 @@
 import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
 import { ModalWindow } from './modal-window';
-import { PageIds } from '../app/index';
+import route from '../../routing/router';
 
 const NavLinks = [
     {
-        id: PageIds.MainPage,
+        id: 'main-page',
         text: 'Главная',
     },
     {
-        id: PageIds.Quizzes,
+        id: 'quizzes',
         text: 'Викторины',
     },
 ];
@@ -42,8 +42,11 @@ class Header extends Component {
         NavLinks.forEach((item) => {
             const li = createOurElement('li', 'nav__item');
             const link = createOurElement('a', 'nav__item_link', '');
-            (link as HTMLLinkElement).href = `#${item.id}`;
+            (link as HTMLLinkElement).href = `/${item.id}`;
             link.innerHTML = item.text;
+            link.addEventListener('click', (e) => {
+                route(e);
+            });
             li.append(link);
             navLinksList.append(li);
         });
@@ -83,7 +86,6 @@ class Header extends Component {
         rightBlock.append(headerLang, switcherTheme, this.createAuthBlock());
         headerWrapper.append(logo, navigation, rightBlock);
         this.container.append(headerWrapper);
-        console.log(this.container);
         return this.container;
     }
 }

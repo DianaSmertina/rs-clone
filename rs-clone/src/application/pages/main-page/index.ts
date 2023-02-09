@@ -3,10 +3,6 @@ import { createOurElement } from '../../patterns/createElement';
 import { initMap } from '../../patterns/geo';
 
 class MainPage extends Page {
-    static TextObject = {
-        MainTitle: 'Main page',
-    };
-
     constructor(id: string) {
         super(id);
     }
