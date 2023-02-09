@@ -1,27 +1,31 @@
 import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
-import { initMap } from '../../patterns/geo';
+import { initMap } from '../../components/maps/geo';
+import { drawChart } from '../../components/maps/geoChart';
 
 class MainPage extends Component {
     constructor(tagName: string, className: string) {
         super(tagName, className);
     }
 
-    render() {
-        window.initMap = initMap;
-        const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
+    private addGoogleMap() {
         const mapWrapper = createOurElement('div', 'main__map');
 
         const map = document.createElement('div');
         map.id = 'map';
 
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg&map_id=f3695c8185093af4&callback=initMap`;
-        script.defer = true;
-        script.type = 'text/javascript';
+        const scriptGoogleApi = document.createElement('script');
+        scriptGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg&map_id=f3695c8185093af4&callback=initMap`;
+        scriptGoogleApi.defer = true;
+        scriptGoogleApi.type = 'text/javascript';
 
-        mapWrapper.append(map, script);
+        mapWrapper.append(map, scriptGoogleApi);
+        return mapWrapper;
+    }
 
+    render() {
+        window.initMap = initMap;
+        const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const promo = createOurElement('div', 'promo');
         const mainTitle = createOurElement('h1', 'main__title', 'World Map - приложение для изучения стран мира');
         const text = createOurElement(
@@ -45,7 +49,11 @@ class MainPage extends Component {
             </div>`
         );
 
-        mainWrapper.append(mapWrapper, promo, menu);
+        const geoChartWrap = document.createElement('div');
+        geoChartWrap.id = 'regions_div';
+
+        mainWrapper.append(this.addGoogleMap(), promo, menu, geoChartWrap);
+        drawChart(geoChartWrap);
         this.container.append(mainWrapper);
         return this.container;
     }
