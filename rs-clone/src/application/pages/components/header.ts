@@ -12,6 +12,10 @@ const NavLinks = [
         id: 'quizzes',
         text: 'Викторины',
     },
+    {
+        id: 'results',
+        text: 'Достижения',
+    },
 ];
 
 class Header extends Component {
@@ -66,12 +70,12 @@ class Header extends Component {
         const headerLang = createOurElement(
             'div',
             'header__lang',
-            `<label class="radio-btn">
+            `<label class="header__radio-btn">
               <input name="language" type="radio" value="en" />
               <span>EN</span>
             </label>
             <span>&nbsp;/&nbsp;</span>
-            <label class="radio-btn">
+            <label class="header__radio-btn">
              <input name="language" type="radio" value="ru" checked />
               <span>RU</span>
             </label>`
@@ -82,8 +86,14 @@ class Header extends Component {
             `<div class="theme__light ico"></div>
             <div class="theme__dark ico"></div>`
         );
+        const sound = createOurElement(
+            'div',
+            'sound',
+            `<div class="loud ico"></div>
+            <div class="mute ico"></div>`
+        );
 
-        rightBlock.append(headerLang, switcherTheme, this.createAuthBlock());
+        rightBlock.append(headerLang, switcherTheme, sound, this.createAuthBlock());
         headerWrapper.append(logo, navigation, rightBlock);
         this.container.append(headerWrapper);
         return this.container;

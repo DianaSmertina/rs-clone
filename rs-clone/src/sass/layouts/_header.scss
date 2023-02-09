@@ -3,8 +3,8 @@
 }
 
 .header__wrapper {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .header__logo_ico {
@@ -14,7 +14,7 @@
 }
 .switcher-theme {
    padding-left: 30px;
-   padding-right: 30px;
+   padding-right: 15px;
 }
 
 .nav__list {
@@ -45,13 +45,13 @@
     display: flex;
 }
 
-.radio-btn > input {
+.header__radio-btn > input {
     position: absolute;
     z-index: -1;
     opacity: 0;
 }
 
-.radio-btn > span {
+.header__radio-btn > span {
     display: inline-flex;
     align-items: center;
     user-select: none;
@@ -61,10 +61,24 @@
     transition: 0.3s;
 }
 
-.radio-btn > span:hover {
+.header__radio-btn > span:hover {
     color: $color-hover;
 }
 
-.radio-btn > input:checked + span {
+.header__radio-btn > input:checked + span {
     color: $color-bright;
+}
+.sound {
+    padding-right: 30px;
+}
+.loud {
+    background-image: url(../assets/icons/loud.svg);
+    width: 35px;
+    height: 35px;
+}
+.mute {
+    background-image: url(../assets/icons/mute.svg);
+    width: 35px;
+    height: 35px;
+    display: none;
 }

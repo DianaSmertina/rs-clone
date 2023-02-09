@@ -16,6 +16,7 @@ body {
     font-size: 1.6rem;
     font-weight: normal;
     color: $color-dark1;
+    background-color: $color-light3;
 }
 
 p,
@@ -26,12 +27,15 @@ h3 {
     margin: 0;
     padding: 0;
 }
+h1 {
+    font-size: 3rem;
+}
 h2 {
-font-size: 3.4rem;
+font-size: 2.4rem;
 }
 
 h3 {
-    font-size: 2.4rem;
+    font-size: 2rem;
 }
 a {
     color: $color-dark1;
