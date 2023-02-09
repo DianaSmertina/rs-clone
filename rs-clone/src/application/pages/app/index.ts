@@ -1,17 +1,17 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
-import MainPage from '../main-page/index';
+import route, { handleLocation } from '../../routing/router';
 
 class App {
+    private static container: HTMLElement = document.body;
     private static header: Header = new Header('header', 'header');
     private static footer: Footer = new Footer('footer', 'footer');
-    private static mainPage: MainPage = new MainPage('main', 'main');
-    private static container: HTMLElement = document.body;
 
     run() {
-        App.container.append(App.header.render());
-        App.container.append(App.mainPage.render());
-        App.container.append(App.footer.render());
+        App.container.append(App.header.render(), App.footer.render());
+        window.onpopstate = handleLocation;
+        window.route = route;
+        handleLocation();
     }
 }
 

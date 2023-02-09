@@ -1,6 +1,18 @@
 import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
 import { ModalWindow } from './modal-window';
+import route from '../../routing/router';
+
+const NavLinks = [
+    {
+        id: 'main-page',
+        text: 'Главная',
+    },
+    {
+        id: 'quizzes',
+        text: 'Викторины',
+    },
+];
 
 class Header extends Component {
     constructor(tagname: string, className: string) {
@@ -25,6 +37,22 @@ class Header extends Component {
         return authorization;
     }
 
+    private renderNavLinksList() {
+        const navLinksList = createOurElement('ul', 'nav__list', '');
+        NavLinks.forEach((item) => {
+            const li = createOurElement('li', 'nav__item');
+            const link = createOurElement('a', 'nav__item_link', '');
+            (link as HTMLLinkElement).href = `/${item.id}`;
+            link.innerHTML = item.text;
+            link.addEventListener('click', (e) => {
+                route(e);
+            });
+            li.append(link);
+            navLinksList.append(li);
+        });
+        return navLinksList;
+    }
+
     render() {
         const headerWrapper = createOurElement('div', 'header__wrapper wrapper flex-rows');
 
@@ -32,15 +60,8 @@ class Header extends Component {
         logo.className = 'header__logo_link';
         logo.href = '#';
         logo.innerHTML = `<div class ="header__logo_ico ico"></div>`;
-        const navigation = createOurElement(
-            'nav',
-            'header__nav',
-            `<ul class="nav__list">
-              <li class="nav__item"><a href="#" class="nav__item_link">Главная</a></li>
-              <li class="nav__item"><a href="#" class="nav__item_link">Игры</a></li>
-              <li class="nav__item"><a href="#" class="nav__item_link">Достижения</a></li>
-            </ul>`
-        );
+        const navigation = createOurElement('nav', 'header__nav', '');
+        navigation.append(this.renderNavLinksList());
         const rightBlock = createOurElement('div', 'header__right-block flex-rows');
         const headerLang = createOurElement(
             'div',

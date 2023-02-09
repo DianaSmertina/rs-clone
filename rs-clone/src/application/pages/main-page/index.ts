@@ -1,11 +1,11 @@
-import Component from '../../patterns/component';
+import Page from '../../patterns/pagePattern';
 import { createOurElement } from '../../patterns/createElement';
 import { initMap } from '../../components/maps/geo';
 import { drawChart } from '../../components/maps/geoChart';
 
-class MainPage extends Component {
-    constructor(tagName: string, className: string) {
-        super(tagName, className);
+class MainPage extends Page {
+    constructor(id: string) {
+        super(id);
     }
 
     private addGoogleMap() {
