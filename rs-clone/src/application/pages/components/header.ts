@@ -83,7 +83,6 @@ class Header extends Component {
         rightBlock.append(headerLang, switcherTheme, this.createAuthBlock());
         headerWrapper.append(logo, navigation, rightBlock);
         this.container.append(headerWrapper);
-        console.log(this.container);
         return this.container;
     }
 }

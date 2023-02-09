@@ -71,12 +71,42 @@ class App {
             App.renderNewPage(hash);
         });
     }
+
+    // private urlRouter() {
+    //     const links = document.querySelectorAll('.nav__item_link');
+    //     links.forEach((link) => link.addEventListener('click', this.router));
+    // }
+
+    // private router = (event: Event) => {
+    //     event = event || window.event;
+    //     event.preventDefault();
+    //     const target = event.target as HTMLLinkElement;
+    //     window.history.pushState({}, '', target.href);
+    //     this.handleLocation();
+    // };
+
+    // private handleLocation = async () => {
+    //     const path = window.location.pathname;
+    //     const route = routes[path as keyof PathType] || routes[404];
+    //     const html = await fetch(route).then((data) => data.text());
+    //     App.renderNewPage(path.slice(1));
+    //     window.onpopstate = this.handleLocation;
+    //     window.route = this.router;
+    // };
+
     run() {
         App.container.append(App.header.render());
         App.renderNewPage('main-page');
         App.container.append(App.footer.render());
         this.enableRouteChange();
+        // this.urlRouter();
     }
 }
 
 export default App;
+
+// declare global {
+//     interface Window {
+//         route: (event: Event) => void;
+//     }
+// }
