@@ -52,7 +52,10 @@ a:hover {
     background-size: contain;
     background-repeat: no-repeat;
 }
-
+.ico {
+    cursor: pointer;
+    transition: 0.3s;
+}
 .flex-rows {
     display: flex;
     flex-wrap: wrap;

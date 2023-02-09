@@ -34,7 +34,6 @@
     color: $color-hover;
 }
 
-
 .answers {
     width: 400px;
     height: 120px;
@@ -59,3 +58,19 @@
 .answer:hover {
     background-color: $color-middle2;
 }
+
+.menu {
+    row-gap: 20px;
+    column-gap: 20px;
+    padding: 30px 0 150px;
+    justify-content: center;
+}
+
+.menu__item {
+    width: 215px;
+    height: 250px;
+    background: $color-light2;
+    border-radius: 10px;
+    text-align: center;
+}
+

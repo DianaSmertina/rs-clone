@@ -1,8 +1,8 @@
 import Page from '../../patterns/pagePattern';
 
-class NeighboCountries extends Page {
+class GuessCountry extends Page {
     static TextObject = {
-        MainTitle: 'Neighboring Countries Quiz',
+        MainTitle: 'Guess Country Quiz',
     };
 
     constructor(id: string) {
@@ -10,10 +10,10 @@ class NeighboCountries extends Page {
     }
 
     render() {
-        const title = this.createHeaderTitle(NeighboCountries.TextObject.MainTitle);
+        const title = this.createHeaderTitle(GuessCountry.TextObject.MainTitle);
         this.container.append(title);
         return this.container;
     }
 }
 
-export default NeighboCountries;
+export default GuessCountry;

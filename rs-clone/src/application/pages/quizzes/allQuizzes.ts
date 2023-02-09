@@ -2,27 +2,29 @@ import Page from '../../patterns/pagePattern';
 import { createOurElement } from '../../patterns/createElement';
 
 class Quizzes extends Page {
-    static TextObject = {
-        MainTitle: 'Quizzes',
-    };
-
     constructor(id: string) {
         super(id);
     }
 
     render() {
-        const title = this.createHeaderTitle(Quizzes.TextObject.MainTitle);
+        const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
+        const mainTitle = createOurElement('h1', 'main__title', 'Choose Quiz');
         const menu = createOurElement(
             'div',
             'menu flex-rows',
             `<div class="menu__item">
-                <h3>Whole world quiz</h3>
+                <h3>Guess country quiz</h3>
             </div>
             <div class="menu__item">
-                <h3>Neighboring countries quiz</h3>
+                <h3>Guess population quiz</h3>
+            </div>
+            <div class="menu__item">
+            <h3>Guess ... quiz</h3>
             </div>`
         );
-        this.container.append(title, menu);
+
+        mainWrapper.append(mainTitle, menu);
+        this.container.append(mainWrapper);
         return this.container;
     }
 }

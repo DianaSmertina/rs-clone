@@ -59,6 +59,11 @@ a:hover {
   background-repeat: no-repeat;
 }
 
+.ico {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
 .flex-rows {
   display: flex;
   flex-wrap: wrap;
@@ -222,13 +227,12 @@ a:hover {
   height: 600px;
   margin: 0;
   padding: 0;
-  border: black 1px solid;
+  border: #26453E 1px solid;
 }
 
 .main__wrapper {
   padding-top: 20px;
   padding-bottom: 40px;
-  position: relative;
 }
 
 .promo {
@@ -242,20 +246,6 @@ a:hover {
 
 .main__text {
   padding-bottom: 20px;
-}
-
-.menu {
-  row-gap: 20px;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
-  padding: 30px 0;
-  justify-content: center;
-}
-
-.menu__item {
-  width: 300px;
-  height: 300px;
-  background: #6BCBD1;
 }
 
 .modal {
@@ -387,4 +377,20 @@ input:checked {
 
 .answer:hover {
   background-color: #429E9D;
+}
+
+.menu {
+  row-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  padding: 30px 0 50px;
+  justify-content: center;
+}
+
+.menu__item {
+  width: 215px;
+  height: 250px;
+  background: #ADD8E6;
+  border-radius: 10px;
+  text-align: center;
 }/*# sourceMappingURL=global.css.map */
