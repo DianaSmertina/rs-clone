@@ -5,19 +5,20 @@
     padding: 0;
     border: black 1px solid;
 }
-.gmnoprint{
-    display: none;
+
+.main__wrapper {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    position: relative;
 }
-#map {
-    height: 100%;
-}
+
 .promo {
     width: 950px;
 }
 
 .main__title {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .main__text {
     padding-bottom: 20px;
@@ -36,7 +37,3 @@
     background: $color-middle4;
 }
 
-#regions_div {
-    width: 500px;
-    height: 300px;
-}

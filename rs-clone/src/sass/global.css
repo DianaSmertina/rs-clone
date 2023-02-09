@@ -18,7 +18,7 @@ body {
   font-size: 1.6rem;
   font-weight: normal;
   color: #26453E;
-  position: relative;
+  background-color: #E0FFFF;
 }
 
 p,
@@ -30,12 +30,16 @@ h3 {
   padding: 0;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 h2 {
-  font-size: 3.4rem;
+  font-size: 2.4rem;
 }
 
 h3 {
-  font-size: 2.4rem;
+  font-size: 2rem;
 }
 
 a {
@@ -103,9 +107,6 @@ a:hover {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   background-color: #A6FFCF;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -122,8 +123,8 @@ a:hover {
 }
 
 .header__wrapper {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .header__logo_ico {
@@ -134,7 +135,7 @@ a:hover {
 
 .switcher-theme {
   padding-left: 30px;
-  padding-right: 30px;
+  padding-right: 15px;
 }
 
 .nav__list {
@@ -165,13 +166,13 @@ a:hover {
   display: flex;
 }
 
-.radio-btn > input {
+.header__radio-btn > input {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
 
-.radio-btn > span {
+.header__radio-btn > span {
   display: inline-flex;
   align-items: center;
   -webkit-user-select: none;
@@ -183,12 +184,29 @@ a:hover {
   transition: 0.3s;
 }
 
-.radio-btn > span:hover {
+.header__radio-btn > span:hover {
   color: limegreen;
 }
 
-.radio-btn > input:checked + span {
+.header__radio-btn > input:checked + span {
   color: blue;
+}
+
+.sound {
+  padding-right: 30px;
+}
+
+.loud {
+  background-image: url(../assets/icons/loud.svg);
+  width: 35px;
+  height: 35px;
+}
+
+.mute {
+  background-image: url(../assets/icons/mute.svg);
+  width: 35px;
+  height: 35px;
+  display: none;
 }
 
 .wrapper {
@@ -207,12 +225,10 @@ a:hover {
   border: black 1px solid;
 }
 
-.gmnoprint {
-  display: none;
-}
-
-#map {
-  height: 100%;
+.main__wrapper {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  position: relative;
 }
 
 .promo {
@@ -220,8 +236,8 @@ a:hover {
 }
 
 .main__title {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .main__text {
@@ -305,4 +321,70 @@ a:hover {
 
 .form-wrap > .btn {
   margin-top: 30px;
+}
+
+#regions_div {
+  width: 600px;
+  height: 400px;
+  align-self: center;
+}
+
+.gmnoprint {
+  display: none;
+}
+
+#map {
+  height: 100%;
+}
+
+.levels {
+  position: absolute;
+  top: 250px;
+  right: 100px;
+  display: flex;
+  flex-flow: column;
+  align-self: center;
+}
+
+.level__radio-btn {
+  padding-bottom: 20px;
+}
+
+.level__radio-btn {
+  color: #26453E;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.level__radio-btn:hover {
+  color: limegreen;
+}
+
+input:checked {
+  color: limegreen;
+}
+
+.answers {
+  width: 400px;
+  height: 120px;
+  background-color: #ADD8E6;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.answer {
+  width: 40%;
+  height: 40%;
+  padding: 10px;
+  border: 2px solid #26453E;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.answer:hover {
+  background-color: #429E9D;
 }/*# sourceMappingURL=global.css.map */
