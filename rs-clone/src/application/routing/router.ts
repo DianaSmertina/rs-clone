@@ -1,6 +1,8 @@
 import MainPage from '../pages/main-page/index';
 import Quizzes from '../pages/quizzes/allQuizzes';
 import ErrorPage, { ErrorTypes } from '../pages/error-page/index';
+import ResultsPage from '../pages/results/results';
+import QuizTemplate from '../patterns/quizTemplate';
 
 const route = (event?: Event) => {
     event = event || window.event;
@@ -18,6 +20,8 @@ const routes: PathType = {
     '/': new MainPage('main-page').render(),
     '/quizzes': new Quizzes('quizzes').render(),
     '/main-page': new MainPage('main-page').render(),
+    '/results': new ResultsPage('results').render(),
+    '/temp': new QuizTemplate('temp').render(),
 };
 
 export const handleLocation = () => {
@@ -36,6 +40,8 @@ interface PathType {
     '/': HTMLElement;
     '/quizzes': HTMLElement;
     '/main-page': HTMLElement;
+    '/results': HTMLElement;
+    '/temp': HTMLElement;
 }
 
 declare global {

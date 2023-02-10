@@ -1,8 +1,8 @@
 import Page from '../../patterns/pagePattern';
 
-class WholeWorldQuiz extends Page {
+class ResultsPage extends Page {
     static TextObject = {
-        MainTitle: 'Whole World Quiz',
+        MainTitle: 'Results',
     };
 
     constructor(id: string) {
@@ -10,10 +10,10 @@ class WholeWorldQuiz extends Page {
     }
 
     render() {
-        const title = this.createHeaderTitle(WholeWorldQuiz.TextObject.MainTitle);
+        const title = this.createHeaderTitle(ResultsPage.TextObject.MainTitle);
         this.container.append(title);
         return this.container;
     }
 }
 
-export default WholeWorldQuiz;
+export default ResultsPage;

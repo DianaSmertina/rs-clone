@@ -1,7 +1,6 @@
 import Page from '../../patterns/pagePattern';
 import { createOurElement } from '../../patterns/createElement';
 import { initMap } from '../../components/maps/geo';
-import { drawChart } from '../../components/maps/geoChart';
 
 class MainPage extends Page {
     constructor(id: string) {
@@ -37,23 +36,8 @@ class MainPage extends Page {
         );
 
         promo.append(mainTitle, text);
+        mainWrapper.append(promo, this.addGoogleMap());
 
-        const menu = createOurElement(
-            'div',
-            'menu flex-rows',
-            `<div class="menu__item">
-                <h3>Игра-1</h3>
-            </div>
-            <div class="menu__item">
-                <h3>Игра-2</h3>
-            </div>`
-        );
-
-        const geoChartWrap = document.createElement('div');
-        geoChartWrap.id = 'regions_div';
-
-        mainWrapper.append(this.addGoogleMap(), promo, menu, geoChartWrap);
-        drawChart(geoChartWrap);
         this.container.append(mainWrapper);
         return this.container;
     }
