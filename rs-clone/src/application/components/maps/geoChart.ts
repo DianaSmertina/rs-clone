@@ -5,6 +5,8 @@ export function drawChart(container: HTMLElement, countryData: Array<Array<strin
     });
     google.charts.setOnLoadCallback(drawRegionsMap);
     function drawRegionsMap() {
+        // console.log(countryData);
+        // const data = google.visualization.arrayToDataTable([['fdbdb'], ['South Korea']]);
         const data = google.visualization.arrayToDataTable(countryData);
         const options = {
             region: '142',
@@ -14,7 +16,7 @@ export function drawChart(container: HTMLElement, countryData: Array<Array<strin
         function selectHandler() {
             const selectedItem = chart.getSelection()[0];
             if (selectedItem) {
-                console.log(selectedItem);
+                console.log(selectedItem.row);
             }
         }
         google.visualization.events.addListener(chart, 'select', selectHandler);

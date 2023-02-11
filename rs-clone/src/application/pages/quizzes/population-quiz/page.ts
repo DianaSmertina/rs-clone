@@ -25,14 +25,13 @@ export class PopulationQuizPage extends Page {
 
     private generateData() {
         const countriesOnMap = [];
-        const arrayCopy = asia.slice();
+        const arrayCopy = asia.slice(0);
         for (let i = 0; i < 3; i++) {
             const randomIndex = Math.floor(Math.random() * arrayCopy.length);
-            countriesOnMap.push([arrayCopy[randomIndex].countryEn]);
+            countriesOnMap.push(arrayCopy[randomIndex]);
             arrayCopy.splice(randomIndex, 1);
         }
-        countriesOnMap.unshift(['Country']);
-        console.log(countriesOnMap);
+        countriesOnMap.sort((a, b) => a.population - b.population);
         return countriesOnMap;
     }
 

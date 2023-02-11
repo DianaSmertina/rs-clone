@@ -1,3 +1,17 @@
+export interface Icountry {
+    countryEn: string;
+    countryRu: string;
+    regionEn: string;
+    regionRu: string;
+    population: number;
+    capitalEn: string;
+    capitalRu: string;
+    regionCode: string;
+    countryCode: number;
+    countryCodeLetters: string;
+    area: number;
+}
+
 export const world = [
     {
         countryEn: 'Vanuatu',
@@ -91,7 +105,7 @@ export const world = [
         area: 23000,
     },
     {
-        countryEn: 'Macedonia (the former Yugoslav Republic of)',
+        countryEn: 'Macedonia',
         countryRu: 'Северная Македония',
         regionEn: 'Europe',
         regionRu: 'Европа',
@@ -208,7 +222,7 @@ export const world = [
         area: 30510,
     },
     {
-        countryEn: 'Moldova (Republic of)',
+        countryEn: 'Moldova',
         countryRu: 'Молдова',
         regionEn: 'Europe',
         regionRu: 'Европа',
@@ -624,7 +638,7 @@ export const world = [
         area: 93030,
     },
     {
-        countryEn: 'Korea (Republic of)',
+        countryEn: 'South Korea',
         countryRu: 'Южная Корея',
         regionEn: 'Asia',
         regionRu: 'Азия',
@@ -741,7 +755,7 @@ export const world = [
         area: 118480,
     },
     {
-        countryEn: 'Korea (Democratic People\\s Republic of)',
+        countryEn: 'North Korea',
         countryRu: 'Северная Корея',
         regionEn: 'Asia',
         regionRu: 'Азия',
@@ -884,7 +898,7 @@ export const world = [
         area: 181040,
     },
     {
-        countryEn: 'Syrian Arab Republic',
+        countryEn: 'Syria',
         countryRu: 'Сирия',
         regionEn: 'Asia',
         regionRu: 'Азия',
@@ -975,7 +989,7 @@ export const world = [
         area: 236040,
     },
     {
-        countryEn: "Lao People\\'s Democratic Republic",
+        countryEn: 'Laos',
         countryRu: 'Лаос',
         regionEn: 'Asia',
         regionRu: 'Азия',
@@ -1612,7 +1626,7 @@ export const world = [
         area: 825418,
     },
     {
-        countryEn: 'Venezuela (Bolivarian Republic of)',
+        countryEn: 'Venezuela',
         countryRu: 'Венесуэла',
         regionEn: 'Americas',
         regionRu: 'Америка',
@@ -1638,7 +1652,7 @@ export const world = [
         area: 923768,
     },
     {
-        countryEn: 'Tanzania, United Republic of',
+        countryEn: 'Tanzania',
         countryRu: 'Танзания',
         regionEn: 'Africa',
         regionRu: 'Африка',
@@ -1807,7 +1821,7 @@ export const world = [
         area: 1565000,
     },
     {
-        countryEn: 'Iran (Islamic Republic of)',
+        countryEn: 'Iran',
         countryRu: 'Иран',
         regionEn: 'Asia',
         regionRu: 'Азия',
@@ -1898,7 +1912,7 @@ export const world = [
         area: 2166086,
     },
     {
-        countryEn: 'Congo (Democratic Republic of the)',
+        countryEn: 'Congo',
         countryRu: 'Конго - Киншаса',
         regionEn: 'Africa',
         regionRu: 'Африка',

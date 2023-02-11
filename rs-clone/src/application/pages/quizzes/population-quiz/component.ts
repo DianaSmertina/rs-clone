@@ -1,23 +1,32 @@
+import { Icountry } from '../../../components/countries/data';
 import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
 
-const countriesForAnswer = ['Canada', 'Mexico', 'Italy', 'Cuba'];
-
 export class PopulationQuestion {
-    constructor(private mapData: Array<Array<string | number>>) {}
+    constructor(private mapData: Array<Icountry>) {}
+
+    // private createCallbackForMap() {
+    //     const clickCheck = () => {
+
+    //     }
+    //     return clickCheck;
+    // }
 
     private createGeoChart() {
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
-        drawChart(geoChartWrap, this.mapData);
+        const countries = this.mapData.map((el) => [el.countryEn]);
+        countries.unshift(['Country']);
+        drawChart(geoChartWrap, countries);
         return geoChartWrap;
     }
 
     private createAnswerBlock() {
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
-
-        countriesForAnswer.forEach((country) => {
-            const answer = createOurElement('button', 'btn btn__bordered', `${country}`);
+        const answers = this.mapData.slice(0);
+        console.log(answers);
+        answers?.forEach(() => {
+            const answer = createOurElement('button', 'btn btn__bordered');
             answersBlock.append(answer);
         });
         return answersBlock;
