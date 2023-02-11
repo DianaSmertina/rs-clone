@@ -17,26 +17,15 @@ class QuizTemplate extends Page {
         geoChartWrap.id = 'regions_div';
         drawChart(geoChartWrap);
 
-        const levels = createOurElement(
-            'div',
-            'levels',
-            `<label class="level__radio-btn"> 
-            <input name="level" type="radio" value="1" checked/>
-            Easy Level
-            </label>
-            <label class="level__radio-btn"> 
-            <input name="level" type="radio" value="2" />
-            High Level
-            </label>`
-        );
-
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
         countriesForAnswer.forEach((country) => {
-            const answer = createOurElement('p', 'answer', `${country}`);
+            const answer = createOurElement('button', 'btn btn__bordered', `${country}`);
             answersBlock.append(answer);
         });
 
-        mainWrapper.append(mainTitle, geoChartWrap, levels, answersBlock);
+        const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
+        nextBtn.setAttribute('disabled', 'disabled');
+        mainWrapper.append(mainTitle, geoChartWrap, answersBlock, nextBtn);
         this.container.append(mainWrapper);
         return this.container;
     }
