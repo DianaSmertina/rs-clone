@@ -1184,7 +1184,7 @@ export const world = [
         area: 324220,
     },
     {
-        countryEn: 'Viet Nam',
+        countryEn: 'Vietnam',
         countryRu: 'Вьетнам',
         regionEn: 'Asia',
         regionRu: 'Азия',

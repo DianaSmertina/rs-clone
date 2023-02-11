@@ -13,12 +13,25 @@ export function drawChart(container: HTMLElement, countryData: Array<Array<strin
         };
         const chart = new google.visualization.GeoChart(container);
         chart.draw(data, options);
-        function selectHandler() {
+        // function selectHandler() {
+        //     const selectedItem = chart.getSelection()[0];
+        //     if (selectedItem) {
+        //         console.log(selectedItem.row);
+        //     }
+        // }
+        function choseAnswerOption() {
             const selectedItem = chart.getSelection()[0];
-            if (selectedItem) {
-                console.log(selectedItem.row);
+            const answersBlock = Array.from(document.querySelectorAll('.btn__population'));
+            if (selectedItem && answersBlock) {
+                console.log(selectedItem.row, answersBlock);
+                for (const btn of answersBlock) {
+                    if (btn.innerHTML === '') {
+                        btn.innerHTML = `${countryData[Number(selectedItem.row) + 1][0]}`;
+                        break;
+                    }
+                }
             }
         }
-        google.visualization.events.addListener(chart, 'select', selectHandler);
+        google.visualization.events.addListener(chart, 'select', choseAnswerOption);
     }
 }

@@ -26,7 +26,7 @@ export class PopulationQuestion {
         const answers = this.mapData.slice(0);
         console.log(answers);
         answers?.forEach(() => {
-            const answer = createOurElement('button', 'btn btn__bordered');
+            const answer = createOurElement('button', 'btn btn__bordered btn__population');
             answersBlock.append(answer);
         });
         return answersBlock;
