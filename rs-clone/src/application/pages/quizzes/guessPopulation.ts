@@ -1,16 +1,9 @@
-import QuizTemplate from '../../patterns/quizTemplate';
+import { createOurElement } from '../../patterns/createElement';
+import PopulationQuizTemplate from '../../patterns/populationQuizPattern';
 
 export class QuizPopulation {
     private createMapsData() {
-        const data = [
-            ['Country', 'Popularity'],
-            ['Germany', 200],
-            ['United States', 300],
-            ['Brazil', 400],
-            ['Canada', 500],
-            ['France', 600],
-            ['RU', 700],
-        ];
+        const data = [['Country'], ['Germany'], ['United States'], ['Brazil'], ['Canada'], ['France'], ['RU']];
         return data;
     }
 
@@ -19,13 +12,22 @@ export class QuizPopulation {
         return data;
     }
 
+    private createLevelChoise() {
+        const level = createOurElement('div', 'main__wrapper wrapper flex-columns');
+        return level;
+    }
+
     createPage() {
-        const quiz = new QuizTemplate(
-            'population-quiz',
-            'Quess population',
-            this.createMapsData(),
-            this.createAnswerData()
-        );
-        return quiz.render();
+        // const previousRound = document.querySelector('.main__wrapper');
+        // const quiz = previousRound
+        //     ? new QuizTemplate(
+        //           'population-quiz',
+        //           'Quess population',
+        //           this.createMapsData(),
+        //           this.createAnswerData()
+        //       ).render()
+        //     : this.createLevelChoise();
+        return new PopulationQuizTemplate('population-quiz', 'Quess population', this.createMapsData(), 2).render();
+        // return this.createLevelChoise();
     }
 }
