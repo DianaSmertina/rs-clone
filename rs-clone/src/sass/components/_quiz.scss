@@ -9,30 +9,6 @@
 #map {
     height: 100%;
 }
-.levels {
-    position: absolute;
-    top: 50%;
-    right: calc(50% - 450px);
-    display: flex;
-    flex-flow: column;
-    align-self: center;
-}
-.level__radio-btn {
-   padding-bottom: 20px;
-}
-
-.level__radio-btn {
-    color: $color-dark1;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.level__radio-btn:hover {
-    color: $color-hover;
-}
- input:checked {
-    color: $color-hover;
-}
 
 .answers {
     width: 400px;
@@ -40,23 +16,7 @@
     background-color: $color-light2;
     border-radius: 5px;
     padding: 10px;
-    margin-top: 15px;
-}
-
-.answer {
-   width: 40%;
-   height: 40%;
-   padding: 10px;
-   border: 2px solid $color-dark1;
-   border-radius: 5px;
-   font-weight: bold;
-   text-align: center;
-   cursor: pointer;
-   transition: 0.3s;
-}
-
-.answer:hover {
-    background-color: $color-middle2;
+    margin-top: 30px;
 }
 
 .menu {
