@@ -5,13 +5,6 @@ import { createOurElement } from '../../../patterns/createElement';
 export class PopulationQuestion {
     constructor(private mapData: Array<Icountry>) {}
 
-    // private createCallbackForMap() {
-    //     const clickCheck = () => {
-
-    //     }
-    //     return clickCheck;
-    // }
-
     private createGeoChart() {
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
@@ -25,10 +18,24 @@ export class PopulationQuestion {
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
         const answers = this.mapData.slice(0);
         console.log(answers);
-        answers?.forEach(() => {
-            const answer = createOurElement('button', 'btn btn__bordered btn__population');
+        const answerBtns = answers?.map(() => {
+            const answer = createOurElement('button', 'btn btn__population');
             answersBlock.append(answer);
+            return answer;
         });
+
+        const checkBtn = createOurElement('button', 'btn btn__bordered btn__check-population', 'Проверить');
+        checkBtn.setAttribute('disabled', 'disabled');
+        checkBtn.addEventListener('click', () => {
+            answerBtns.forEach((btn, i) => {
+                btn.innerHTML === answers[i].countryEn
+                    ? btn.classList.add('btn__right')
+                    : btn.classList.add('btn__wrong');
+            });
+            document.querySelector('.btn__next')?.removeAttribute('disabled');
+        });
+
+        answersBlock.append(checkBtn);
         return answersBlock;
     }
 

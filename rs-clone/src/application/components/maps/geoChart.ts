@@ -20,13 +20,16 @@ export function drawChart(container: HTMLElement, countryData: Array<Array<strin
         //     }
         // }
         function choseAnswerOption() {
+            // надо ее куда-то вынести
             const selectedItem = chart.getSelection()[0];
             const answersBlock = Array.from(document.querySelectorAll('.btn__population'));
             if (selectedItem && answersBlock) {
-                console.log(selectedItem.row, answersBlock);
                 for (const btn of answersBlock) {
                     if (btn.innerHTML === '') {
                         btn.innerHTML = `${countryData[Number(selectedItem.row) + 1][0]}`;
+                        if (answersBlock.every((el) => el.innerHTML !== '')) {
+                            document.querySelector('.btn__check-population')?.removeAttribute('disabled');
+                        }
                         break;
                     }
                 }

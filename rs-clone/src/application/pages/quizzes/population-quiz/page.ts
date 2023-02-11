@@ -10,7 +10,7 @@ export class PopulationQuizPage extends Page {
 
     private createNextBtn() {
         const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
-        // nextBtn.setAttribute('disabled', 'disabled'); //по клику удаляем существующий question и генерируем новый
+        nextBtn.setAttribute('disabled', 'disabled');
         nextBtn.addEventListener('click', () => {
             const previousQuestion = document.querySelector('.question');
             const title = document.querySelector('.main__title');
@@ -18,6 +18,7 @@ export class PopulationQuizPage extends Page {
                 previousQuestion.remove();
                 const newQuestion = new PopulationQuestion(this.generateData()).render();
                 title.after(newQuestion);
+                nextBtn.setAttribute('disabled', 'disabled');
             }
         });
         return nextBtn;
