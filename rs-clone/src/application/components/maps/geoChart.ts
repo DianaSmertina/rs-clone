@@ -7,7 +7,7 @@ export function drawChart(container: HTMLElement, countryData: Array<Array<strin
     function drawRegionsMap() {
         const data = google.visualization.arrayToDataTable(countryData);
         const options = {
-            region: '150',
+            region: '142',
         };
         const chart = new google.visualization.GeoChart(container);
         chart.draw(data, options);

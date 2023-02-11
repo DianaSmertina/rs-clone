@@ -2,7 +2,7 @@ import MainPage from '../pages/main-page/index';
 import Quizzes from '../pages/quizzes/allQuizzes';
 import ErrorPage, { ErrorTypes } from '../pages/error-page/index';
 import ResultsPage from '../pages/results/results';
-import { QuizPopulation } from '../pages/quizzes/guessPopulation';
+import { PopulationQuizPage } from '../pages/quizzes/population-quiz/page';
 // import QuizTemplate from '../patterns/quizTemplate';
 
 const route = (event?: Event) => {
@@ -23,7 +23,7 @@ const routes: PathType = {
     '/main-page': new MainPage('main-page').render(),
     '/results': new ResultsPage('results').render(),
     // '/temp': new QuizTemplate('temp').render(),
-    '/population-quiz': new QuizPopulation().createPage(),
+    '/population-quiz': new PopulationQuizPage('population-quiz', 'Guess population').render(),
 };
 
 export const handleLocation = () => {
