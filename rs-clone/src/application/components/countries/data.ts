@@ -341,7 +341,7 @@ export const world = [
     {
         countryEn: 'Dominican Republic',
         countryRu: 'Доминиканская Республика',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 9823821,
         capitalEn: 'Santo Domingo',
@@ -367,7 +367,7 @@ export const world = [
     {
         countryEn: 'Costa Rica',
         countryRu: 'Коста-Рика',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 4516220,
         capitalEn: 'San José',
@@ -510,7 +510,7 @@ export const world = [
     {
         countryEn: 'Panama',
         countryRu: 'Панама',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 3410676,
         capitalEn: 'Panama City',
@@ -521,7 +521,7 @@ export const world = [
         area: 78200,
     },
     {
-        countryEn: 'Czechia',
+        countryEn: 'Czech Republic',
         countryRu: 'Чехия',
         regionEn: 'Europe',
         regionRu: 'Европа',
@@ -588,7 +588,7 @@ export const world = [
     {
         countryEn: 'French Guiana',
         countryRu: 'Французская Гвиана',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 195506,
         capitalEn: 'Cayenne',
@@ -666,7 +666,7 @@ export const world = [
     {
         countryEn: 'Guatemala',
         countryRu: 'Гватемала',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 13550440,
         capitalEn: 'Guatemala City',
@@ -679,7 +679,7 @@ export const world = [
     {
         countryEn: 'Cuba',
         countryRu: 'Куба',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 11423000,
         capitalEn: 'Havana',
@@ -718,7 +718,7 @@ export const world = [
     {
         countryEn: 'Honduras',
         countryRu: 'Гондурас',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 7989415,
         capitalEn: 'Tegucigalpa',
@@ -783,7 +783,7 @@ export const world = [
     {
         countryEn: 'Nicaragua',
         countryRu: 'Никарагуа',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 5995928,
         capitalEn: 'Managua',
@@ -848,7 +848,7 @@ export const world = [
     {
         countryEn: 'Suriname',
         countryRu: 'Суринам',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 492829,
         capitalEn: 'Paramaribo',
@@ -874,7 +874,7 @@ export const world = [
     {
         countryEn: 'Uruguay',
         countryRu: 'Уругвай',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 3477000,
         capitalEn: 'Montevideo',
@@ -965,7 +965,7 @@ export const world = [
     {
         countryEn: 'Guyana',
         countryRu: 'Гайана',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 748486,
         capitalEn: 'Georgetown',
@@ -1028,7 +1028,7 @@ export const world = [
         area: 239460,
     },
     {
-        countryEn: 'United Kingdom of Great Britain and Northern Ireland',
+        countryEn: 'United Kingdom',
         countryRu: 'Великобритания',
         regionEn: 'Europe',
         regionRu: 'Европа',
@@ -1108,7 +1108,7 @@ export const world = [
     {
         countryEn: 'Ecuador',
         countryRu: 'Эквадор',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 14790608,
         capitalEn: 'Quito',
@@ -1158,7 +1158,7 @@ export const world = [
         area: 312685,
     },
     {
-        countryEn: "Côte d\\'Ivoire",
+        countryEn: 'Ivory Coast',
         countryRu: 'Берег Слоновой Кости',
         regionEn: 'Africa',
         regionRu: 'Африка',
@@ -1223,7 +1223,7 @@ export const world = [
         area: 337030,
     },
     {
-        countryEn: 'Congo',
+        countryEn: 'Congo - Brazzaville',
         countryRu: 'Конго - Браззавиль',
         regionEn: 'Africa',
         regionRu: 'Африка',
@@ -1277,7 +1277,7 @@ export const world = [
     {
         countryEn: 'Paraguay',
         countryRu: 'Парагвай',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 6375830,
         capitalEn: 'Asunción',
@@ -1509,8 +1509,8 @@ export const world = [
         area: 637657,
     },
     {
-        countryEn: 'South Sudan',
-        countryRu: 'южный Судан',
+        countryEn: 'South Sudan', //название не работает
+        countryRu: 'Южный Судан',
         regionEn: 'Africa',
         regionRu: 'Африка',
         population: 8260490,
@@ -1563,7 +1563,7 @@ export const world = [
     {
         countryEn: 'Chile',
         countryRu: 'Чили',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 16746491,
         capitalEn: 'Santiago',
@@ -1628,7 +1628,7 @@ export const world = [
     {
         countryEn: 'Venezuela',
         countryRu: 'Венесуэла',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 27223228,
         capitalEn: 'Caracas',
@@ -1691,9 +1691,9 @@ export const world = [
         area: 1030700,
     },
     {
-        countryEn: 'Bolivia (Plurinational State of)',
+        countryEn: 'Bolivia',
         countryRu: 'Боливия',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 9947418,
         capitalEn: 'Sucre',
@@ -1719,7 +1719,7 @@ export const world = [
     {
         countryEn: 'Colombia',
         countryRu: 'Колумбия',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 47790000,
         capitalEn: 'Bogotá',
@@ -1797,7 +1797,7 @@ export const world = [
     {
         countryEn: 'Peru',
         countryRu: 'Перу',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 29907003,
         capitalEn: 'Lima',
@@ -1888,7 +1888,7 @@ export const world = [
     {
         countryEn: 'Mexico',
         countryRu: 'Мексика',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 112468855,
         capitalEn: 'Mexico City',
@@ -1901,7 +1901,7 @@ export const world = [
     {
         countryEn: 'Greenland',
         countryRu: 'Гренландия',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 56375,
         capitalEn: 'Nuuk',
@@ -1912,7 +1912,7 @@ export const world = [
         area: 2166086,
     },
     {
-        countryEn: 'Congo',
+        countryEn: 'Congo - Kinshasa',
         countryRu: 'Конго - Киншаса',
         regionEn: 'Africa',
         regionRu: 'Африка',
@@ -1953,7 +1953,7 @@ export const world = [
     {
         countryEn: 'Argentina',
         countryRu: 'Аргентина',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 41343201,
         capitalEn: 'Buenos Aires',
@@ -1992,7 +1992,7 @@ export const world = [
     {
         countryEn: 'Brazil',
         countryRu: 'Бразилия',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 201103330,
         capitalEn: 'Brasília',
@@ -2016,9 +2016,9 @@ export const world = [
         area: 9596960,
     },
     {
-        countryEn: 'United States of America',
+        countryEn: 'United States',
         countryRu: 'Соединенные Штаты',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 310232863,
         capitalEn: 'Washington',
@@ -2031,7 +2031,7 @@ export const world = [
     {
         countryEn: 'Canada',
         countryRu: 'Канада',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 33679000,
         capitalEn: 'Ottawa',
@@ -2042,7 +2042,7 @@ export const world = [
         area: 9984670,
     },
     {
-        countryEn: 'Russian Federation',
+        countryEn: 'Russia',
         countryRu: 'Россия',
         regionEn: 'Europe',
         regionRu: 'Европа',

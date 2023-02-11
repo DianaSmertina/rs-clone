@@ -6,7 +6,7 @@ export function drawChart(container: HTMLElement, countryData: Array<Array<strin
     google.charts.setOnLoadCallback(drawRegionsMap);
     function drawRegionsMap() {
         // console.log(countryData);
-        // const data = google.visualization.arrayToDataTable([['fdbdb'], ['South Korea']]);
+        // const data = google.visualization.arrayToDataTable([['fdbdb'], ['Congo - Kinshasa']]);
         const data = google.visualization.arrayToDataTable(countryData);
         const options = {
             region: '142',
