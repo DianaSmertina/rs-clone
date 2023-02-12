@@ -19,10 +19,31 @@ export class QuizFlag extends Page {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const mainTitle = createOurElement('h1', 'main__title', 'Country by flag');
         const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
-        nextBtn.setAttribute('disabled', 'disabled');
         const rightWorld = createOurElement('h1', 'right-world', 'RIGHT!');
-        rightWorld.style.display = 'none';
         const wrongWorld = createOurElement('h1', 'wrong-world', 'WRONG!');
+        const geoChartWrap = document.createElement('div');
+        geoChartWrap.id = 'regions_div';
+        const flag = createOurElement('div', 'img-flag');
+
+        this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag);
+
+        nextBtn.addEventListener('click', () => {
+            this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag);
+        });
+        mainWrapper.append(mainTitle, geoChartWrap, rightWorld, wrongWorld, flag, nextBtn);
+        this.container.append(mainWrapper);
+        return this.container;
+    }
+
+    private renderContent(
+        nextBtn: HTMLElement,
+        rightWorld: HTMLElement,
+        wrongWorld: HTMLElement,
+        geoChartWrap: HTMLElement,
+        flag: HTMLElement
+    ) {
+        nextBtn.setAttribute('disabled', 'disabled');
+        rightWorld.style.display = 'none';
         wrongWorld.style.display = 'none';
 
         const answer = this.randomiseCountry(this.flagsArr, 150000);
@@ -34,11 +55,9 @@ export class QuizFlag extends Page {
             [this.randomiseCountry(this.flagsArr, 150000).countryEn],
             [this.randomiseCountry(this.flagsArr, 150000).countryEn],
         ];
-        const geoChartWrap = document.createElement('div');
-        geoChartWrap.id = 'regions_div';
+
         drawChart(geoChartWrap, countriesForAnswer);
 
-        const flag = createOurElement('div', 'img-flag');
         flag.style.backgroundImage = answer.flag || '';
 
         setTimeout(() => {
@@ -56,10 +75,6 @@ export class QuizFlag extends Page {
                 }
             });
         }, 1000);
-
-        mainWrapper.append(mainTitle, geoChartWrap, rightWorld, wrongWorld, flag, nextBtn);
-        this.container.append(mainWrapper);
-        return this.container;
     }
 
     private randomiseCountry(arr: typeof world, area: number) {
