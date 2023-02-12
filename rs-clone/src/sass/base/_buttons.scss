@@ -21,7 +21,6 @@
     border: 2px solid $color-dark3;
 }
 
-
 .btn__bordered {
     width: 40%;
     height: 40%;
@@ -42,4 +41,14 @@
     border: 2px solid $color-disable2;
     color: $color-disable2;
     cursor: auto;
+}
+
+.rightAnswer {
+    background-color: $color-rightAnsw;
+    pointer-events: none;
+}
+
+.wrongAnswer {
+    background-color: $color-wrongAnsw;
+    pointer-events: none;
 }

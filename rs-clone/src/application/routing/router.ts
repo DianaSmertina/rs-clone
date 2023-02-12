@@ -3,6 +3,7 @@ import Quizzes from '../pages/quizzes/allQuizzes';
 import ErrorPage, { ErrorTypes } from '../pages/error-page/index';
 import ResultsPage from '../pages/results/results';
 import QuizTemplate from '../patterns/quizTemplate';
+import CountryQuiz from '../pages/quizzes/country-quiz/country-quiz';
 
 const route = (event?: Event) => {
     event = event || window.event;
@@ -22,6 +23,7 @@ const routes: PathType = {
     '/main-page': new MainPage('main-page').render(),
     '/results': new ResultsPage('results').render(),
     '/temp': new QuizTemplate('temp').render(),
+    '/country-quiz': new CountryQuiz('country-quiz').render(),
 };
 
 export const handleLocation = () => {
@@ -42,6 +44,7 @@ interface PathType {
     '/main-page': HTMLElement;
     '/results': HTMLElement;
     '/temp': HTMLElement;
+    '/country-quiz': HTMLElement;
 }
 
 declare global {
