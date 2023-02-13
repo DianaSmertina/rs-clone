@@ -24,8 +24,9 @@ export class PopulationQuestion {
                 const answersBlock = Array.from(document.querySelectorAll('.btn__population'));
                 if (selectedItem && answersBlock) {
                     for (const btn of answersBlock) {
-                        if (btn.innerHTML === '') {
-                            btn.innerHTML = `${countries[Number(selectedItem.row) + 1][1]}`;
+                        const choosenCountry = countries[Number(selectedItem.row) + 1][1];
+                        if (btn.innerHTML === '' && !answersBlock.find((el) => el.innerHTML === choosenCountry)) {
+                            btn.innerHTML = `${choosenCountry}`;
                             if (answersBlock.every((el) => el.innerHTML !== '')) {
                                 document.querySelector('.btn__check-population')?.removeAttribute('disabled');
                             }
@@ -41,9 +42,14 @@ export class PopulationQuestion {
     private createAnswerBlock() {
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
         const answers = this.mapData.slice(0);
-        console.log(answers);
         const answerBtns = answers?.map(() => {
             const answer = createOurElement('button', 'btn btn__population');
+            answer.addEventListener('click', () => {
+                answer.innerText = '';
+                if (!answerBtns.every((btn) => btn.innerText) && checkBtn) {
+                    checkBtn.setAttribute('disabled', 'disabled');
+                }
+            });
             answersBlock.append(answer);
             return answer;
         });

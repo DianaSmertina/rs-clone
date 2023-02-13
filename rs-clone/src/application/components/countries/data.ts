@@ -1536,7 +1536,7 @@ export const world = [
     },
     {
         countryEn: 'Myanmar',
-        countryRu: 'Мьянма (Бирма)',
+        countryRu: 'Мьянма',
         regionEn: 'Asia',
         regionRu: 'Азия',
         population: 53414374,
