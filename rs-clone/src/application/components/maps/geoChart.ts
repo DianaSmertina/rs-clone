@@ -16,6 +16,7 @@ export function drawChart(
         backgroundColor?: string;
         region?: string;
         colorAxis?: { colors: Array<string> };
+        legend?: 'none';
     } = {
         backgroundColor: '#81d4fa',
     }

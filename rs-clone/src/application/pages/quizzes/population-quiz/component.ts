@@ -15,6 +15,7 @@ export class PopulationQuestion {
         drawChart(geoChartWrap, countries, 'population', {
             region: '142',
             colorAxis: { colors: ['blue', 'orange', 'green'] },
+            legend: 'none',
         });
 
         setTimeout(() => {
@@ -51,10 +52,15 @@ export class PopulationQuestion {
         checkBtn.setAttribute('disabled', 'disabled');
         checkBtn.addEventListener('click', () => {
             answerBtns.forEach((btn, i) => {
-                btn.innerHTML === answers[i].countryRu
+                btn.innerText === answers[i].countryRu
                     ? btn.classList.add('btn__right')
                     : btn.classList.add('btn__wrong');
+                const rightPopulation = (
+                    Number(answers.find((el) => el.countryRu === btn.innerText)?.population) / 1000000
+                ).toFixed(2);
+                btn.innerText += ` ${rightPopulation} млн`;
             });
+            checkBtn.setAttribute('disabled', 'disabled');
             document.querySelector('.btn__next')?.removeAttribute('disabled');
         });
 
