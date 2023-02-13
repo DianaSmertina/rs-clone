@@ -29,10 +29,10 @@ export class QuizFlag extends Page {
 
     render() {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title', 'Country by flag');
+        const mainTitle = createOurElement('h1', 'main__title', 'Узнай страну по флагу');
         const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
-        const rightWorld = createOurElement('h1', 'right-world', 'RIGHT!');
-        const wrongWorld = createOurElement('h1', 'wrong-world', 'WRONG!');
+        const rightWorld = createOurElement('h1', 'right-world', 'Правильно!');
+        const wrongWorld = createOurElement('h1', 'wrong-world', 'Неправильно!');
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
         const flag = createOurElement('div', 'img-flag');
@@ -65,10 +65,10 @@ export class QuizFlag extends Page {
 
         const countriesForAnswer = [
             ['Country'],
-            [answer.countryEn],
-            [this.randomiseCountry(this.flagsArr, 150000).countryEn],
-            [this.randomiseCountry(this.flagsArr, 150000).countryEn],
-            [this.randomiseCountry(this.flagsArr, 150000).countryEn],
+            [answer.countryRu],
+            [this.randomiseCountry(this.flagsArr, 150000).countryRu],
+            [this.randomiseCountry(this.flagsArr, 150000).countryRu],
+            [this.randomiseCountry(this.flagsArr, 150000).countryRu],
         ];
 
         drawChart(geoChartWrap, countriesForAnswer);
