@@ -2,6 +2,7 @@ import { drawChart } from '../../components/maps/geoChart';
 import Page from '../../patterns/pagePattern';
 import { createOurElement } from '../../patterns/createElement';
 import { world } from '../../components/countries/data';
+import { QuizResult } from './quizzesResults';
 
 type countryWithFlag = typeof world & { flag: string };
 
@@ -41,6 +42,9 @@ export class QuizFlag extends Page {
 
         nextBtn.addEventListener('click', () => {
             if (this.rightAnswers !== 15) this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag);
+            else {
+                this.container.append(new QuizResult('div', 'none', `${this.countResult()}%`).render());
+            }
         });
         mainWrapper.append(mainTitle, geoChartWrap, rightWorld, wrongWorld, flag, nextBtn);
         this.container.append(mainWrapper);
@@ -109,5 +113,9 @@ export class QuizFlag extends Page {
         }
 
         return [country.countryCodeLetters, country.countryRu];
+    }
+
+    private countResult() {
+        return Math.floor(((this.rightAnswers - this.wrongAnswers) / (this.rightAnswers + this.wrongAnswers)) * 100);
     }
 }
