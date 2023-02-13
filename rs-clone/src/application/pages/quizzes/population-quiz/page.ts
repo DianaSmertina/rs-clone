@@ -4,20 +4,19 @@ import { PopulationQuestion } from './component';
 import { asia } from '../../../components/countries/data';
 
 export class PopulationQuizPage extends Page {
-    constructor(id: string, private title: string) {
+    constructor(id: string) {
         super(id);
     }
 
-    private createNextBtn() {
+    private createNextBtn(rules: HTMLElement) {
         const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
         nextBtn.setAttribute('disabled', 'disabled');
         nextBtn.addEventListener('click', () => {
             const previousQuestion = document.querySelector('.question');
-            const title = document.querySelector('.main__title');
-            if (previousQuestion && title) {
+            if (previousQuestion && rules) {
                 previousQuestion.remove();
                 const newQuestion = new PopulationQuestion(this.generateData()).render();
-                title.after(newQuestion);
+                rules.after(newQuestion);
                 nextBtn.setAttribute('disabled', 'disabled');
             }
         });
@@ -38,9 +37,16 @@ export class PopulationQuizPage extends Page {
 
     render() {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title', this.title);
+        const mainTitle = createOurElement('h1', 'main__title', 'Угадай численность населения');
+        const rules = createOurElement(
+            'p',
+            'main__rules',
+            `В этом квизе тебе нужно расположить выделенные на карте страны в порядке возрастания численности населения.
+            Наведи чтобы узнать информацию о стране и кликни, чтобы добавить в поле для ответов.
+            Пока ты не нажал "Проверить" ты можешь изменить окончательный порядок, кликнув на ответы.`
+        );
         const playSpace = new PopulationQuestion(this.generateData()).render();
-        mainWrapper.append(mainTitle, playSpace, this.createNextBtn());
+        mainWrapper.append(mainTitle, rules, playSpace, this.createNextBtn(rules));
         this.container.append(mainWrapper);
         return this.container;
     }

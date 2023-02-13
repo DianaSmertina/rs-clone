@@ -23,7 +23,7 @@ const routes: PathType = {
     '/main-page': new MainPage('main-page').render(),
     '/results': new ResultsPage('results').render(),
     // '/temp': new QuizTemplate('temp').render(),
-    '/population-quiz': new PopulationQuizPage('population-quiz', 'Угадай численность населения').render(),
+    '/population-quiz': new PopulationQuizPage('population-quiz').render(),
 };
 
 export const handleLocation = () => {
