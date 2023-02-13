@@ -3,6 +3,8 @@ import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
 
 export class PopulationQuestion {
+    static ourChart: google.visualization.GeoChart;
+
     constructor(private mapData: Array<Icountry>) {}
 
     private createGeoChart() {
@@ -10,7 +12,28 @@ export class PopulationQuestion {
         geoChartWrap.id = 'regions_div';
         const countries = this.mapData.map((el) => [el.countryCodeLetters, el.countryRu, el.area]);
         countries.unshift(['Country', 'Назание', 'Площадь']);
-        drawChart(geoChartWrap, countries);
+        drawChart(geoChartWrap, countries, 'population', {
+            region: '142',
+            colorAxis: { colors: ['blue', 'orange', 'green'] },
+        });
+
+        setTimeout(() => {
+            google.visualization.events.addListener(PopulationQuestion.ourChart, 'select', () => {
+                const selectedItem = PopulationQuestion.ourChart.getSelection()[0];
+                const answersBlock = Array.from(document.querySelectorAll('.btn__population'));
+                if (selectedItem && answersBlock) {
+                    for (const btn of answersBlock) {
+                        if (btn.innerHTML === '') {
+                            btn.innerHTML = `${countries[Number(selectedItem.row) + 1][1]}`;
+                            if (answersBlock.every((el) => el.innerHTML !== '')) {
+                                document.querySelector('.btn__check-population')?.removeAttribute('disabled');
+                            }
+                            break;
+                        }
+                    }
+                }
+            });
+        }, 1000);
         return geoChartWrap;
     }
 
