@@ -8,11 +8,23 @@ type countryWithFlag = typeof world & { flag: string };
 export class QuizFlag extends Page {
     private flagsArr: countryWithFlag;
 
+    private rightAnswers: number;
+
+    private wrongAnswers: number;
+
+    private availableToPlus: boolean;
+
+    private availableToMinus: boolean;
+
     static ourChart: google.visualization.GeoChart;
 
     constructor(id: string) {
         super(id);
         this.flagsArr = world.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
+        this.rightAnswers = 0;
+        this.wrongAnswers = 0;
+        this.availableToPlus = true;
+        this.availableToMinus = true;
     }
 
     render() {
@@ -28,7 +40,7 @@ export class QuizFlag extends Page {
         this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag);
 
         nextBtn.addEventListener('click', () => {
-            this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag);
+            if (this.rightAnswers !== 15) this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag);
         });
         mainWrapper.append(mainTitle, geoChartWrap, rightWorld, wrongWorld, flag, nextBtn);
         this.container.append(mainWrapper);
@@ -42,6 +54,9 @@ export class QuizFlag extends Page {
         geoChartWrap: HTMLElement,
         flag: HTMLElement
     ) {
+        this.availableToPlus = true;
+        this.availableToMinus = true;
+
         nextBtn.setAttribute('disabled', 'disabled');
         rightWorld.style.display = 'none';
         wrongWorld.style.display = 'none';
@@ -61,16 +76,25 @@ export class QuizFlag extends Page {
         flag.style.backgroundImage = answer.flag || '';
 
         setTimeout(() => {
-            google.visualization.events.addListener(QuizFlag.ourChart, 'select', function () {
+            google.visualization.events.addListener(QuizFlag.ourChart, 'select', () => {
                 const selected = QuizFlag.ourChart.getSelection()[0];
                 if (selected) {
                     if (selected.row === 0) {
                         nextBtn.removeAttribute('disabled');
                         wrongWorld.style.display = 'none';
                         rightWorld.style.display = '';
+                        if (this.availableToPlus) {
+                            this.rightAnswers += 1;
+                            this.availableToPlus = false;
+                            this.availableToMinus = false;
+                        }
                     } else {
                         wrongWorld.style.display = '';
                         rightWorld.style.display = 'none';
+                        if (this.availableToMinus) {
+                            this.wrongAnswers += 1;
+                            this.availableToMinus = false;
+                        }
                     }
                 }
             });
