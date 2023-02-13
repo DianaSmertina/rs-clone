@@ -1,4 +1,4 @@
-import { QuizFlag } from '../../pages/quizzes/flags';
+// import { QuizFlag } from '../../pages/quizzes/flags';
 
 export function drawChart(
     container: HTMLElement,
@@ -28,6 +28,6 @@ export function drawChart(
 
         chart.draw(data, options);
 
-        QuizFlag.ourChart = chart;
+        // QuizFlag.ourChart = chart;
     }
 }
