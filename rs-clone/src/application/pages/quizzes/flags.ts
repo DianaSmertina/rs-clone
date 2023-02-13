@@ -64,16 +64,16 @@ export class QuizFlag extends Page {
         const answer = this.randomiseCountry(this.flagsArr, 150000);
 
         const countriesForAnswer = [
-            ['Country'],
-            [answer.countryRu],
-            [this.randomiseCountry(this.flagsArr, 150000).countryRu],
-            [this.randomiseCountry(this.flagsArr, 150000).countryRu],
-            [this.randomiseCountry(this.flagsArr, 150000).countryRu],
+            ['Country', 'Name'],
+            answer,
+            this.randomiseCountry(this.flagsArr, 150000),
+            this.randomiseCountry(this.flagsArr, 150000),
+            this.randomiseCountry(this.flagsArr, 150000),
         ];
 
         drawChart(geoChartWrap, countriesForAnswer);
 
-        flag.style.backgroundImage = answer.flag || '';
+        flag.style.backgroundImage = world.find((el) => el.countryCodeLetters === answer[0])?.flag || '';
 
         setTimeout(() => {
             google.visualization.events.addListener(QuizFlag.ourChart, 'select', () => {
@@ -108,6 +108,6 @@ export class QuizFlag extends Page {
             country = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
         }
 
-        return country;
+        return [country.countryCodeLetters, country.countryRu];
     }
 }
