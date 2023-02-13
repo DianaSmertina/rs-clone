@@ -5,25 +5,19 @@ import { createOurElement } from './createElement';
 const countriesForAnswer = ['Canada', 'Mexico', 'Italy', 'Cuba'];
 
 class QuizTemplate extends Page {
-    constructor(
-        id: string,
-        private title: string,
-        private mapData: Array<Array<string | number>>,
-        private answerData: Array<string>
-    ) {
+    constructor(id: string) {
         super(id);
     }
 
     render() {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title', this.title);
+        const mainTitle = createOurElement('h1', 'main__title', 'Quiz Name');
 
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
-        drawChart(geoChartWrap, this.mapData);
+        drawChart(geoChartWrap);
 
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
-
         countriesForAnswer.forEach((country) => {
             const answer = createOurElement('button', 'btn btn__bordered', `${country}`);
             answersBlock.append(answer);

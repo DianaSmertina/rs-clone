@@ -3,7 +3,7 @@ import Quizzes from '../pages/quizzes/allQuizzes';
 import ErrorPage, { ErrorTypes } from '../pages/error-page/index';
 import ResultsPage from '../pages/results/results';
 import { PopulationQuizPage } from '../pages/quizzes/population-quiz/page';
-// import QuizTemplate from '../patterns/quizTemplate';
+import QuizTemplate from '../patterns/quizTemplate';
 
 const route = (event?: Event) => {
     event = event || window.event;
@@ -22,7 +22,7 @@ const routes: PathType = {
     '/quizzes': new Quizzes('quizzes').render(),
     '/main-page': new MainPage('main-page').render(),
     '/results': new ResultsPage('results').render(),
-    // '/temp': new QuizTemplate('temp').render(),
+    '/temp': new QuizTemplate('temp').render(),
     '/population-quiz': new PopulationQuizPage('population-quiz').render(),
 };
 
@@ -43,7 +43,7 @@ interface PathType {
     '/quizzes': HTMLElement;
     '/main-page': HTMLElement;
     '/results': HTMLElement;
-    // '/temp': HTMLElement;
+    '/temp': HTMLElement;
     '/population-quiz': HTMLElement;
 }
 
