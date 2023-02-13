@@ -4,6 +4,7 @@ import { createOurElement } from '../../../patterns/createElement';
 
 export class PopulationQuestion {
     static ourChart: google.visualization.GeoChart;
+    static rightAnswer: number;
 
     constructor(private mapData: Array<Icountry>) {}
 
@@ -45,10 +46,12 @@ export class PopulationQuestion {
 
         checkBtn.addEventListener('click', () => {
             answerBtns.forEach((btn, i) => {
-                btn.innerText === answers[i].countryRu
-                    ? btn.classList.add('btn__right')
-                    : btn.classList.add('btn__wrong');
-
+                if (btn.innerText === answers[i].countryRu) {
+                    btn.classList.add('btn__right');
+                    PopulationQuestion.rightAnswer += 1;
+                } else {
+                    btn.classList.add('btn__wrong');
+                }
                 const rightPopulation = (
                     Number(answers.find((el) => el.countryRu === btn.innerText)?.population) / 1000000
                 ).toFixed(2);
