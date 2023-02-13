@@ -419,7 +419,7 @@ export const world = [
     {
         countryEn: 'Svalbard and Jan Mayen',
         countryRu: 'Шпицберген и Ян-Майен',
-        regionEn: 'Europe',
+        regionEn: 'European country',
         regionRu: 'Европа',
         population: 2550,
         capitalEn: 'Longyearbyen',

@@ -26,7 +26,7 @@ export function drawChart(container: HTMLElement, countryData: Array<Array<strin
             if (selectedItem && answersBlock) {
                 for (const btn of answersBlock) {
                     if (btn.innerHTML === '') {
-                        btn.innerHTML = `${countryData[Number(selectedItem.row) + 1][0]}`;
+                        btn.innerHTML = `${countryData[Number(selectedItem.row) + 1][1]}`;
                         if (answersBlock.every((el) => el.innerHTML !== '')) {
                             document.querySelector('.btn__check-population')?.removeAttribute('disabled');
                         }

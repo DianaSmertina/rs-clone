@@ -8,8 +8,8 @@ export class PopulationQuestion {
     private createGeoChart() {
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
-        const countries = this.mapData.map((el) => [el.countryEn]);
-        countries.unshift(['Country']);
+        const countries = this.mapData.map((el) => [el.countryCodeLetters, el.countryRu]);
+        countries.unshift(['Country', 'Name']);
         drawChart(geoChartWrap, countries);
         return geoChartWrap;
     }
