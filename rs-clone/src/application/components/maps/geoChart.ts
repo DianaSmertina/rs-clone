@@ -10,6 +10,7 @@ export function drawChart(container: HTMLElement, countryData: Array<Array<strin
         const data = google.visualization.arrayToDataTable(countryData);
         const options = {
             region: '142',
+            colorAxis: { colors: ['blue', 'orange', 'green'] },
         };
         const chart = new google.visualization.GeoChart(container);
         chart.draw(data, options);

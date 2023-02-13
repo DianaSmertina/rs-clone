@@ -8,8 +8,8 @@ export class PopulationQuestion {
     private createGeoChart() {
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
-        const countries = this.mapData.map((el) => [el.countryCodeLetters, el.countryRu]);
-        countries.unshift(['Country', 'Name']);
+        const countries = this.mapData.map((el) => [el.countryCodeLetters, el.countryRu, el.area]);
+        countries.unshift(['Country', 'Назание', 'Площадь']);
         drawChart(geoChartWrap, countries);
         return geoChartWrap;
     }
@@ -28,7 +28,7 @@ export class PopulationQuestion {
         checkBtn.setAttribute('disabled', 'disabled');
         checkBtn.addEventListener('click', () => {
             answerBtns.forEach((btn, i) => {
-                btn.innerHTML === answers[i].countryEn
+                btn.innerHTML === answers[i].countryRu
                     ? btn.classList.add('btn__right')
                     : btn.classList.add('btn__wrong');
             });
