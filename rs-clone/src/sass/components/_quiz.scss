@@ -25,11 +25,21 @@
     padding: 50px 0 130px;
     justify-content: center;
 }
-
 .menu__item {
     width: 215px;
     height: 250px;
     background: $color-light2;
     border-radius: 10px;
     text-align: center;
+}
+
+.title-and-round{
+    display: flex;
+    justify-content: space-between;
+}
+.main__title{
+    margin-left: 35%;
+}
+.quizz-round{
+    color: black;
 }

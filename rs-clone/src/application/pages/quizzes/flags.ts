@@ -31,22 +31,27 @@ export class QuizFlag extends Page {
     render() {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const mainTitle = createOurElement('h1', 'main__title', 'Узнай страну по флагу');
+        const titleAndRound = createOurElement('div', 'main__wrapper wrapper title-and-round');
         const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
         const rightWorld = createOurElement('h1', 'right-world', 'Правильно!');
         const wrongWorld = createOurElement('h1', 'wrong-world', 'Неправильно!');
+        const round = createOurElement('h1', 'quizz-round');
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
         const flag = createOurElement('div', 'img-flag');
 
-        this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag);
+        titleAndRound.append(mainTitle, round);
+
+        this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag, round);
 
         nextBtn.addEventListener('click', () => {
-            if (this.rightAnswers !== 15) this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag);
-            else {
+            if (this.rightAnswers !== 15) {
+                this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag, round);
+            } else {
                 this.container.append(new QuizResult('div', 'none', `${this.countResult()}%`).render());
             }
         });
-        mainWrapper.append(mainTitle, geoChartWrap, rightWorld, wrongWorld, flag, nextBtn);
+        mainWrapper.append(titleAndRound, geoChartWrap, rightWorld, wrongWorld, flag, nextBtn);
         this.container.append(mainWrapper);
         return this.container;
     }
@@ -56,7 +61,8 @@ export class QuizFlag extends Page {
         rightWorld: HTMLElement,
         wrongWorld: HTMLElement,
         geoChartWrap: HTMLElement,
-        flag: HTMLElement
+        flag: HTMLElement,
+        round: HTMLElement
     ) {
         this.availableToPlus = true;
         this.availableToMinus = true;
@@ -64,6 +70,8 @@ export class QuizFlag extends Page {
         nextBtn.setAttribute('disabled', 'disabled');
         rightWorld.style.display = 'none';
         wrongWorld.style.display = 'none';
+
+        round.textContent = `${this.rightAnswers + 1}/15`;
 
         const answer = this.randomiseCountry(this.flagsArr, 150000);
 
