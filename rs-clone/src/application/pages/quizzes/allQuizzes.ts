@@ -15,11 +15,13 @@ class Quizzes extends Page {
             `<div class="menu__item">
                 <h3>Guess country quiz</h3>
             </div>
+            <a href="population-quiz">
+                <div class="menu__item">
+                    <h3>Guess population quiz</h3>
+                </div>
+            </a>
             <div class="menu__item">
-                <h3>Guess population quiz</h3>
-            </div>
-            <div class="menu__item">
-            <h3>Guess ... quiz</h3>
+                <h3>Guess ... quiz</h3>
             </div>`
         );
 

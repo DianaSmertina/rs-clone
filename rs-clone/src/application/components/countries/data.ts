@@ -1,3 +1,17 @@
+export interface Icountry {
+    countryEn: string;
+    countryRu: string;
+    regionEn: string;
+    regionRu: string;
+    population: number;
+    capitalEn: string;
+    capitalRu: string;
+    regionCode: string;
+    countryCode: number;
+    countryCodeLetters: string;
+    area: number;
+}
+
 export const world = [
     {
         countryEn: 'Vanuatu',
@@ -209,7 +223,7 @@ export const world = [
         area: 30510,
     },
     {
-        countryEn: 'Moldova (Republic of)',
+        countryEn: 'Moldova',
         countryRu: 'Молдова',
         regionEn: 'Europe',
         regionRu: 'Европа',
@@ -2076,7 +2090,7 @@ export const world = [
         flag: 'url(https://flagicons.lipis.dev/flags/4x3/cn.svg)',
     },
     {
-        countryEn: 'United States of America',
+        countryEn: 'United States',
         countryRu: 'Соединенные Штаты',
         regionEn: 'Americas',
         regionRu: 'Америка',
@@ -2353,5 +2367,5 @@ export const world = [
 export const africa = world.filter((el) => el.regionEn === 'Africa');
 export const asia = world.filter((el) => el.regionEn === 'Asia');
 export const oceania = world.filter((el) => el.regionEn === 'Oceania');
-export const america = world.filter((el) => el.regionEn === 'America');
+export const america = world.filter((el) => el.regionEn === 'Americas');
 export const europe = world.filter((el) => el.regionEn === 'Europe');
