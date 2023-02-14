@@ -36,19 +36,29 @@
 .btn__next {
     margin-top: 40px;
 }
-.btn__next:disabled {
+
+.btn__population {
+    width: 40%;
+    height: 40%;
+    background-color: $color-light4;
+    border: 2px solid $color-dark1;
+    color: $color-dark1;
+}
+
+.btn__next:disabled,
+.btn__check-population:disabled {
     background-color: $color-disable1;
     border: 2px solid $color-disable2;
     color: $color-disable2;
     cursor: auto;
 }
 
-.rightAnswer {
+.btn__right {
     background-color: $color-rightAnsw;
     pointer-events: none;
 }
 
-.wrongAnswer {
+.btn__wrong {
     background-color: $color-wrongAnsw;
     pointer-events: none;
 }

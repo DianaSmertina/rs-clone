@@ -1,4 +1,5 @@
-// import { QuizFlag } from '../../pages/quizzes/flags';
+import { QuizFlag } from '../../pages/quizzes/flags';
+import { PopulationQuestion } from '../../pages/quizzes/population-quiz/component';
 
 export function drawChart(
     container: HTMLElement,
@@ -10,7 +11,16 @@ export function drawChart(
         ['Canada', 500],
         ['France', 600],
         ['RU', 700],
-    ]
+    ],
+    quiz = 'flags',
+    mapOptions: {
+        backgroundColor?: string;
+        region?: string;
+        colorAxis?: { colors: Array<string> };
+        legend?: 'none';
+    } = {
+        backgroundColor: '#81d4fa',
+    }
 ) {
     google.charts.load('current', {
         callback: drawRegionsMap,
@@ -21,13 +31,15 @@ export function drawChart(
 
     function drawRegionsMap() {
         const data = google.visualization.arrayToDataTable(countries);
-        const options = {
-            backgroundColor: '#81d4fa',
-        };
+        const options = mapOptions;
         const chart = new google.visualization.GeoChart(container);
 
         chart.draw(data, options);
 
-        // QuizFlag.ourChart = chart;
+        if (quiz === 'population') {
+            PopulationQuestion.ourChart = chart;
+        } else {
+            QuizFlag.ourChart = chart;
+        }
     }
 }
