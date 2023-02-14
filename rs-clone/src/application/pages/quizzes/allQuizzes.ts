@@ -20,9 +20,11 @@ class Quizzes extends Page {
                     <h3>Guess population quiz</h3>
                 </div>
             </a>
-            <div class="menu__item">
-                <h3>Guess ... quiz</h3>
-            </div>`
+            <a href="quizz-flag">
+                <div class="menu__item">
+                    <h3>Guess flag quiz</h3>
+                </div>
+            </a>`
         );
 
         mainWrapper.append(mainTitle, menu);
