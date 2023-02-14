@@ -3,6 +3,7 @@ import Page from '../../../patterns/pagePattern';
 import { createOurElement } from '../../../patterns/createElement';
 import { world } from '../../../components/countries/data';
 import { QuizResult } from '../quizzesResults';
+import { QuizRegion } from '../quizzesRegions';
 
 type countryWithFlag = typeof world & { flag: string };
 
@@ -29,6 +30,12 @@ export class QuizFlag extends Page {
     }
 
     render() {
+        this.container.append(new QuizRegion('div', 'none', this).render());
+
+        return this.container;
+    }
+
+    renderMain() {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const mainTitle = createOurElement('h1', 'main__title', 'Узнай страну по флагу');
         const titleAndRound = createOurElement('div', 'main__wrapper wrapper title-and-round');

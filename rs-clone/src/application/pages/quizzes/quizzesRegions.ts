@@ -4,7 +4,7 @@ import { createOurElement } from '../../patterns/createElement';
 export class QuizRegion extends Component {
     private btnText: string;
 
-    constructor(tagName: string, className: string) {
+    constructor(tagName: string, className: string, private ourClass: { renderMain: () => HTMLElement }) {
         super(tagName, className);
         this.btnText = 'Дальше';
     }
@@ -12,17 +12,19 @@ export class QuizRegion extends Component {
     render() {
         this.container.append(this.createRegions());
         this.container.className = 'modal';
-        this.closeModal();
+
+        this.container.addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                this.closeModal();
+            }
+        });
 
         return this.container;
     }
 
     private closeModal() {
-        this.container.addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) {
-                this.container.remove();
-            }
-        });
+        this.container.remove();
+        this.ourClass.renderMain();
     }
 
     private createRegions() {
@@ -31,10 +33,29 @@ export class QuizRegion extends Component {
         const title = createOurElement('h1', '', 'Выберите регион');
 
         btn.addEventListener('click', () => {
-            this.container.remove();
+            this.closeModal();
         });
 
-        form.append(title, btn);
+        form.append(title, this.createVariants(), btn);
         return form;
+    }
+
+    private createVariants() {
+        const wrapp = createOurElement(
+            'form',
+            'form__wrapp',
+            `<div><input type="radio" name="place" id="choice1" checked="checked"> 
+            <label for="choice1">Весь мир</label></div>
+            <div><input type="radio" name="place" id="choice2">
+            <label for="choice2">Африка</label></div>
+            <div><input type="radio" name="place" id="choice3">
+            <label for="choice3">Азия</label></div>
+            <div><input type="radio" name="place" id="choice4">
+            <label for="choice4">Америка</label></div>
+            <div><input type="radio" name="place" id="choice5">
+            <label for="choice5">Европа</label></div>`
+        );
+
+        return wrapp;
     }
 }
