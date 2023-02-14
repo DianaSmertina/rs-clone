@@ -1,4 +1,4 @@
-import { QuizFlag } from '../../pages/quizzes/flags';
+import { QuizFlag } from '../../pages/quizzes/flags-quiz/flags';
 import { PopulationQuestion } from '../../pages/quizzes/population-quiz/component';
 
 export function drawChart(

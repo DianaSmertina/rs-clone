@@ -1,8 +1,8 @@
-import { drawChart } from '../../components/maps/geoChart';
-import Page from '../../patterns/pagePattern';
-import { createOurElement } from '../../patterns/createElement';
-import { world } from '../../components/countries/data';
-import { QuizResult } from './quizzesResults';
+import { drawChart } from '../../../components/maps/geoChart';
+import Page from '../../../patterns/pagePattern';
+import { createOurElement } from '../../../patterns/createElement';
+import { world } from '../../../components/countries/data';
+import { QuizResult } from '../quizzesResults';
 
 type countryWithFlag = typeof world & { flag: string };
 

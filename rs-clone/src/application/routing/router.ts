@@ -4,7 +4,7 @@ import ErrorPage, { ErrorTypes } from '../pages/error-page/index';
 import ResultsPage from '../pages/results/results';
 import { PopulationQuizPage } from '../pages/quizzes/population-quiz/page';
 import QuizTemplate from '../patterns/quizTemplate';
-import { QuizFlag } from '../pages/quizzes/flags';
+import { QuizFlag } from '../pages/quizzes/flags-quiz/flags';
 
 const route = (event?: Event) => {
     event = event || window.event;
