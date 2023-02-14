@@ -58,7 +58,7 @@ export function getDataArr(regionCode: string): typeof world {
     }
 }
 
-export function getRandomNumber(min: number, max: number): number {
+function getRandomNumber(min: number, max: number): number {
     const rand = Math.abs(min + Math.random() * (max - min + 1));
     return Math.floor(rand);
 }

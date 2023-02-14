@@ -4,16 +4,10 @@ import { createOurElement } from '../../../patterns/createElement';
 import { getState, getDataArr, getRandomCountry, getAnswers, shuffle, checkAnswer } from './functions';
 
 export class CountryQuiz extends Page {
-    // private localStorObj: stateObj;
-    // private regionDataArr: typeof world;
-    // private randomCountry: string;
     static ourChart: google.visualization.GeoChart;
 
     constructor(id: string) {
         super(id);
-        // this.localStorObj = getState('002');
-        // this.regionDataArr = getDataArr('002');
-        // this.randomCountry = getRandomCountry(this.regionDataArr);
     }
 
     private renderPlayField(geoChartWrap: HTMLElement, answersBlock: HTMLElement, nextBtn: HTMLElement) {
@@ -26,26 +20,21 @@ export class CountryQuiz extends Page {
 
         const country = [
             ['Country', 'Latitude'],
-            // [this.randomCountry, 0],
             [randomCountry, 0],
         ];
 
         drawChart(geoChartWrap, country, 'countries', {
-            // region: this.localStorObj.regionCode,
             region: localStorObj.regionCode,
             colorAxis: { colors: ['#00853F'] },
-            backgroundColor: '#0D98BA', //'#81d4fa'
+            backgroundColor: '#0D98BA',
             datalessRegionColor: '#E0FFFF',
         });
 
-        // const countriesForAnswer = shuffle(getAnswers(this.randomCountry, this.regionDataArr));
         const countriesForAnswer = shuffle(getAnswers(randomCountry, regionDataArr));
 
         countriesForAnswer.forEach((country) => {
             const answer = createOurElement('button', 'btn btn__bordered answer', `${country}`);
             answer.id = `${country}`;
-            // const rightAnswer = this.randomCountry;
-            // const arrAnswers = this.regionDataArr;
             const rightAnswer = randomCountry;
             const arrAnswers = regionDataArr;
             answer.addEventListener(
