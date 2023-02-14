@@ -4,6 +4,7 @@ import ErrorPage, { ErrorTypes } from '../pages/error-page/index';
 import ResultsPage from '../pages/results/results';
 import { PopulationQuizPage } from '../pages/quizzes/population-quiz/page';
 import QuizTemplate from '../patterns/quizTemplate';
+import { QuizFlag } from '../pages/quizzes/flags';
 
 const route = (event?: Event) => {
     event = event || window.event;
@@ -23,6 +24,7 @@ const routes: PathType = {
     '/main-page': new MainPage('main-page').render(),
     '/results': new ResultsPage('results').render(),
     '/temp': new QuizTemplate('temp').render(),
+    '/quizz-flag': new QuizFlag('flag').render(),
     '/population-quiz': new PopulationQuizPage('population-quiz').render(),
 };
 
@@ -44,6 +46,7 @@ interface PathType {
     '/main-page': HTMLElement;
     '/results': HTMLElement;
     '/temp': HTMLElement;
+    '/quizz-flag': HTMLElement;
     '/population-quiz': HTMLElement;
 }
 

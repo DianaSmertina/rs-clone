@@ -1,3 +1,4 @@
+import { QuizFlag } from '../../pages/quizzes/flags';
 import { PopulationQuestion } from '../../pages/quizzes/population-quiz/component';
 
 export function drawChart(
@@ -27,12 +28,18 @@ export function drawChart(
         mapsApiKey: 'AIzaSyB6SRulzmagMGauUAszpYABPwn3kZ57itg',
     });
     google.charts.setOnLoadCallback(drawRegionsMap);
+
     function drawRegionsMap() {
         const data = google.visualization.arrayToDataTable(countries);
         const options = mapOptions;
         const chart = new google.visualization.GeoChart(container);
+
         chart.draw(data, options);
 
-        if (quiz === 'population') PopulationQuestion.ourChart = chart;
+        if (quiz === 'population') {
+            PopulationQuestion.ourChart = chart;
+        } else {
+            QuizFlag.ourChart = chart;
+        }
     }
 }
