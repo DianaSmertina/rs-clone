@@ -1,5 +1,6 @@
 import { QuizFlag } from '../../pages/quizzes/flags';
 import { PopulationQuestion } from '../../pages/quizzes/population-quiz/component';
+import { CountryQuiz } from '../../pages/quizzes/country-quiz/page';
 
 export function drawChart(
     container: HTMLElement,
@@ -18,6 +19,7 @@ export function drawChart(
         region?: string;
         colorAxis?: { colors: Array<string> };
         legend?: 'none';
+        datalessRegionColor?: '#E0FFFF';
     } = {
         backgroundColor: '#81d4fa',
     }
@@ -38,6 +40,8 @@ export function drawChart(
 
         if (quiz === 'population') {
             PopulationQuestion.ourChart = chart;
+        } else if (quiz === 'countries') {
+            CountryQuiz.ourChart = chart;
         } else {
             QuizFlag.ourChart = chart;
         }

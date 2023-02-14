@@ -1,8 +1,6 @@
 import { africa, america, asia, europe, oceania, world } from '../../../components/countries/data';
 import { stateObj } from './types';
-// import { CountryQuiz } from '../country-quiz/country-quiz';
 
-/*************************starting*********************/
 export function getState(regionCode: string) {
     const stateFromLocalStore = localStorage.getItem('stateObj');
     if (stateFromLocalStore) {
@@ -15,7 +13,7 @@ export function getState(regionCode: string) {
     }
 }
 
-export function createStateObj(regionCode: string) {
+function createStateObj(regionCode: string) {
     const stateObj = {
         regionCode: regionCode,
         max: getDataArr(regionCode).length - 1,
@@ -26,7 +24,6 @@ export function createStateObj(regionCode: string) {
     };
     return stateObj;
 }
-/*************************starting*********************/
 
 export function getDataArr(regionCode: string): typeof world {
     switch (regionCode) {
@@ -50,6 +47,11 @@ export function getDataArr(regionCode: string): typeof world {
             return europe;
             break;
         }
+
+        case 'world': {
+            return world;
+            break;
+        }
         default: {
             return world;
         }
@@ -62,24 +64,21 @@ export function getRandomNumber(min: number, max: number): number {
 }
 
 export function getRandomCountry(arr: typeof world) {
-    let randomCountry = '';
     const stateFromLocalStore = localStorage.getItem('stateObj');
-    if (stateFromLocalStore) {
-        const localStorObj: stateObj = JSON.parse(stateFromLocalStore);
-        const randomNumber = getRandomNumber(localStorObj.min, localStorObj.max);
-        const possiblRandCountry = arr[randomNumber].countryCodeLetters;
+    if (!stateFromLocalStore) return;
 
-        if (localStorObj.usedCountries.length === 0 || !localStorObj.usedCountries.includes(possiblRandCountry)) {
-            randomCountry = possiblRandCountry;
-            localStorObj.usedCountries.push(randomCountry);
-            localStorage.setItem('stateObj', JSON.stringify(localStorObj));
-        } else {
-            console.log(possiblRandCountry);
-            getRandomCountry(arr);
-            // new CountryQuiz('country-quiz').render();
-        }
+    const localStorObj: stateObj = JSON.parse(stateFromLocalStore);
+    const randomNumber = getRandomNumber(localStorObj.min, localStorObj.max);
+    const possiblRandCountry = arr[randomNumber].countryCodeLetters;
+
+    if (localStorObj.usedCountries.includes(possiblRandCountry)) {
+        getRandomCountry(arr);
     }
-    return randomCountry;
+
+    localStorObj.usedCountries.push(possiblRandCountry);
+    localStorage.setItem('stateObj', JSON.stringify(localStorObj));
+
+    return possiblRandCountry;
 }
 
 export function getAnswers(country: string, arr: typeof world) {
@@ -123,25 +122,40 @@ export function checkAnswer(eTarget: EventTarget | null, rightAnswer: string, ar
     if (!rightAnswerName) return;
     if (target.id === rightAnswerName) {
         const anotherAnsw = document.querySelectorAll('.answer');
-        anotherAnsw.forEach((item) => item.classList.add('wrongAnswer'));
-        target.classList.remove('wrongAnswer');
-        target.classList.add('rightAnswer');
-        addScoreAndRound();
+        anotherAnsw.forEach((item) => item.classList.add('btn__wrong'));
+        target.classList.remove('btn__wrong');
+        target.classList.add('btn__right');
+        changeRoundAndScore(true);
     } else {
         const anotherAnsw = document.querySelectorAll('.answer');
-        anotherAnsw.forEach((item) => item.classList.add('wrongAnswer'));
+        anotherAnsw.forEach((item) => item.classList.add('btn__wrong'));
         const trulyRightAnsw = document.getElementById(rightAnswerName);
-        trulyRightAnsw?.classList.remove('wrongAnswer');
-        trulyRightAnsw?.classList.add('rightAnswer');
+        trulyRightAnsw?.classList.remove('btn__wrong');
+        trulyRightAnsw?.classList.add('btn__right');
+        changeRoundAndScore(false);
     }
 }
 
-function addScoreAndRound() {
+function changeRoundAndScore(flag: boolean) {
     const stateFromLocalStore = localStorage.getItem('stateObj');
-    if (stateFromLocalStore) {
-        const localStorObj: stateObj = JSON.parse(stateFromLocalStore);
-        localStorObj.score++;
-        localStorObj.round++;
-        localStorage.setItem('stateObj', JSON.stringify(localStorObj));
+    if (!stateFromLocalStore) {
+        return;
     }
+    const localStorObj: stateObj = JSON.parse(stateFromLocalStore);
+    if (flag === true) {
+        localStorObj.round++;
+        localStorObj.score++;
+    } else {
+        localStorObj.round++;
+    }
+    if (localStorObj.round === 15) {
+        clearQuiz();
+    }
+    localStorage.setItem('stateObj', JSON.stringify(localStorObj));
+}
+
+function clearQuiz() {
+    localStorage.removeItem('stateObj');
+    alert("That's all!");
+    window.location.href = '/results';
 }
