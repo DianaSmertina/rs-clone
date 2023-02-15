@@ -20,6 +20,7 @@ export function drawChart(
         colorAxis?: { colors: Array<string> };
         legend?: 'none';
         datalessRegionColor?: '#E0FFFF';
+        enableRegionInteractivity?: boolean;
     } = {
         backgroundColor: '#81d4fa',
     }

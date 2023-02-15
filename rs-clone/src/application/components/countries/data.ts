@@ -105,7 +105,7 @@ export const world = [
         area: 23000,
     },
     {
-        countryEn: 'Macedonia',
+        countryEn: 'North Macedonia',
         countryRu: 'Северная Македония',
         regionEn: 'Europe',
         regionRu: 'Европа',
@@ -2090,7 +2090,7 @@ export const world = [
         flag: 'url(https://flagicons.lipis.dev/flags/4x3/cn.svg)',
     },
     {
-        countryEn: 'United States',
+        countryEn: 'United States of America',
         countryRu: 'Соединенные Штаты',
         regionEn: 'America',
         regionRu: 'Америка',
