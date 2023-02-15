@@ -23,20 +23,35 @@ export class Api {
         return response.json();
     }
 
-    async addResult(quiz: QuizName, username: string, result: number) {
+    async addResult(quiz: QuizName, result: number) {
+        const userName = JSON.parse(localStorage.getItem('username') || '');
+        const prevRecord = await this.getUserResult(quiz, userName);
+        if (result <= prevRecord) return 'not record';
         const response = await fetch(`${Api.base}/${quiz}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify({ username: username, [quiz]: result }),
+            body: JSON.stringify({ username: userName, [quiz]: result }),
         });
         return response.json();
     }
+
+    async getUserResult(quiz: QuizName, userName: string) {
+        const response = await fetch(`${Api.base}/${quiz}/${userName}`);
+        const data = await response.json();
+        return data;
+    }
+
+    async getAllResults() {
+        const response = await fetch(`${Api.base}/results`);
+        const data = await response.json();
+        return data;
+    }
 }
 
-enum QuizName {
-    country,
-    population,
-    flags,
+export enum QuizName {
+    Country = 'country',
+    Population = 'population',
+    Flags = 'flags',
 }

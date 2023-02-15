@@ -24,7 +24,6 @@ export class PopulationQuizPage extends Page {
     }
 
     private generateData() {
-        console.log(JSON.parse(localStorage.getItem('username') || ''), PopulationQuestion.rightAnswer);
         const countriesOnMap = [];
         const arrayCopy = asia.slice(0);
         for (let i = 0; i < 3; i++) {
@@ -37,6 +36,7 @@ export class PopulationQuizPage extends Page {
     }
 
     render() {
+        PopulationQuestion.roundNum = 1;
         PopulationQuestion.rightAnswer = 0;
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const mainTitle = createOurElement('h1', 'main__title', 'Угадай численность населения');
