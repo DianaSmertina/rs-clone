@@ -24,6 +24,7 @@ export class PopulationQuizPage extends Page {
     }
 
     private generateData() {
+        console.log(JSON.parse(localStorage.getItem('username') || ''), PopulationQuestion.rightAnswer);
         const countriesOnMap = [];
         const arrayCopy = asia.slice(0);
         for (let i = 0; i < 3; i++) {

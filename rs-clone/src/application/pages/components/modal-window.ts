@@ -64,6 +64,7 @@ export class ModalWindow extends Component {
             const submitResEl = createOurElement('p', 'submit-res', submitRes.message);
             form?.append(submitResEl);
         } else {
+            localStorage.setItem('username', JSON.stringify(login));
             this.container.remove();
         }
     }
