@@ -1,7 +1,7 @@
 export class Api {
     private static base = 'http://localhost:5000/api'; // поменять, когда будет задеплоеный сервер
 
-    async signIn(data: { username: string; password: string }): Promise<string> {
+    static async signIn(data: { username: string; password: string }): Promise<string> {
         const response = await fetch(`${Api.base}/sign-in`, {
             method: 'POST',
             headers: {
@@ -12,7 +12,7 @@ export class Api {
         return response.json();
     }
 
-    async signUp(data: { username: string; password: string }): Promise<string | { message: string }> {
+    static async signUp(data: { username: string; password: string }): Promise<string | { message: string }> {
         const response = await fetch(`${Api.base}/user`, {
             method: 'POST',
             headers: {
@@ -23,9 +23,9 @@ export class Api {
         return response.json();
     }
 
-    async addResult(quiz: QuizName, result: number): Promise<string | { message: string }> {
+    static async addResult(quiz: QuizName, result: number): Promise<string | { message: string }> {
         const userName = JSON.parse(localStorage.getItem('username') || '');
-        const prevRecord = await this.getUserResult(quiz, userName);
+        const prevRecord = await Api.getUserResult(quiz, userName);
         if (!userName) return 'please register or login to save the record';
         if (result <= prevRecord) return 'not record';
         const response = await fetch(`${Api.base}/${quiz}`, {
@@ -38,13 +38,13 @@ export class Api {
         return response.json();
     }
 
-    async getUserResult(quiz: QuizName, userName: string): Promise<number | { message: string }> {
+    static async getUserResult(quiz: QuizName, userName: string): Promise<number | { message: string }> {
         const response = await fetch(`${Api.base}/${quiz}/${userName}`);
         const data = await response.json();
         return data;
     }
 
-    async getAllResults(): Promise<string | { message: string }> {
+    static async getAllResults(): Promise<string | { message: string }> {
         const response = await fetch(`${Api.base}/results`);
         const data = await response.json();
         return data;

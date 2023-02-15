@@ -8,7 +8,7 @@ export class PopulationQuestion {
     static rightAnswer: number;
     static roundNum: number;
 
-    constructor(private mapData: Array<Icountry>, private api = new Api()) {}
+    constructor(private mapData: Array<Icountry>) {}
 
     private createGeoChart() {
         const geoChartWrap = document.createElement('div');
@@ -66,7 +66,7 @@ export class PopulationQuestion {
             if (PopulationQuestion.roundNum <= 15) {
                 document.querySelector('.btn__next')?.removeAttribute('disabled');
             } else {
-                const res = await this.api.addResult(
+                const res = await Api.addResult(
                     QuizName.Population,
                     Number(((PopulationQuestion.rightAnswer / 45) * 100).toFixed(2))
                 );

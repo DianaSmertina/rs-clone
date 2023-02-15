@@ -8,8 +8,6 @@ export class ModalWindow extends Component {
         this.btnText = btnText;
     }
 
-    private api = new Api();
-
     private createGreeting() {
         const greetWrap = createOurElement('div', 'greet-wrap');
         const greeting = createOurElement('h3', 'form-wrap__greetings');
@@ -55,9 +53,9 @@ export class ModalWindow extends Component {
         let submitRes: string | undefined | { message: string };
 
         if (password && login && this.btnText === 'Регистрация') {
-            submitRes = await this.api.signUp({ username: login, password: password });
+            submitRes = await Api.signUp({ username: login, password: password });
         } else if (password && login && this.btnText === 'Войти') {
-            submitRes = await this.api.signIn({ username: login, password: password });
+            submitRes = await Api.signIn({ username: login, password: password });
         }
 
         if (typeof submitRes === 'object') {
