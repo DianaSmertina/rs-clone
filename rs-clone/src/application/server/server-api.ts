@@ -12,7 +12,7 @@ export class Api {
         return response.json();
     }
 
-    async signUp(data: { username: string; password: string }) {
+    async signUp(data: { username: string; password: string }): Promise<string | { message: string }> {
         const response = await fetch(`${Api.base}/user`, {
             method: 'POST',
             headers: {
@@ -23,7 +23,7 @@ export class Api {
         return response.json();
     }
 
-    async addResult(quiz: QuizName, result: number) {
+    async addResult(quiz: QuizName, result: number): Promise<string | { message: string }> {
         const userName = JSON.parse(localStorage.getItem('username') || '');
         const prevRecord = await this.getUserResult(quiz, userName);
         if (!userName) return 'please register or login to save the record';
@@ -38,13 +38,13 @@ export class Api {
         return response.json();
     }
 
-    async getUserResult(quiz: QuizName, userName: string) {
+    async getUserResult(quiz: QuizName, userName: string): Promise<string | { message: string }> {
         const response = await fetch(`${Api.base}/${quiz}/${userName}`);
         const data = await response.json();
         return data;
     }
 
-    async getAllResults() {
+    async getAllResults(): Promise<string | { message: string }> {
         const response = await fetch(`${Api.base}/results`);
         const data = await response.json();
         return data;
