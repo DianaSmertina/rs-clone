@@ -21,7 +21,6 @@
     border: 2px solid $color-dark3;
 }
 
-
 .btn__bordered {
     width: 40%;
     height: 40%;
@@ -46,7 +45,8 @@
     color: $color-dark1;
 }
 
-.btn__next:disabled, .btn__check-population:disabled {
+.btn__next:disabled,
+.btn__check-population:disabled {
     background-color: $color-disable1;
     border: 2px solid $color-disable2;
     color: $color-disable2;
@@ -55,8 +55,10 @@
 
 .btn__right {
     background-color: $color-rightAnsw;
+    pointer-events: none;
 }
 
 .btn__wrong {
     background-color: $color-wrongAnsw;
+    pointer-events: none;
 }

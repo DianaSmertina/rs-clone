@@ -3,7 +3,7 @@
     height: 400px;
     align-self: center;
 }
-.gmnoprint{
+.gmnoprint {
     display: none;
 }
 #map {
@@ -32,6 +32,7 @@
     background: $color-light2;
     border-radius: 10px;
     text-align: center;
+    padding: 20px;
 }
 
 .main__rules {
@@ -39,3 +40,9 @@
     line-height: 1.5;
 }
 
+.menu__quiz-cover {
+    background-image: url(../assets/images/country-cover.png);
+    width: 160px;
+    height: 150px;
+    border-radius: 5px;
+}
