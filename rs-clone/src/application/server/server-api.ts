@@ -26,6 +26,7 @@ export class Api {
     async addResult(quiz: QuizName, result: number) {
         const userName = JSON.parse(localStorage.getItem('username') || '');
         const prevRecord = await this.getUserResult(quiz, userName);
+        if (!userName) return 'please register or login to save the record';
         if (result <= prevRecord) return 'not record';
         const response = await fetch(`${Api.base}/${quiz}`, {
             method: 'PUT',
