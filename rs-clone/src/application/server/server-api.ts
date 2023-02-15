@@ -38,7 +38,7 @@ export class Api {
         return response.json();
     }
 
-    async getUserResult(quiz: QuizName, userName: string): Promise<string | { message: string }> {
+    async getUserResult(quiz: QuizName, userName: string): Promise<number | { message: string }> {
         const response = await fetch(`${Api.base}/${quiz}/${userName}`);
         const data = await response.json();
         return data;
