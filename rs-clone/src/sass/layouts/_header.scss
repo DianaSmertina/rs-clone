@@ -68,14 +68,17 @@
 .header__radio-btn > input:checked + span {
     color: $color-bright;
 }
+
 .sound {
     padding-right: 30px;
 }
+
 .loud {
     background-image: url(../assets/icons/loud.svg);
     width: 35px;
     height: 35px;
 }
+
 .mute {
     background-image: url(../assets/icons/mute.svg);
     width: 35px;

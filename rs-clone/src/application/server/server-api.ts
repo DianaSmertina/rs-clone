@@ -23,6 +23,12 @@ export class Api {
         return response.json();
     }
 
+    static async getUser(userName: string): Promise<{ id: 10; username: string; password: string; reg_date: string }> {
+        const response = await fetch(`${Api.base}/user/${userName}`);
+        const data = await response.json();
+        return data;
+    }
+
     static async addResult(quiz: QuizName, result: number): Promise<string | { message: string }> {
         const userName = JSON.parse(localStorage.getItem('username') || '');
         const prevRecord = await Api.getUserResult(quiz, userName);
