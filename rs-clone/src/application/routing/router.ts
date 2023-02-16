@@ -6,6 +6,7 @@ import { PopulationQuizPage } from '../pages/quizzes/population-quiz/page';
 import QuizTemplate from '../patterns/quizTemplate';
 import { QuizFlag } from '../pages/quizzes/flags';
 import CountryQuiz from '../pages/quizzes/country-quiz/page';
+import { ProfilePage } from '../pages/profile/profile-page';
 
 const route = (event?: Event) => {
     event = event || window.event;
@@ -28,6 +29,7 @@ const routes: PathType = {
     '/quizz-flag': new QuizFlag('flag').render(),
     '/population-quiz': new PopulationQuizPage('population-quiz').render(),
     '/country-quiz': new CountryQuiz('country-quiz').render(),
+    '/user': new ProfilePage('profile').render(),
 };
 
 export const handleLocation = () => {
@@ -51,6 +53,7 @@ interface PathType {
     '/quizz-flag': HTMLElement;
     '/population-quiz': HTMLElement;
     '/country-quiz': HTMLElement;
+    '/user': HTMLElement;
 }
 
 declare global {

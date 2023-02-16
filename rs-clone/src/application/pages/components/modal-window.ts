@@ -1,6 +1,7 @@
 import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
 import { Api } from '../../server/server-api';
+import Header from './header';
 
 export class ModalWindow extends Component {
     constructor(tagName: string, className: string, private btnText: string) {
@@ -15,7 +16,7 @@ export class ModalWindow extends Component {
         if (this.btnText === 'Регистрация') {
             greeting.innerText = 'Рады приветсвовать нового знатока стран!';
             text.innerText = 'Придумай логин и пароль, длина которого должна быть 6 или больше символов';
-        } else {
+        } else if (this.btnText === 'Войти') {
             greeting.innerText = 'Рады видеть тебя снова!';
             text.innerText = 'Пожалуйста, введи логин и пароль от своей учетной записи';
         }
@@ -64,6 +65,11 @@ export class ModalWindow extends Component {
         } else {
             localStorage.setItem('username', JSON.stringify(login));
             this.container.remove();
+            const regBtnsWrap = document.querySelector<HTMLElement>('.account-btns');
+            const header = new Header('header', 'header');
+            if (regBtnsWrap) {
+                header.createProfileImg(regBtnsWrap);
+            }
         }
     }
 
