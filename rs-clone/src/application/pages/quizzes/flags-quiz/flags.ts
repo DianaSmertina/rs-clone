@@ -1,13 +1,16 @@
 import { drawChart } from '../../../components/maps/geoChart';
 import Page from '../../../patterns/pagePattern';
 import { createOurElement } from '../../../patterns/createElement';
-import { world } from '../../../components/countries/data';
+import { world, africa, america, asia, europe } from '../../../components/countries/data';
 import { QuizResult } from '../quizzesResults';
+import { codes } from '../../../patterns/regionsCodes';
 import { QuizRegion } from '../quizzesRegions';
 
 type countryWithFlag = typeof world & { flag: string };
 
 export class QuizFlag extends Page {
+    private countriesArr: typeof world;
+
     private flagsArr: countryWithFlag;
 
     private rightAnswers: number;
@@ -18,15 +21,22 @@ export class QuizFlag extends Page {
 
     private availableToMinus: boolean;
 
+    private code: string;
+
+    private areaCountry: number;
+
     static ourChart: google.visualization.GeoChart;
 
     constructor(id: string) {
         super(id);
+        this.countriesArr = world;
         this.flagsArr = world.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
         this.rightAnswers = 0;
         this.wrongAnswers = 0;
         this.availableToPlus = true;
         this.availableToMinus = true;
+        this.code = '';
+        this.areaCountry = 0;
     }
 
     render() {
@@ -35,7 +45,7 @@ export class QuizFlag extends Page {
         return this.container;
     }
 
-    renderMain() {
+    renderMain(region: string) {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const mainTitle = createOurElement('h1', 'main__title', 'Узнай страну по флагу');
         const titleAndRound = createOurElement('div', 'main__wrapper wrapper title-and-round');
@@ -46,6 +56,8 @@ export class QuizFlag extends Page {
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
         const flag = createOurElement('div', 'img-flag');
+
+        this.choseCode(region);
 
         titleAndRound.append(mainTitle, round);
 
@@ -80,17 +92,17 @@ export class QuizFlag extends Page {
 
         round.textContent = `${this.rightAnswers + 1}/15`;
 
-        const answer = this.randomiseCountry(this.flagsArr, 150000);
+        const answer = this.randomiseCountry(this.flagsArr, this.areaCountry);
 
         const countriesForAnswer = [
             ['Country', 'Name'],
             answer,
-            this.randomiseCountry(this.flagsArr, 150000),
-            this.randomiseCountry(this.flagsArr, 150000),
-            this.randomiseCountry(this.flagsArr, 150000),
+            this.randomiseCountry(this.countriesArr, this.areaCountry),
+            this.randomiseCountry(this.countriesArr, this.areaCountry),
+            this.randomiseCountry(this.countriesArr, this.areaCountry),
         ];
 
-        drawChart(geoChartWrap, countriesForAnswer);
+        drawChart(geoChartWrap, countriesForAnswer, 'flag', { region: this.code, backgroundColor: '#81d4fa' });
 
         flag.style.backgroundImage = world.find((el) => el.countryCodeLetters === answer[0])?.flag || '';
 
@@ -132,5 +144,38 @@ export class QuizFlag extends Page {
 
     private countResult() {
         return Math.floor(((this.rightAnswers - this.wrongAnswers) / (this.rightAnswers + this.wrongAnswers)) * 100);
+    }
+
+    private choseCode(region: string) {
+        switch (region) {
+            case 'africa':
+                this.code = codes.africa;
+                this.countriesArr = africa;
+                this.flagsArr = africa.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
+                this.areaCountry = 50000;
+                break;
+            case 'europe':
+                this.code = codes.europe;
+                this.countriesArr = europe;
+                this.flagsArr = europe.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
+                this.areaCountry = 50000;
+                break;
+            case 'asia':
+                this.code = codes.asia;
+                this.countriesArr = asia;
+                this.flagsArr = asia.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
+                this.areaCountry = 50000;
+                break;
+            case 'america':
+                this.code = codes.america;
+                this.countriesArr = america;
+                this.flagsArr = america.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
+                this.areaCountry = 50000;
+                break;
+            case 'world':
+                this.code = codes.world;
+                this.areaCountry = 1500000;
+                break;
+        }
     }
 }

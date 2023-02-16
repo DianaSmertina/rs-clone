@@ -1072,6 +1072,7 @@ export const world = [
         countryCode: 732,
         countryCodeLetters: 'EH',
         area: 266000,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/eh.svg)',
     },
     {
         countryEn: 'Gabon',
@@ -1085,6 +1086,7 @@ export const world = [
         countryCode: 266,
         countryCodeLetters: 'GA',
         area: 267667,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/ga.svg)',
     },
     {
         countryEn: 'New Zealand',
@@ -1112,6 +1114,7 @@ export const world = [
         countryCode: 854,
         countryCodeLetters: 'BF',
         area: 274200,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/bf.svg)',
     },
     {
         countryEn: 'Ecuador',
@@ -1907,6 +1910,7 @@ export const world = [
         countryCode: 434,
         countryCodeLetters: 'LY',
         area: 1759540,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/ly.svg)',
     },
     {
         countryEn: 'Sudan',
@@ -1962,7 +1966,6 @@ export const world = [
         countryCode: 484,
         countryCodeLetters: 'MX',
         area: 1972550,
-        flag: 'url(https://flagicons.lipis.dev/flags/4x3/mx.svg)',
     },
     {
         countryEn: 'Greenland',
@@ -1990,6 +1993,7 @@ export const world = [
         countryCode: 180,
         countryCodeLetters: 'CD',
         area: 2345410,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/cd.svg)',
     },
     {
         countryEn: 'Algeria',
