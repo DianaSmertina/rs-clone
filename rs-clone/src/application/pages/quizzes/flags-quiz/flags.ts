@@ -47,7 +47,7 @@ export class QuizFlag extends Page {
 
     renderMain(region: string) {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title', 'Узнай страну по флагу');
+        const mainTitle = createOurElement('h1', 'main__title title-flag', 'Узнай страну по флагу');
         const titleAndRound = createOurElement('div', 'main__wrapper wrapper title-and-round');
         const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
         const rightWorld = createOurElement('h1', 'right-world', 'Правильно!');
