@@ -45,7 +45,7 @@ export class PopulationQuizPage extends Page {
             'main__rules',
             `В этом квизе тебе нужно расположить выделенные на карте страны в порядке возрастания численности населения.
             Наведи чтобы узнать информацию о стране и кликни, чтобы добавить в поле для ответов.
-            Пока ты не нажал "Проверить" ты можешь изменить окончательный порядок, кликнув на ответы.`
+            Пока ты не нажал "Проверить", можешь изменить окончательный порядок, кликнув на ответы.`
         );
         const playSpace = new PopulationQuestion(this.generateData()).render();
         mainWrapper.append(mainTitle, rules, playSpace, this.createNextBtn(rules));

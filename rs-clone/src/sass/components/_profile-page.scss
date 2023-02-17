@@ -14,11 +14,15 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 2px solid $color-middle1;
+    border: 2px solid #0d98ba;
 }
 
 .main-user-info__data-wrap {
     height: 200px;
     width: calc(100% - 300px);
     padding: 0 30px;
+}
+
+.records__title {
+    margin-bottom: 20px;
 }

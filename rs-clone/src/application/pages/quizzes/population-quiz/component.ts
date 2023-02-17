@@ -13,7 +13,7 @@ export class PopulationQuestion {
     private createGeoChart() {
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
-        const countries = this.mapData.map((el) => [el.countryCodeLetters, el.countryRu, el.area]);
+        const countries = this.mapData.map((el: Icountry) => [el.countryCodeLetters, el.countryRu, el.area]);
         countries.unshift(['Country', 'Назание', 'Площадь']);
         drawChart(geoChartWrap, countries, 'population', {
             region: '142',
