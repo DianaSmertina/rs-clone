@@ -29,14 +29,14 @@ export class QuizFlag extends Page {
 
     constructor(id: string) {
         super(id);
-        this.countriesArr = world;
+        this.countriesArr = world.filter((obj) => Object.keys(obj).indexOf('flag') === -1);
         this.flagsArr = world.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
         this.rightAnswers = 0;
         this.wrongAnswers = 0;
         this.availableToPlus = true;
         this.availableToMinus = true;
         this.code = '';
-        this.areaCountry = 0;
+        this.areaCountry = 350000;
     }
 
     render() {
@@ -64,7 +64,7 @@ export class QuizFlag extends Page {
         this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag, round);
 
         nextBtn.addEventListener('click', () => {
-            if (this.rightAnswers !== 15) {
+            if (this.rightAnswers !== 10) {
                 this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag, round);
             } else {
                 this.container.append(new QuizResult('div', 'none', `${this.countResult()}%`).render());
@@ -90,9 +90,9 @@ export class QuizFlag extends Page {
         rightWorld.style.display = 'none';
         wrongWorld.style.display = 'none';
 
-        round.textContent = `${this.rightAnswers + 1}/15`;
+        round.textContent = `${this.rightAnswers + 1}/10`;
 
-        const answer = this.randomiseCountry(this.flagsArr, this.areaCountry);
+        const answer = this.randomiseCountry(this.flagsArr, this.areaCountry, true);
 
         const countriesForAnswer = [
             ['Country', 'Name'],
@@ -132,11 +132,15 @@ export class QuizFlag extends Page {
         }, 1000);
     }
 
-    private randomiseCountry(arr: typeof world, area: number) {
-        let country = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
+    private randomiseCountry(arr: typeof world, area: number, isFlag = false) {
+        let country = arr[Math.floor(Math.random() * arr.length)];
 
         while (country.area < area) {
-            country = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
+            country = arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        if (isFlag) {
+            arr.splice(arr.indexOf(country), 1);
         }
 
         return [country.countryCodeLetters, country.countryRu];
@@ -150,32 +154,32 @@ export class QuizFlag extends Page {
         switch (region) {
             case 'africa':
                 this.code = codes.africa;
-                this.countriesArr = africa;
+                this.countriesArr = africa.filter((obj) => Object.keys(obj).indexOf('flag') === -1);
                 this.flagsArr = africa.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
                 this.areaCountry = 50000;
                 break;
             case 'europe':
                 this.code = codes.europe;
-                this.countriesArr = europe;
+                this.countriesArr = europe.filter((obj) => Object.keys(obj).indexOf('flag') === -1);
                 this.flagsArr = europe.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
                 this.areaCountry = 50000;
                 break;
             case 'asia':
                 this.code = codes.asia;
-                this.countriesArr = asia;
+                this.countriesArr = asia.filter((obj) => Object.keys(obj).indexOf('flag') === -1);
                 this.flagsArr = asia.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
                 this.areaCountry = 50000;
                 break;
             case 'america':
                 this.code = codes.america;
-                this.countriesArr = america;
+                this.countriesArr = america.filter((obj) => Object.keys(obj).indexOf('flag') === -1);
                 this.flagsArr = america.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
                 this.areaCountry = 50000;
                 break;
             case 'world':
                 this.code = codes.world;
-                this.areaCountry = 1500000;
                 break;
         }
     }
 }
+// так, это работает, но нужно разобраться с площадью

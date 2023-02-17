@@ -468,6 +468,7 @@ export const world = [
         countryCode: 144,
         countryCodeLetters: 'LK',
         area: 65610,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/lk.svg)',
     },
     {
         countryEn: 'Georgia',
@@ -546,6 +547,7 @@ export const world = [
         countryCode: 784,
         countryCodeLetters: 'AE',
         area: 82880,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/ae.svg)',
     },
     {
         countryEn: 'Austria',
@@ -573,6 +575,7 @@ export const world = [
         countryCode: 31,
         countryCodeLetters: 'AZ',
         area: 86600,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/az.svg)',
     },
     {
         countryEn: 'Serbia',
@@ -612,6 +615,7 @@ export const world = [
         countryCode: 400,
         countryCodeLetters: 'JO',
         area: 92300,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/jo.svg)',
     },
     {
         countryEn: 'Portugal',
@@ -651,6 +655,7 @@ export const world = [
         countryCode: 410,
         countryCodeLetters: 'KR',
         area: 98480,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/kp.svg)',
     },
     {
         countryEn: 'Iceland',
@@ -824,6 +829,7 @@ export const world = [
         countryCode: 524,
         countryCodeLetters: 'NP',
         area: 140800,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/np.svg)',
     },
     {
         countryEn: 'Tajikistan',
@@ -850,6 +856,7 @@ export const world = [
         countryCode: 50,
         countryCodeLetters: 'BD',
         area: 144000,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/bd.svg)',
     },
     {
         countryEn: 'Suriname',
@@ -915,6 +922,7 @@ export const world = [
         countryCode: 760,
         countryCodeLetters: 'SY',
         area: 185180,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/sy.svg)',
     },
     {
         countryEn: 'Senegal',
@@ -941,6 +949,7 @@ export const world = [
         countryCode: 417,
         countryCodeLetters: 'KG',
         area: 198500,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/kg.svg)',
     },
     {
         countryEn: 'Belarus',
@@ -968,6 +977,7 @@ export const world = [
         countryCode: 512,
         countryCodeLetters: 'OM',
         area: 212460,
+        flag: 'url(https://flagicons.lipis.dev/flags/4x3/om.svg)',
     },
     {
         countryEn: 'Guyana',
@@ -1100,7 +1110,6 @@ export const world = [
         countryCode: 554,
         countryCodeLetters: 'NZ',
         area: 268680,
-        flag: 'https://flagicons.lipis.dev/flags/4x3/nz.svg',
     },
     {
         countryEn: 'Burkina Faso',
@@ -2063,7 +2072,6 @@ export const world = [
         countryCode: 36,
         countryCodeLetters: 'AU',
         area: 7686850,
-        flag: 'url(https://flagicons.lipis.dev/flags/4x3/au.svg)',
     },
     {
         countryEn: 'Brazil',
