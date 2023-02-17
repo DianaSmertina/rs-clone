@@ -117,13 +117,11 @@ export class CountryQuiz extends Page {
         let randomNumber = this.getRandomNumber(this.min, this.max);
 
         if (this.usedCountryInd.includes(randomNumber)) {
-            console.log('fail!', randomNumber);
             randomNumber = this.getRandomNumber(this.min, this.max);
         }
 
         this.usedCountryInd.push(randomNumber);
         const possibleRandCountry = arr[randomNumber].countryCodeLetters;
-        console.log(possibleRandCountry, this.usedCountryInd);
         return possibleRandCountry;
     }
 
