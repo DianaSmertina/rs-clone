@@ -2,9 +2,10 @@ import Page from '../../../patterns/pagePattern';
 import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
 import { africa, america, asia, europe, oceania, world } from '../../../components/countries/data';
-import { rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
+import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
 
 export class CountryQuiz extends Page {
+    static ourChart: google.visualization.GeoChart;
     private regionCode: string;
     private regionDataArr: typeof world;
     private min: number;
@@ -12,14 +13,12 @@ export class CountryQuiz extends Page {
     private usedCountryInd: number[];
     private round: number;
     private score: number;
-
-    static ourChart: google.visualization.GeoChart;
     private randomCountry: string | undefined;
 
     constructor(id: string) {
         super(id);
         this.regionCode = '002';
-        this.regionDataArr = this.getDataArr(this.regionCode);
+        this.regionDataArr = this.getData(this.regionCode);
         this.min = 0;
         this.max = this.regionDataArr.length - 1;
         this.usedCountryInd = [];
@@ -31,6 +30,7 @@ export class CountryQuiz extends Page {
     private renderPlayField(geoChartWrap: HTMLElement, answersBlock: HTMLElement, nextBtn: HTMLElement) {
         this.randomCountry = this.getRandomCountry(this.regionDataArr);
         if (!this.randomCountry) return;
+
         const country = [['Country'], [this.randomCountry]];
 
         drawChart(geoChartWrap, country, 'countries', {
@@ -46,9 +46,8 @@ export class CountryQuiz extends Page {
         countriesForAnswer.forEach((country) => {
             const answer = createOurElement('button', 'btn btn__bordered answer', `${country}`);
             answer.id = `${country}`;
-            const arrAnswers = this.regionDataArr;
             answer.addEventListener('click', (e) => {
-                this.checkAnswer(e.target, this.randomCountry, arrAnswers);
+                this.checkAnswer(e.target, this.randomCountry, this.regionDataArr);
             });
             answersBlock.append(answer);
         });
@@ -61,9 +60,9 @@ export class CountryQuiz extends Page {
         const mainTitle = createOurElement('h1', 'main__title', 'Угадай страну');
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
+        const answersBlock = createOurElement('div', 'answers flex-rows', '');
         const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
         nextBtn.id = 'nextBtn';
-        const answersBlock = createOurElement('div', 'answers flex-rows', '');
 
         this.renderPlayField(geoChartWrap, answersBlock, nextBtn);
 
@@ -77,7 +76,7 @@ export class CountryQuiz extends Page {
         return this.container;
     }
 
-    getDataArr(regionCode: string): typeof world {
+    getData(regionCode: string): typeof world {
         switch (regionCode) {
             case '002': {
                 return africa;
@@ -99,7 +98,6 @@ export class CountryQuiz extends Page {
                 return europe;
                 break;
             }
-
             case 'world': {
                 return world;
                 break;
@@ -129,18 +127,18 @@ export class CountryQuiz extends Page {
         return possibleRandCountry;
     }
 
-    getAnswers(country: string, arr: typeof world) {
+    getAnswers(rightCountry: string, arr: typeof world) {
         const setAnswers = new Set<string>();
 
         arr.forEach((item) => {
-            if (item.countryCodeLetters === country) {
+            if (item.countryCodeLetters === rightCountry) {
                 setAnswers.add(item.countryRu);
             }
         });
 
         while (setAnswers.size < 4) {
-            const index = this.getRandomNumber(0, arr.length - 1);
-            if (arr[index].countryCodeLetters === country) {
+            const index = this.getRandomNumber(this.min, this.max);
+            if (arr[index].countryCodeLetters === rightCountry) {
                 continue;
             } else {
                 setAnswers.add(arr[index].countryRu);
@@ -162,29 +160,28 @@ export class CountryQuiz extends Page {
     checkAnswer(eTarget: EventTarget | null, rightAnswer: string | undefined, arr: typeof world) {
         if (!eTarget || !rightAnswer) return;
 
-        const nextBtn = document.getElementById('nextBtn');
-        nextBtn?.removeAttribute('disabled');
-
         const target = eTarget as HTMLElement;
         const rightAnswerName = arr.find((item) => item.countryCodeLetters === rightAnswer)?.countryRu;
         if (!rightAnswerName) return;
 
-        const anotherAnsw = document.querySelectorAll('.answer');
+        const allAnswers = document.querySelectorAll('.answer');
+        allAnswers.forEach((item) => item.classList.add('btn__wrong'));
 
         if (target.id === rightAnswerName) {
-            anotherAnsw.forEach((item) => item.classList.add('btn__wrong'));
             target.classList.remove('btn__wrong');
             target.classList.add('btn__right');
             this.changeRoundAndScore(true);
-            rightAnswAudio.play();
+            playAudio(rightAnswAudio);
         } else {
-            anotherAnsw.forEach((item) => item.classList.add('btn__wrong'));
             const trulyRightAnsw = document.getElementById(rightAnswerName);
             trulyRightAnsw?.classList.remove('btn__wrong');
             trulyRightAnsw?.classList.add('btn__right');
             this.changeRoundAndScore(false);
-            wrongAnswAudio.play();
+            playAudio(wrongAnswAudio);
         }
+
+        const nextBtn = document.getElementById('nextBtn');
+        nextBtn?.removeAttribute('disabled');
     }
 
     changeRoundAndScore(flag: boolean) {
@@ -194,14 +191,13 @@ export class CountryQuiz extends Page {
         } else {
             this.round++;
         }
+
         if (this.round === 15) {
             this.goToTheResults();
         }
-        console.log(this.score, this.round);
     }
 
     goToTheResults() {
-        alert("That's all!");
         window.location.href = '/results';
     }
 }

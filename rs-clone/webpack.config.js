@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
@@ -24,7 +25,7 @@ const baseConfig = {
                 use: 'ts-loader',
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|mp3)$/i,
+                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset/resource',
                 generator: {
                     filename: 'assets/[name][ext]',
@@ -48,6 +49,9 @@ const baseConfig = {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin(),
         new ESLintWebpackPlugin({ extensions: '.ts' }),
+        new CopyPlugin({
+            patterns: [{ from: 'src/assets/audio', to: 'assets' }],
+        }),
     ],
 };
 
