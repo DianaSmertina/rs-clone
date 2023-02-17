@@ -105,7 +105,7 @@ export const world = [
         area: 23000,
     },
     {
-        countryEn: 'Macedonia (the former Yugoslav Republic of)',
+        countryEn: 'North Macedonia',
         countryRu: 'Северная Македония',
         regionEn: 'Europe',
         regionRu: 'Европа',
@@ -342,7 +342,7 @@ export const world = [
     {
         countryEn: 'Dominican Republic',
         countryRu: 'Доминиканская Республика',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 9823821,
         capitalEn: 'Santo Domingo',
@@ -368,7 +368,7 @@ export const world = [
     {
         countryEn: 'Costa Rica',
         countryRu: 'Коста-Рика',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 4516220,
         capitalEn: 'San José',
@@ -512,7 +512,7 @@ export const world = [
     {
         countryEn: 'Panama',
         countryRu: 'Панама',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 3410676,
         capitalEn: 'Panama City',
@@ -593,7 +593,7 @@ export const world = [
     {
         countryEn: 'French Guiana',
         countryRu: 'Французская Гвиана',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 195506,
         capitalEn: 'Cayenne',
@@ -644,7 +644,7 @@ export const world = [
         area: 93030,
     },
     {
-        countryEn: 'Korea (Republic of)',
+        countryEn: 'South Korea',
         countryRu: 'Южная Корея',
         regionEn: 'Asia',
         regionRu: 'Азия',
@@ -674,7 +674,7 @@ export const world = [
     {
         countryEn: 'Guatemala',
         countryRu: 'Гватемала',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 13550440,
         capitalEn: 'Guatemala City',
@@ -688,7 +688,7 @@ export const world = [
     {
         countryEn: 'Cuba',
         countryRu: 'Куба',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 11423000,
         capitalEn: 'Havana',
@@ -728,7 +728,7 @@ export const world = [
     {
         countryEn: 'Honduras',
         countryRu: 'Гондурас',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 7989415,
         capitalEn: 'Tegucigalpa',
@@ -765,7 +765,7 @@ export const world = [
         area: 118480,
     },
     {
-        countryEn: 'Korea (Democratic People\\s Republic of)',
+        countryEn: 'North Korea',
         countryRu: 'Северная Корея',
         regionEn: 'Asia',
         regionRu: 'Азия',
@@ -793,7 +793,7 @@ export const world = [
     {
         countryEn: 'Nicaragua',
         countryRu: 'Никарагуа',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 5995928,
         capitalEn: 'Managua',
@@ -861,7 +861,7 @@ export const world = [
     {
         countryEn: 'Suriname',
         countryRu: 'Суринам',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 492829,
         capitalEn: 'Paramaribo',
@@ -887,7 +887,7 @@ export const world = [
     {
         countryEn: 'Uruguay',
         countryRu: 'Уругвай',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 3477000,
         capitalEn: 'Montevideo',
@@ -982,7 +982,7 @@ export const world = [
     {
         countryEn: 'Guyana',
         countryRu: 'Гайана',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 748486,
         capitalEn: 'Georgetown',
@@ -1006,7 +1006,7 @@ export const world = [
         area: 236040,
     },
     {
-        countryEn: "Lao People\\'s Democratic Republic",
+        countryEn: `Lao People's Democratic Republic`,
         countryRu: 'Лаос',
         regionEn: 'Asia',
         regionRu: 'Азия',
@@ -1128,7 +1128,7 @@ export const world = [
     {
         countryEn: 'Ecuador',
         countryRu: 'Эквадор',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 14790608,
         capitalEn: 'Quito',
@@ -1181,7 +1181,7 @@ export const world = [
         flag: 'url(https://flagicons.lipis.dev/flags/4x3/pl.svg)',
     },
     {
-        countryEn: "Côte d\\'Ivoire",
+        countryEn: `Côte d'Ivoire`,
         countryRu: 'Берег Слоновой Кости',
         regionEn: 'Africa',
         regionRu: 'Африка',
@@ -1308,7 +1308,7 @@ export const world = [
     {
         countryEn: 'Paraguay',
         countryRu: 'Парагвай',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 6375830,
         capitalEn: 'Asunción',
@@ -1616,7 +1616,7 @@ export const world = [
     {
         countryEn: 'Chile',
         countryRu: 'Чили',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 16746491,
         capitalEn: 'Santiago',
@@ -1684,9 +1684,9 @@ export const world = [
         flag: 'url(https://flagicons.lipis.dev/flags/4x3/na.svg)',
     },
     {
-        countryEn: 'Venezuela (Bolivarian Republic of)',
+        countryEn: 'Venezuela',
         countryRu: 'Венесуэла',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 27223228,
         capitalEn: 'Caracas',
@@ -1712,7 +1712,7 @@ export const world = [
         flag: 'url(https://flagicons.lipis.dev/flags/4x3/ng.svg)',
     },
     {
-        countryEn: 'Tanzania, United Republic of',
+        countryEn: 'Tanzania',
         countryRu: 'Танзания',
         regionEn: 'Africa',
         regionRu: 'Африка',
@@ -1756,7 +1756,7 @@ export const world = [
     {
         countryEn: 'Bolivia (Plurinational State of)',
         countryRu: 'Боливия',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 9947418,
         capitalEn: 'Sucre',
@@ -1784,7 +1784,7 @@ export const world = [
     {
         countryEn: 'Colombia',
         countryRu: 'Колумбия',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 47790000,
         capitalEn: 'Bogotá',
@@ -1857,7 +1857,7 @@ export const world = [
         regionEn: 'Africa',
         regionRu: 'Африка',
         population: 10543464,
-        capitalEn: "N'Djamena",
+        capitalEn: `N'Djamena`,
         capitalRu: 'Нджамена',
         regionCode: '002',
         countryCode: 148,
@@ -1868,7 +1868,7 @@ export const world = [
     {
         countryEn: 'Peru',
         countryRu: 'Перу',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 29907003,
         capitalEn: 'Lima',
@@ -1894,7 +1894,7 @@ export const world = [
         flag: 'url(https://flagicons.lipis.dev/flags/4x3/mn.svg)',
     },
     {
-        countryEn: 'Iran (Islamic Republic of)',
+        countryEn: 'Iran',
         countryRu: 'Иран',
         regionEn: 'Asia',
         regionRu: 'Азия',
@@ -1966,7 +1966,7 @@ export const world = [
     {
         countryEn: 'Mexico',
         countryRu: 'Мексика',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 112468855,
         capitalEn: 'Mexico City',
@@ -1979,7 +1979,7 @@ export const world = [
     {
         countryEn: 'Greenland',
         countryRu: 'Гренландия',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 56375,
         capitalEn: 'Nuuk',
@@ -1991,7 +1991,7 @@ export const world = [
         flag: 'url(https://flagicons.lipis.dev/flags/4x3/gl.svg)',
     },
     {
-        countryEn: 'Congo (Democratic Republic of the)',
+        countryEn: 'Democratic Republic of the Congo',
         countryRu: 'Конго - Киншаса',
         regionEn: 'Africa',
         regionRu: 'Африка',
@@ -2035,7 +2035,7 @@ export const world = [
     {
         countryEn: 'Argentina',
         countryRu: 'Аргентина',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 41343201,
         capitalEn: 'Buenos Aires',
@@ -2076,7 +2076,7 @@ export const world = [
     {
         countryEn: 'Brazil',
         countryRu: 'Бразилия',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 201103330,
         capitalEn: 'Brasília',
@@ -2102,9 +2102,9 @@ export const world = [
         flag: 'url(https://flagicons.lipis.dev/flags/4x3/cn.svg)',
     },
     {
-        countryEn: 'United States',
+        countryEn: 'United States of America',
         countryRu: 'Соединенные Штаты',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 310232863,
         capitalEn: 'Washington',
@@ -2117,7 +2117,7 @@ export const world = [
     {
         countryEn: 'Canada',
         countryRu: 'Канада',
-        regionEn: 'Americas',
+        regionEn: 'America',
         regionRu: 'Америка',
         population: 33679000,
         capitalEn: 'Ottawa',
@@ -2328,7 +2328,7 @@ export const world = [
         regionEn: 'Oceania',
         regionRu: 'Океания',
         population: 122580,
-        capitalEn: "Nuku'alofa",
+        capitalEn: `Nuku'alofa`,
         capitalRu: 'Нукуалофа',
         regionCode: '009',
         countryCode: 776,
@@ -2379,5 +2379,5 @@ export const world = [
 export const africa = world.filter((el) => el.regionEn === 'Africa');
 export const asia = world.filter((el) => el.regionEn === 'Asia');
 export const oceania = world.filter((el) => el.regionEn === 'Oceania');
-export const america = world.filter((el) => el.regionEn === 'Americas');
+export const america = world.filter((el) => el.regionEn === 'America');
 export const europe = world.filter((el) => el.regionEn === 'Europe');

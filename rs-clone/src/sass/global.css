@@ -17,8 +17,8 @@ body {
 body {
   font-size: 1.6rem;
   font-weight: normal;
-  color: #26453E;
-  background-color: #E0FFFF;
+  color: #26453e;
+  background-color: #e0ffff;
 }
 
 p,
@@ -43,14 +43,14 @@ h3 {
 }
 
 a {
-  color: #26453E;
+  color: #26453e;
   text-decoration: none;
   cursor: pointer;
   transition: 0.3s;
 }
 
 a:hover {
-  color: limegreen;
+  color: orange;
 }
 
 .ico,
@@ -79,44 +79,77 @@ a:hover {
   justify-content: space-between;
 }
 
+.main {
+  min-height: 80%;
+}
+
 .btn {
   height: 4rem;
   padding: 0 15px;
   border-radius: 4px;
   font-size: 1.6rem;
   font-weight: 600;
+  text-align: center;
   line-height: 2.2rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .btn:hover {
-  background-color: limegreen;
-  border: 2px solid limegreen;
+  background-color: orange;
+  border: 2px solid orange;
 }
 
 .btn__colored {
-  background-color: #0D98BA;
+  background-color: #0d98ba;
   color: white;
-  border: 2px solid #0D98BA;
+  border: 2px solid #0d98ba;
 }
 
 .btn__bordered {
-  background-color: white;
-  border: 2px solid #0D98BA;
-  color: #0D98BA;
+  width: 40%;
+  height: 40%;
+  background-color: #e0ffff;
+  border: 2px solid #26453e;
+  color: #26453e;
 }
 
 .account-btns {
   gap: 10px;
 }
 
-.next-btn {
-  margin-top: 20px;
+.btn__next {
+  margin-top: 40px;
+}
+
+.btn__population {
+  width: 40%;
+  height: 40%;
+  background-color: white;
+  border: 2px solid #26453e;
+  color: #26453e;
+}
+
+.btn__next:disabled,
+.btn__check-population:disabled {
+  background-color: lightgray;
+  border: 2px solid gray;
+  color: gray;
+  cursor: auto;
+}
+
+.btn__right {
+  background-color: rgba(0, 133, 63, 0.9);
+  pointer-events: none;
+}
+
+.btn__wrong {
+  background-color: rgba(227, 27, 35, 0.9);
+  pointer-events: none;
 }
 
 .footer {
-  background-color: #A6FFCF;
+  background-color: #a6ffcf;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -128,7 +161,7 @@ a:hover {
 }
 
 .header {
-  background-color: #A6FFCF;
+  background-color: #a6ffcf;
 }
 
 .header__wrapper {
@@ -188,13 +221,13 @@ a:hover {
      -moz-user-select: none;
           user-select: none;
   font-weight: bold;
-  color: #26453E;
+  color: #26453e;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .header__radio-btn > span:hover {
-  color: limegreen;
+  color: orange;
 }
 
 .header__radio-btn > input:checked + span {
@@ -231,7 +264,7 @@ a:hover {
   height: 600px;
   margin: 0;
   padding: 0;
-  border: #26453E 1px solid;
+  border: #26453e 1px solid;
 }
 
 .main__wrapper {
@@ -334,26 +367,10 @@ a:hover {
 .answers {
   width: 400px;
   height: 120px;
-  background-color: #ADD8E6;
+  background-color: #add8e6;
   border-radius: 5px;
   padding: 10px;
-  margin-top: 15px;
-}
-
-.answer {
-  width: 40%;
-  height: 40%;
-  padding: 10px;
-  border: 2px solid #26453E;
-  border-radius: 5px;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.answer:hover {
-  background-color: #429E9D;
+  margin-top: 30px;
 }
 
 .menu {
@@ -367,7 +384,34 @@ a:hover {
 .menu__item {
   width: 215px;
   height: 250px;
-  background: #ADD8E6;
+  background: #add8e6;
   border-radius: 10px;
   text-align: center;
+}
+
+.main__rules {
+  margin: 20px 0;
+  line-height: 1.5;
+}
+
+.menu__quiz-cover {
+  background-image: url(../assets/images/1.png);
+  width: 120px;
+  height: 112px;
+}
+
+.img-flag {
+  width: 30%;
+  height: 272px;
+  border: 1px black solid;
+  margin-top: 1%;
+  background-repeat: no-repeat;
+}
+
+.right-world {
+  color: green;
+}
+
+.wrong-world {
+  color: red;
 }/*# sourceMappingURL=global.css.map */

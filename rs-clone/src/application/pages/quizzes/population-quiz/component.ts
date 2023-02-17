@@ -1,10 +1,12 @@
 import { Icountry } from '../../../components/countries/data';
 import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
+import { Api, QuizName } from '../../../server/server-api';
 
 export class PopulationQuestion {
     static ourChart: google.visualization.GeoChart;
     static rightAnswer: number;
+    static roundNum: number;
 
     constructor(private mapData: Array<Icountry>) {}
 
@@ -45,7 +47,7 @@ export class PopulationQuestion {
         const checkBtn = createOurElement('button', 'btn btn__bordered btn__check-population', 'Проверить');
         checkBtn.setAttribute('disabled', 'disabled');
 
-        checkBtn.addEventListener('click', () => {
+        checkBtn.addEventListener('click', async () => {
             answerBtns.forEach((btn, i) => {
                 if (btn.innerText === answers[i].countryRu) {
                     btn.classList.add('btn__right');
@@ -60,9 +62,18 @@ export class PopulationQuestion {
                 btn.innerText += ` ${rightPopulation} млн`;
             });
             checkBtn.setAttribute('disabled', 'disabled');
-            document.querySelector('.btn__next')?.removeAttribute('disabled');
-        });
 
+            PopulationQuestion.roundNum += 1;
+            if (PopulationQuestion.roundNum <= 15) {
+                document.querySelector('.btn__next')?.removeAttribute('disabled');
+            } else {
+                const res = await Api.addResult(
+                    QuizName.Population,
+                    Number(((PopulationQuestion.rightAnswer / 45) * 100).toFixed(2))
+                );
+                console.log(res);
+            }
+        });
         return checkBtn;
     }
 
