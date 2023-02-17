@@ -9,7 +9,7 @@ export class CountryQuiz extends Page {
     private regionDataArr: typeof world;
     private min: number;
     private max: number;
-    private usedCountries: string[];
+    private usedCountryInd: number[];
     private round: number;
     private score: number;
 
@@ -22,7 +22,7 @@ export class CountryQuiz extends Page {
         this.regionDataArr = this.getDataArr(this.regionCode);
         this.min = 0;
         this.max = this.regionDataArr.length - 1;
-        this.usedCountries = [];
+        this.usedCountryInd = [];
         this.round = 1;
         this.score = 0;
         this.randomCountry = '';
@@ -116,16 +116,16 @@ export class CountryQuiz extends Page {
     }
 
     getRandomCountry(arr: typeof world) {
-        const randomNumber = this.getRandomNumber(this.min, this.max);
-        const possibleRandCountry = arr[randomNumber].countryCodeLetters;
+        let randomNumber = this.getRandomNumber(this.min, this.max);
 
-        if (this.usedCountries.includes(possibleRandCountry)) {
-            console.log('rep', possibleRandCountry, this.usedCountries);
-            this.getRandomCountry(arr);
-        } else {
-            this.usedCountries.push(possibleRandCountry);
-            console.log(possibleRandCountry, this.usedCountries);
+        if (this.usedCountryInd.includes(randomNumber)) {
+            console.log('fail!', randomNumber);
+            randomNumber = this.getRandomNumber(this.min, this.max);
         }
+
+        this.usedCountryInd.push(randomNumber);
+        const possibleRandCountry = arr[randomNumber].countryCodeLetters;
+        console.log(possibleRandCountry, this.usedCountryInd);
         return possibleRandCountry;
     }
 
