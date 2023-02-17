@@ -29,8 +29,8 @@ export class QuizFlag extends Page {
 
     constructor(id: string) {
         super(id);
-        this.countriesArr = world.filter((obj) => Object.keys(obj).indexOf('flag') === -1);
         this.flagsArr = world.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
+        this.countriesArr = this.flagsArr;
         this.rightAnswers = 0;
         this.wrongAnswers = 0;
         this.availableToPlus = true;
