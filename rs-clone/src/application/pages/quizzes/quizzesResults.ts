@@ -12,22 +12,26 @@ export class QuizResult extends Component {
     render() {
         this.container.append(this.createResults());
         this.container.className = 'modal';
-        this.closeModal();
-
+        this.container.addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                this.closeModal();
+            }
+        });
         return this.container;
     }
 
     private closeModal() {
-        this.container.addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) {
-                this.container.remove();
-            }
-        });
+        this.container.remove();
     }
 
     private createResults() {
         const form = createOurElement('div', 'form-wrap');
-        const btn = createOurElement('button', 'btn btn__colored', this.btnText);
+        const btn = createOurElement(
+            'button',
+            'btn btn__colored',
+            `
+        <a href="quizzes">${this.btnText}</a>`
+        );
         const title = createOurElement('h1', '', 'Результат');
         const result = createOurElement('h1', '', this.resultText);
 

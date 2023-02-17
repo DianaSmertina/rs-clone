@@ -174,7 +174,7 @@ export class QuizFlag extends Page {
                 this.code = codes.america;
                 this.countriesArr = america.filter((obj) => Object.keys(obj).indexOf('flag') === -1);
                 this.flagsArr = america.filter((obj) => Object.keys(obj).indexOf('flag') !== -1) as countryWithFlag;
-                this.areaCountry = 50000;
+                this.areaCountry = 100000;
                 break;
             case 'world':
                 this.code = codes.world;
