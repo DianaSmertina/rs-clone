@@ -18,7 +18,7 @@ body {
   font-size: 1.6rem;
   font-weight: normal;
   color: #26453e;
-  background-color: #e0ffff;
+  background-color: white;
 }
 
 p,
@@ -182,6 +182,10 @@ a:hover {
   height: 65px;
 }
 
+.header__logo_ico:hover {
+  transform: scale(1.08);
+}
+
 .switcher-theme {
   padding-left: 30px;
   padding-right: 15px;
@@ -275,8 +279,6 @@ a:hover {
 .main__map {
   width: 100%;
   height: 600px;
-  margin: 0;
-  padding: 0;
   border: #26453e 1px solid;
 }
 
@@ -287,17 +289,17 @@ a:hover {
 
 .promo {
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 .main__title {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   text-align: center;
 }
 
 .main__title_text {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   text-align: center;
 }
 
@@ -320,11 +322,6 @@ a:hover {
   text-align: justify;
 }
 
-@media (max-width: 1024px) {
-  .main__map {
-    width: 90%;
-  }
-}
 .modal {
   background-color: rgba(28, 28, 28, 0.822);
   position: fixed;
