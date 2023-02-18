@@ -5,6 +5,7 @@ import { world, africa, america, asia, europe } from '../../../components/countr
 import { QuizResult } from '../quizzesResults';
 import { codes } from '../../../patterns/regionsCodes';
 import { QuizRegion } from '../quizzesRegions';
+import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
 
 type countryWithFlag = typeof world & { flag: string };
 
@@ -111,6 +112,7 @@ export class QuizFlag extends Page {
                 const selected = QuizFlag.ourChart.getSelection()[0];
                 if (selected) {
                     if (selected.row === 0) {
+                        playAudio(rightAnswAudio);
                         nextBtn.removeAttribute('disabled');
                         wrongWorld.style.display = 'none';
                         rightWorld.style.display = '';
@@ -120,6 +122,7 @@ export class QuizFlag extends Page {
                             this.availableToMinus = false;
                         }
                     } else {
+                        playAudio(wrongAnswAudio);
                         wrongWorld.style.display = '';
                         rightWorld.style.display = 'none';
                         if (this.availableToMinus) {
