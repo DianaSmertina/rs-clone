@@ -19,6 +19,7 @@ export class PopulationQuestion {
             region: '142',
             colorAxis: { colors: ['blue', 'orange', 'green'] },
             legend: 'none',
+            backgroundColor: '#81d4fa',
         });
 
         setTimeout(() => {
