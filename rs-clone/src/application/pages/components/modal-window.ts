@@ -62,13 +62,13 @@ export class ModalWindow extends Component {
         if (typeof submitRes === 'object') {
             const submitResEl = createOurElement('p', 'submit-res', submitRes.message);
             form?.append(submitResEl);
-        } else {
+        } else if (login) {
             localStorage.setItem('username', JSON.stringify(login));
             this.container.remove();
             const regBtnsWrap = document.querySelector<HTMLElement>('.account-btns');
             const header = new Header('header', 'header');
             if (regBtnsWrap) {
-                header.createProfileImg(regBtnsWrap);
+                header.createProfileImg(regBtnsWrap, login);
             }
         }
     }

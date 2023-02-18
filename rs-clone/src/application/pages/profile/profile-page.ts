@@ -1,19 +1,18 @@
 import { createOurElement } from '../../patterns/createElement';
-import { Api } from '../../server/server-api';
-// import type { PieChartLegend } from 'google.visualization';
+import { Api, IResult, Iuser } from '../../server/server-api';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const defaultUserImg = require('../../../assets/images/user-default.png');
 
 export class ProfilePage {
     protected container: HTMLElement;
 
-    constructor(id: string) {
+    constructor(id: string, private user: Iuser | string = '', private results: IResult | string = '') {
         this.container = document.createElement('main');
         this.container.classList.add('main');
         this.container.id = id;
     }
 
-    private async createMainInfoBlock(name: string) {
+    private createMainInfoBlock(user: Iuser) {
         const mainInfo = createOurElement('div', 'main-user-info flex-columns');
         const imgWrap = createOurElement('div', 'main-user-info__img-wrap');
         const img = createOurElement('img', 'main-user-info__img');
@@ -24,17 +23,20 @@ export class ProfilePage {
             const files = (e.target as HTMLInputElement).files;
             if (files) {
                 const file = files[0];
-                const res = await Api.addAvatar(name, file);
+                const res = await Api.addAvatar(user.username, file);
                 console.log(res);
             }
         });
-        img.setAttribute('src', defaultUserImg);
+        if (user.avatar) {
+            img.setAttribute('src', user.avatar);
+        } else {
+            img.setAttribute('src', defaultUserImg);
+        }
         imgWrap.append(img, input);
         const dataWrap = createOurElement('div', 'main-user-info__data-wrap');
-        const username = createOurElement('h2', 'username', name);
+        const username = createOurElement('h2', 'username', user.username);
         dataWrap.append(username);
-        const regDate = await Api.getUser(name);
-        const date = new Date(regDate.reg_date);
+        const date = new Date(user.reg_date);
         const day = date.getDate().toString().padStart(2, '0');
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const year = date.getFullYear();
@@ -45,20 +47,15 @@ export class ProfilePage {
         return mainInfo;
     }
 
-    private async createRecordsBlock(name: string) {
+    private createRecordsBlock(result: IResult) {
         const recordsWrap = createOurElement('div', 'records flex-columns');
         const title = createOurElement('h2', 'records__title', 'Мои рекорды');
         recordsWrap.append(title);
-        const userResults = await Api.getAllUserResults(name);
         const quizesWrap = createOurElement('div', 'flex-rows');
         quizesWrap.append(
-            this.createQuizRecordBlock('Угадай страну', userResults.country, userResults.region_country),
-            this.createQuizRecordBlock(
-                'Угадай численность населения',
-                userResults.population,
-                userResults.region_population
-            ),
-            this.createQuizRecordBlock('Угадай флаг', userResults.flags, userResults.region_flags)
+            this.createQuizRecordBlock('Угадай страну', result.country, result.region_country),
+            this.createQuizRecordBlock('Угадай численность населения', result.population, result.region_population),
+            this.createQuizRecordBlock('Угадай флаг', result.flags, result.region_flags)
         );
         recordsWrap.append(quizesWrap);
         return recordsWrap;
@@ -125,9 +122,11 @@ export class ProfilePage {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const name = localStorage.getItem('username');
         if (name) {
+            this.user = await Api.getUser(JSON.parse(name));
+            this.results = await Api.getAllUserResults(JSON.parse(name));
             mainWrapper.append(
-                await this.createMainInfoBlock(JSON.parse(name)),
-                await this.createRecordsBlock(JSON.parse(name)),
+                this.createMainInfoBlock(this.user),
+                this.createRecordsBlock(this.results),
                 this.createAchievementsBlock()
             );
         }

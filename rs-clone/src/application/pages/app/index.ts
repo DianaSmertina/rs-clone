@@ -8,9 +8,9 @@ class App {
     private static footer: Footer = new Footer('footer', 'footer');
 
     async run() {
-        App.container.append(App.header.render(), App.footer.render());
+        App.container.append(await App.header.renderHeader(), App.footer.render());
         window.onpopstate = handleLocation;
-        window.route = await route;
+        window.route = route;
         handleLocation();
     }
 }

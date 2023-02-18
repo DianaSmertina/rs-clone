@@ -2,6 +2,7 @@ import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
 import { ModalWindow } from './modal-window';
 import route from '../../routing/router';
+import { Api } from '../../server/server-api';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const defaultUserImg = require('../../../assets/images/user-default.png');
 
@@ -35,12 +36,17 @@ class Header extends Component {
         return btn;
     }
 
-    public createProfileImg(btnsWrap: HTMLElement) {
+    public async createProfileImg(btnsWrap: HTMLElement, username: string) {
         btnsWrap.innerHTML = '';
         const imgWrap = createOurElement('a', 'profile-page-btn');
         imgWrap.setAttribute('href', 'user');
         const img = createOurElement('img', 'profile-icon');
-        img.setAttribute('src', defaultUserImg);
+        const userImg = await Api.getAvatar(username);
+        if (userImg) {
+            img.setAttribute('src', userImg);
+        } else {
+            img.setAttribute('src', defaultUserImg);
+        }
         imgWrap.append(img);
         const logOutBtn = createOurElement('button', 'btn btn__colored', 'Выйти');
 
@@ -57,11 +63,11 @@ class Header extends Component {
         return btnsWrap;
     }
 
-    private createAuthBlock() {
+    private async createAuthBlock(username: string) {
         const authorization = createOurElement('div', 'autho');
         const btnsWrap = createOurElement('div', 'account-btns flex-rows');
-        if (localStorage.getItem('username')) {
-            authorization.append(this.createProfileImg(btnsWrap));
+        if (username) {
+            authorization.append(await this.createProfileImg(btnsWrap, JSON.parse(username)));
         } else {
             btnsWrap.append(this.createRegBtns('Регистрация'), this.createRegBtns('Войти'));
             authorization.append(btnsWrap);
@@ -85,7 +91,7 @@ class Header extends Component {
         return navLinksList;
     }
 
-    render() {
+    async renderHeader() {
         const headerWrapper = createOurElement('div', 'header__wrapper wrapper flex-rows');
 
         const logo = document.createElement('a');
@@ -121,7 +127,8 @@ class Header extends Component {
             <div class="mute ico"></div>`
         );
 
-        rightBlock.append(headerLang, switcherTheme, sound, this.createAuthBlock());
+        const username = localStorage.getItem('username') || '';
+        rightBlock.append(headerLang, switcherTheme, sound, await this.createAuthBlock(username));
         headerWrapper.append(logo, navigation, rightBlock);
         this.container.append(headerWrapper);
         return this.container;
