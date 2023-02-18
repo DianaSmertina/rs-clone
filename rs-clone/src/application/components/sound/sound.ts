@@ -7,6 +7,7 @@ export function playAudio(sound: HTMLAudioElement) {
     if (soundBtn?.classList.contains('sound-off')) {
         sound.pause();
     } else {
+        sound.volume = 0.4;
         sound.play();
     }
 }
