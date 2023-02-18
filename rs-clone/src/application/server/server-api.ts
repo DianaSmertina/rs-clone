@@ -73,6 +73,16 @@ export class Api {
         const data = await response.json();
         return data;
     }
+
+    static async addAvatar(userName: string, file: File) {
+        const formData = new FormData();
+        formData.append('avatar', file, file.name);
+        const response = await fetch(`${Api.base}/avatar/${userName}`, {
+            method: 'PUT',
+            body: formData,
+        });
+        return response.json();
+    }
 }
 
 export enum QuizName {

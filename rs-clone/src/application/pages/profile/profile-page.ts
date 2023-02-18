@@ -17,8 +17,19 @@ export class ProfilePage {
         const mainInfo = createOurElement('div', 'main-user-info flex-columns');
         const imgWrap = createOurElement('div', 'main-user-info__img-wrap');
         const img = createOurElement('img', 'main-user-info__img');
+        const input = createOurElement('input', 'main-user-info__input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('name', 'avatar');
+        input.addEventListener('change', async (e) => {
+            const files = (e.target as HTMLInputElement).files;
+            if (files) {
+                const file = files[0];
+                const res = await Api.addAvatar(name, file);
+                console.log(res);
+            }
+        });
         img.setAttribute('src', defaultUserImg);
-        imgWrap.append(img);
+        imgWrap.append(img, input);
         const dataWrap = createOurElement('div', 'main-user-info__data-wrap');
         const username = createOurElement('h2', 'username', name);
         dataWrap.append(username);
@@ -96,13 +107,28 @@ export class ProfilePage {
         return quizWrap;
     }
 
+    private createAchievementsBlock() {
+        const achievementsWrap = createOurElement('div', 'achievements flex-columns');
+        const achievement = createOurElement('div', 'achievement flex-rows');
+        const img = createOurElement('div', 'achievement__img-fire flex-columns');
+        const achievInfo = createOurElement('div', 'achievement__info flex-columns');
+        const name = createOurElement('h5', 'achievement__name', 'Пройдите все квизы');
+        const input = createOurElement('input', 'achievement__range');
+        input.setAttribute('type', 'range');
+        achievInfo.append(name, input);
+        achievement.append(img, achievInfo);
+        achievementsWrap.append(achievement);
+        return achievementsWrap;
+    }
+
     async render() {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const name = localStorage.getItem('username');
         if (name) {
             mainWrapper.append(
                 await this.createMainInfoBlock(JSON.parse(name)),
-                await this.createRecordsBlock(JSON.parse(name))
+                await this.createRecordsBlock(JSON.parse(name)),
+                this.createAchievementsBlock()
             );
         }
         this.container.append(mainWrapper);
