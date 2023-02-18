@@ -80,7 +80,7 @@ a:hover {
 }
 
 .main {
-  min-height: 80%;
+  min-height: 75%;
 }
 
 .btn {
@@ -90,6 +90,7 @@ a:hover {
   font-size: 1.6rem;
   font-weight: 600;
   text-align: center;
+  font-size: inherit;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -106,9 +107,9 @@ a:hover {
 }
 
 .btn__bordered {
-  width: 40%;
-  height: 40%;
-  background-color: #e0ffff;
+  width: 42%;
+  height: 42%;
+  background-color: white;
   border: 2px solid #26453e;
   color: #26453e;
 }
@@ -118,12 +119,12 @@ a:hover {
 }
 
 .btn__next {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .btn__population {
-  width: 40%;
-  height: 40%;
+  width: 42%;
+  height: 42%;
   background-color: white;
   border: 2px solid #26453e;
   color: #26453e;
@@ -294,7 +295,7 @@ a:hover {
 }
 
 .main__title {
-  padding-bottom: 20px;
+  padding-bottom: 25px;
   text-align: center;
 }
 
@@ -391,6 +392,7 @@ a:hover {
   width: 600px;
   height: 400px;
   align-self: center;
+  outline: 1px solid #26453e;
 }
 
 .gmnoprint {
@@ -402,33 +404,39 @@ a:hover {
 }
 
 .answers {
-  width: 400px;
-  height: 120px;
+  width: 450px;
+  height: 160px;
   background-color: #add8e6;
   border-radius: 5px;
-  padding: 10px;
+  padding: 12px;
   margin-top: 30px;
 }
 
 .menu {
   row-gap: 20px;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
-  padding: 50px 0 130px;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
   justify-content: center;
+  padding-top: 50px;
 }
 
 .menu__item {
-  width: 215px;
-  height: 250px;
+  width: 210px;
+  height: 270px;
   background: #add8e6;
   border-radius: 10px;
   text-align: center;
   padding: 20px;
+  box-shadow: 10px 5px 5px #26453e;
+}
+
+.menu__item:hover {
+  transition: 0.5s ease-in-out;
+  transform: scale(1.05);
 }
 
 .main__rules {
-  margin: 20px 0;
+  margin-bottom: 20px;
   line-height: 1.5;
 }
 
@@ -440,8 +448,8 @@ a:hover {
 }
 
 .img-flag {
-  width: 30%;
-  height: 272px;
+  width: 20%;
+  height: 169px;
   border: 1px black solid;
   margin-top: 1%;
   background-repeat: no-repeat;
@@ -449,8 +457,10 @@ a:hover {
 
 .right-world {
   color: green;
+  margin-top: 1%;
 }
 
 .wrong-world {
   color: red;
+  margin-top: 1%;
 }/*# sourceMappingURL=global.css.map */

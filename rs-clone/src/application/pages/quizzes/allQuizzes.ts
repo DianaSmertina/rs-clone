@@ -26,7 +26,7 @@ class Quizzes extends Page {
             </a>
             <a href="quizz-flag">
             <div class="menu__item">
-                <h3>Узнай страну по флагу</h3>
+                <h3>Угадай страну по флагу</h3>
             </div>
             </a>`
         );

@@ -2,6 +2,7 @@
     width: 600px;
     height: 400px;
     align-self: center;
+    outline: 1px solid $color-dark1;
 }
 .gmnoprint {
     display: none;
@@ -11,32 +12,35 @@
 }
 
 .answers {
-    width: 400px;
-    height: 120px;
+    width: 450px;
+    height: 160px;
     background-color: $color-light2;
     border-radius: 5px;
-    padding: 10px;
+    padding: 12px;
     margin-top: 30px;
 }
 
 .menu {
-    row-gap: 20px;
-    column-gap: 20px;
-    padding: 50px 0 130px;
     justify-content: center;
+    padding-top: 50px;
 }
 
 .menu__item {
-    width: 215px;
-    height: 250px;
+    width: 210px;
+    height: 270px;
     background: $color-light2;
     border-radius: 10px;
     text-align: center;
+    margin: 20px;
     padding: 20px;
+    box-shadow: 10px 5px 5px $color-dark1;
 }
-
+.menu__item:hover {
+    transition: 0.5s ease-in-out;
+    transform: scale(1.05);
+}
 .main__rules {
-    margin: 20px 0;
+    margin-bottom: 20px;
     line-height: 1.5;
 }
 
