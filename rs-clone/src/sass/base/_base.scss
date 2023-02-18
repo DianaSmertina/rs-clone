@@ -20,7 +20,6 @@ body {
 }
 
 p,
-ul,
 h1,
 h2,
 h3 {
@@ -28,10 +27,10 @@ h3 {
     padding: 0;
 }
 h1 {
-    font-size: 3rem;
+    font-size: 3.4rem;
 }
 h2 {
-font-size: 2.4rem;
+    font-size: 2.4rem;
 }
 
 h3 {
@@ -39,6 +38,7 @@ h3 {
 }
 a {
     color: $color-dark1;
+    font-size: 1.8rem;
     text-decoration: none;
     cursor: pointer;
     transition: 0.3s;

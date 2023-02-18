@@ -1,4 +1,4 @@
-.main__map{
+.main__map {
     width: 100%;
     height: 600px;
     margin: 0;
@@ -12,13 +12,37 @@
 }
 
 .promo {
-    width: 950px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 .main__title {
-    padding-top: 10px;
-    padding-bottom: 25px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.main__title_text {
+    padding-bottom: 20px;
+    text-align: center;
 }
 .main__text {
-    padding-bottom: 20px;
+    font-size: 1.8rem;
+    line-height: 130%;
+    text-align: justify;
+}
+.main__text_p {
+    padding-bottom: 7px;
+}
+.main__text_p1 {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.main__text_list {
+    text-align: justify;
+}
+
+@media (max-width: $content-small-width) {
+    .main__map {
+        width: 90%;
+    }
 }

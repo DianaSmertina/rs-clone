@@ -1,7 +1,15 @@
 .wrapper {
     width: 100%;
-    max-width: 1280px;
+    max-width: $content-width;
     margin: 0 auto;
-    padding-left: 15px;
+    padding-left: 40px;
     padding-right: 40px;
+}
+
+@media (max-width: $content-small-width) {
+    .wrapper {
+        max-width: $content-small-width;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
