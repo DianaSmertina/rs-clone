@@ -1559,7 +1559,7 @@ export const world = [
     },
     {
         countryEn: 'South Sudan',
-        countryRu: 'южный Судан',
+        countryRu: 'Южный Судан',
         regionEn: 'Africa',
         regionRu: 'Африка',
         population: 8260490,

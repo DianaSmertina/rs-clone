@@ -234,21 +234,20 @@ a:hover {
   color: blue;
 }
 
-.sound {
+.sound-block {
   padding-right: 30px;
 }
 
-.loud {
+.sound-on {
   background-image: url(../assets/icons/loud.svg);
   width: 35px;
   height: 35px;
 }
 
-.mute {
+.sound-off {
   background-image: url(../assets/icons/mute.svg);
   width: 35px;
   height: 35px;
-  display: none;
 }
 
 .wrapper {
@@ -387,6 +386,7 @@ a:hover {
   background: #add8e6;
   border-radius: 10px;
   text-align: center;
+  padding: 20px;
 }
 
 .main__rules {
@@ -395,9 +395,10 @@ a:hover {
 }
 
 .menu__quiz-cover {
-  background-image: url(../assets/images/1.png);
-  width: 120px;
-  height: 112px;
+  background-image: url(../assets/images/country-cover.png);
+  width: 160px;
+  height: 150px;
+  border-radius: 5px;
 }
 
 .img-flag {
