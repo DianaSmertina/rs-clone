@@ -1,3 +1,7 @@
+.geo-chart__block {
+    width: 50%;
+    height: 400px;
+}
 #regions_div {
     width: 600px;
     height: 400px;
@@ -49,4 +53,38 @@
     width: 160px;
     height: 150px;
     border-radius: 5px;
+}
+
+@media (max-width: $content-small-width) {
+    .answers {
+        width: 430px;
+        height: 140px;
+    }
+}
+
+@media (max-width: $tablet-width) {
+    .menu {
+        padding-top: 10px;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    #regions_div {
+        width: 400px;
+        height: 200px;
+    }
+    .answers {
+        width: 400px;
+        height: 130px;
+        padding: 7px;
+    }
+}
+@media (max-width: $mobile-small-width) {
+    #regions_div {
+        width: 280px;
+        height: 140px;
+    }
+    .answers {
+        width: 280px;
+        height: 110px;
+    }
 }

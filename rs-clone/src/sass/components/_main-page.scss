@@ -42,7 +42,29 @@
 .main__text_list {
     text-align: justify;
 }
+@media (max-width: $mobile-big-width) {
+    .main__wrapper {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
 
+    .promo {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .main__title,
+    .main__title_text {
+        padding-bottom: 15px;
+    }
+
+    .main__text {
+        font-size: 1.2rem;
+        padding-bottom: 15px;
+    }
+    .main__map {
+        height: 400px;
+    }
+}
 // @media (max-width: $content-small-width) {
 //     .main__map {
 //         width: 90%;

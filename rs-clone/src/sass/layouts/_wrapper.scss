@@ -13,3 +13,15 @@
         padding-right: 20px;
     }
 }
+@media (max-width: $mobile-big-width) {
+    .wrapper {
+        max-width: $mobile-big-width;
+    }
+}
+@media (max-width: $mobile-small-width) {
+    .wrapper {
+        max-width: $mobile-small-width;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

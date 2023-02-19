@@ -5,7 +5,6 @@
     font-size: 1.6rem;
     font-weight: 600;
     text-align: center;
-    font-size: inherit;
     // line-height: 2.2rem;
     cursor: pointer;
     transition: 0.3s;
@@ -67,5 +66,21 @@
     .btn__autho {
         height: 3.2rem;
         padding: 0 10px;
+    }
+}
+
+@media (max-width: $tablet-width) {
+    .btn {
+        font-size: 1.3rem;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    .btn {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: $mobile-small-width) {
+    .btn {
+        font-size: 1rem;
     }
 }

@@ -17,7 +17,7 @@ export class CountryQuiz extends Page {
 
     constructor(id: string) {
         super(id);
-        this.regionCode = '002';
+        this.regionCode = 'world';
         this.regionDataArr = this.getData(this.regionCode);
         this.min = 0;
         this.max = this.regionDataArr.length - 1;

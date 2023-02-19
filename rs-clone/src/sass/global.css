@@ -84,6 +84,19 @@ a:hover {
     font-size: 1.6rem;
   }
 }
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+}
 .btn {
   height: 4rem;
   padding: 0 15px;
@@ -91,7 +104,6 @@ a:hover {
   font-size: 1.6rem;
   font-weight: 600;
   text-align: center;
-  font-size: inherit;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -155,6 +167,21 @@ a:hover {
     padding: 0 10px;
   }
 }
+@media (max-width: 768px) {
+  .btn {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 500px) {
+  .btn {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 320px) {
+  .btn {
+    font-size: 1rem;
+  }
+}
 .footer {
   background-color: #a6ffcf;
   padding-top: 20px;
@@ -163,7 +190,7 @@ a:hover {
 
 .rs-icon {
   background-image: url(../assets/icons/rs-logo.svg);
-  width: 150px;
+  width: 135px;
   height: 50px;
 }
 
@@ -175,6 +202,12 @@ a:hover {
   padding-left: 30px;
 }
 
+@media (max-width: 500px) {
+  .footer__wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 .header {
   background-color: #a6ffcf;
 }
@@ -371,14 +404,14 @@ a:hover {
     left: -270px;
     background-color: #e0ffff;
     z-index: 5;
-    padding-top: 300px;
+    padding-top: 150px;
     transition: 0.5s all linear;
     overflow-x: hidden;
   }
   .header__switcher-block {
     width: 270px;
     position: fixed;
-    top: 433px;
+    top: 283px;
     left: -270px;
     background-color: #e0ffff;
     z-index: 5;
@@ -415,11 +448,11 @@ a:hover {
     overflow: hidden;
   }
 }
-@media (max-width: 414px) {
+@media (max-width: 500px) {
   .account-btns {
     width: 270px;
     position: fixed;
-    top: 582.2px;
+    top: 433px;
     left: -270px;
     background-color: #e0ffff;
     z-index: 5;
@@ -447,6 +480,18 @@ a:hover {
     max-width: 1024px;
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .wrapper {
+    max-width: 500px;
+  }
+}
+@media (max-width: 320px) {
+  .wrapper {
+    max-width: 320px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 .main {
@@ -499,6 +544,27 @@ a:hover {
   text-align: justify;
 }
 
+@media (max-width: 500px) {
+  .main__wrapper {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+  .promo {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .main__title,
+  .main__title_text {
+    padding-bottom: 15px;
+  }
+  .main__text {
+    font-size: 1.2rem;
+    padding-bottom: 15px;
+  }
+  .main__map {
+    height: 400px;
+  }
+}
 .modal {
   background-color: rgba(28, 28, 28, 0.822);
   position: fixed;
@@ -564,6 +630,11 @@ a:hover {
   margin-top: 30px;
 }
 
+.geo-chart__block {
+  width: 50%;
+  height: 400px;
+}
+
 #regions_div {
   width: 600px;
   height: 400px;
@@ -621,6 +692,38 @@ a:hover {
   border-radius: 5px;
 }
 
+@media (max-width: 1024px) {
+  .answers {
+    width: 430px;
+    height: 140px;
+  }
+}
+@media (max-width: 768px) {
+  .menu {
+    padding-top: 10px;
+  }
+}
+@media (max-width: 500px) {
+  #regions_div {
+    width: 400px;
+    height: 200px;
+  }
+  .answers {
+    width: 400px;
+    height: 130px;
+    padding: 7px;
+  }
+}
+@media (max-width: 320px) {
+  #regions_div {
+    width: 280px;
+    height: 140px;
+  }
+  .answers {
+    width: 280px;
+    height: 110px;
+  }
+}
 .img-flag {
   width: 20%;
   height: 169px;

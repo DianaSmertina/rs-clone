@@ -6,7 +6,7 @@
 
 .rs-icon {
     background-image: url(../assets/icons/rs-logo.svg);
-    width: 150px;
+    width: 135px;
     height: 50px;
 }
 .rs-icon:hover {
@@ -14,4 +14,10 @@
 }
 .developers-list {
     padding-left: 30px;
+}
+@media (max-width: $mobile-big-width) {
+    .footer__wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
