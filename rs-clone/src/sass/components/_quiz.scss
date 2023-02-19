@@ -26,32 +26,30 @@
 
 .menu {
     justify-content: center;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 .menu__item {
     width: 210px;
-    height: 270px;
+    height: 280px;
     background: $color-light2;
     border-radius: 10px;
     text-align: center;
     margin: 20px;
     padding: 20px;
     box-shadow: 10px 5px 5px $color-dark1;
+    justify-content: space-around;
 }
 .menu__item:hover {
     transition: 0.5s ease-in-out;
     transform: scale(1.05);
 }
 
-.title-and-round {
-    display: flex;
-    justify-content: space-between;
-}
-.title-flag {
-    margin-left: 35%;
+.main__title_quiz {
+    padding-left: 205px;
 }
 .quizz-round {
-    color: black;
+    padding-left: 135px;
+    padding-bottom: 25px;
 }
 .main__rules {
     margin-bottom: 20px;
@@ -59,10 +57,19 @@
 }
 
 .menu__quiz-cover {
+    width: 150px;
+    height: 147px;
+    border-radius: 7px;
+}
+
+.country-cover {
     background-image: url(../assets/images/country-cover.png);
-    width: 160px;
-    height: 150px;
-    border-radius: 5px;
+}
+.population-cover {
+    background-image: url(../assets/images/population-cover.png);
+}
+.flag-cover {
+    background-image: url(../assets/images/flag-cover.png);
 }
 
 @media (max-width: $content-small-width) {

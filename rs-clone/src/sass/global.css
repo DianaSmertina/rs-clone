@@ -30,7 +30,7 @@ h3 {
 }
 
 h1 {
-  font-size: 3.4rem;
+  font-size: 3rem;
 }
 
 h2 {
@@ -668,18 +668,19 @@ a:hover {
 
 .menu {
   justify-content: center;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .menu__item {
   width: 210px;
-  height: 270px;
+  height: 280px;
   background: #add8e6;
   border-radius: 10px;
   text-align: center;
   margin: 20px;
   padding: 20px;
   box-shadow: 10px 5px 5px #26453e;
+  justify-content: space-around;
 }
 
 .menu__item:hover {
@@ -687,17 +688,13 @@ a:hover {
   transform: scale(1.05);
 }
 
-.title-and-round {
-  display: flex;
-  justify-content: space-between;
-}
-
-.title-flag {
-  margin-left: 35%;
+.main__title_quiz {
+  padding-left: 205px;
 }
 
 .quizz-round {
-  color: black;
+  padding-left: 135px;
+  padding-bottom: 25px;
 }
 
 .main__rules {
@@ -706,10 +703,21 @@ a:hover {
 }
 
 .menu__quiz-cover {
+  width: 150px;
+  height: 147px;
+  border-radius: 7px;
+}
+
+.country-cover {
   background-image: url(../assets/images/country-cover.png);
-  width: 160px;
-  height: 150px;
-  border-radius: 5px;
+}
+
+.population-cover {
+  background-image: url(../assets/images/population-cover.png);
+}
+
+.flag-cover {
+  background-image: url(../assets/images/flag-cover.png);
 }
 
 @media (max-width: 1024px) {
@@ -754,8 +762,8 @@ a:hover {
 }
 
 .img-flag {
-  width: 20%;
-  height: 169px;
+  width: 190px;
+  height: 143px;
   border: 1px black solid;
   margin-top: 1%;
   background-repeat: no-repeat;
