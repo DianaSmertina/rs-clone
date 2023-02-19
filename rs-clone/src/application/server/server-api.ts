@@ -56,7 +56,7 @@ export class Api {
         return data;
     }
 
-    static async getAllResults(): Promise<string | { message: string }> {
+    static async getAllResults(): Promise<Array<IResult> | { message: string }> {
         const response = await fetch(`${Api.base}/results`);
         const data = await response.json();
         return data;
