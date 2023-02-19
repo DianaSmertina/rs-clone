@@ -15,6 +15,10 @@
 .header__logo_ico:hover {
     transform: scale(1.08);
 }
+.header__nav,
+.header__switcher-block {
+    margin-left: auto;
+}
 .switcher-theme {
     padding-left: 30px;
     padding-right: 15px;
@@ -25,6 +29,7 @@
     align-items: center;
     justify-content: space-between;
     list-style: none;
+    padding-left: 0;
 }
 
 .nav__item {
@@ -58,6 +63,7 @@
     display: inline-flex;
     align-items: center;
     user-select: none;
+    font-size: 1.8rem;
     font-weight: bold;
     color: $color-dark1;
     cursor: pointer;
@@ -75,13 +81,179 @@
     padding-right: 30px;
 }
 
-.sound-on {
-    background-image: url(../assets/icons/loud.svg);
+.sound-on,
+.sound-off {
     width: 35px;
     height: 35px;
 }
+.sound-on {
+    background-image: url(../assets/icons/loud.svg);
+}
 .sound-off {
     background-image: url(../assets/icons/mute.svg);
-    width: 35px;
-    height: 35px;
+}
+
+.header__burger {
+    display: none;
+    width: 30px;
+    height: 23px;
+    display: none;
+    position: relative;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.header__burger:hover > .burger__line {
+    background-color: $color-hover;
+}
+
+.burger__line {
+    // display: none;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: $color-dark1;
+    position: absolute;
+    left: 0;
+}
+
+.burger__line_first {
+    top: 0;
+    transition: 0.3s;
+}
+.burger__line_second {
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s;
+}
+.burger__line_third {
+    bottom: 0;
+    transition: 0.3s;
+}
+@media (max-width: $content-small-width) {
+    .header__logo_ico {
+        width: 45px;
+        height: 45px;
+    }
+    .nav__item {
+        padding: 0 10px;
+    }
+    .header__radio-btn > span {
+        font-size: 1.6rem;
+    }
+    .theme__light,
+    .sound-on,
+    .sound-off {
+        width: 30px;
+        height: 30px;
+    }
+    .theme__dark {
+        width: 25px;
+        height: 25px;
+    }
+    .switcher-theme {
+        padding-left: 15px;
+    }
+    .sound-block {
+        padding-right: 15px;
+    }
+}
+@media (max-width: $tablet-width) {
+    .header__burger {
+        display: block;
+        margin-right: 44px;
+        z-index: 10;
+    }
+
+    .is-active .burger__line:nth-child(2) {
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .is-active .burger__line:nth-child(1) {
+        -webkit-transform: translateY(10px) rotate(45deg);
+        -ms-transform: translateY(10px) rotate(45deg);
+        -o-transform: translateY(10px) rotate(45deg);
+        transform: translateY(10px) rotate(45deg);
+        transition: 0.3s all linear;
+    }
+
+    .is-active .burger__line:nth-child(3) {
+        -webkit-transform: translateY(-10px) rotate(-45deg);
+        -ms-transform: translateY(-10px) rotate(-45deg);
+        -o-transform: translateY(-10px) rotate(-45deg);
+        transform: translateY(-10px) rotate(-45deg);
+        transition: 0.3s all linear;
+    }
+
+    .header__nav {
+        width: 270px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: -270px;
+        background-color: $color-light3;
+        z-index: 5;
+        padding-top: 300px;
+        transition: 0.5s all linear;
+        overflow-x: hidden;
+    }
+    .header__switcher-block {
+        width: 270px;
+        position: fixed;
+        top: 433px;
+        left: -270px;
+        background-color: $color-light3;
+        z-index: 5;
+        transition: 0.5s all linear;
+        overflow-x: hidden;
+    }
+
+    .menu-open {
+        left: 0;
+    }
+    .nav__list,
+    .header__switcher-block {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+    .switcher-theme,
+    .sound-block {
+        padding: 0;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        z-index: 1;
+    }
+    .overlay__active {
+        display: block;
+    }
+    .antiscroll {
+        overflow: hidden;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    .account-btns {
+        width: 270px;
+        position: fixed;
+        top: 582.2px;
+        left: -270px;
+        background-color: $color-light3;
+        z-index: 5;
+        transition: 0.5s all linear;
+        overflow-x: hidden;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+}
+.menu-open {
+    left: 0;
 }

@@ -70,3 +70,9 @@ a:hover {
     align-items: center;
     justify-content: space-between;
 }
+
+@media (max-width: $content-small-width) {
+    a {
+        font-size: 1.6rem;
+    }
+}

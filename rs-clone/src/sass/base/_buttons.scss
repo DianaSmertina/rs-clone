@@ -63,3 +63,9 @@
     background-color: $color-wrongAnsw;
     pointer-events: none;
 }
+@media (max-width: $content-small-width) {
+    .btn__autho {
+        height: 3.2rem;
+        padding: 0 10px;
+    }
+}
