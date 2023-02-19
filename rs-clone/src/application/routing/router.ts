@@ -5,7 +5,7 @@ import ResultsPage from '../pages/results/results';
 import { ProfilePage } from '../pages/profile/profile-page';
 import { PopulationQuizPage } from '../pages/quizzes/population-quiz/page';
 import QuizTemplate from '../patterns/quizTemplate';
-import { QuizFlag } from '../pages/quizzes/flags';
+import { QuizFlag } from '../pages/quizzes/flags-quiz/flags';
 import CountryQuiz from '../pages/quizzes/country-quiz/page';
 
 const route = (event?: Event) => {

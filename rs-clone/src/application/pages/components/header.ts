@@ -2,6 +2,7 @@ import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
 import { ModalWindow } from './modal-window';
 import route from '../../routing/router';
+import { playAudio, soundOn } from '../../components/sound/sound';
 import { Api } from '../../server/server-api';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const defaultUserImg = require('../../../assets/images/user-default.png');
@@ -98,8 +99,10 @@ class Header extends Component {
         logo.className = 'header__logo_link';
         logo.href = 'main-page';
         logo.innerHTML = `<div class ="header__logo_ico ico"></div>`;
+
         const navigation = createOurElement('nav', 'header__nav', '');
         navigation.append(this.renderNavLinksList());
+
         const rightBlock = createOurElement('div', 'header__right-block flex-rows');
         const headerLang = createOurElement(
             'div',
@@ -120,15 +123,17 @@ class Header extends Component {
             `<div class="theme__light ico"></div>
             <div class="theme__dark ico"></div>`
         );
-        const sound = createOurElement(
-            'div',
-            'sound',
-            `<div class="loud ico"></div>
-            <div class="mute ico"></div>`
-        );
-
+        const soundWrap = createOurElement('div', 'sound-block');
+        const soundBtn = createOurElement('div', 'ico sound sound-on');
+        soundBtn.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            target.classList.toggle('sound-off');
+            playAudio(soundOn);
+        });
+        soundWrap.append(soundBtn);
         const username = localStorage.getItem('username') || '';
-        rightBlock.append(headerLang, switcherTheme, sound, await this.createAuthBlock(username));
+        rightBlock.append(headerLang, switcherTheme, soundWrap, await this.createAuthBlock(username));
+
         headerWrapper.append(logo, navigation, rightBlock);
         this.container.append(headerWrapper);
         return this.container;

@@ -1,10 +1,12 @@
 import { createOurElement } from '../../../patterns/createElement';
 import Page from '../../../patterns/pagePattern';
 import { PopulationQuestion } from './component';
-import { asia } from '../../../components/countries/data';
+import { world, africa, america, asia, europe } from '../../../components/countries/data';
+import { QuizRegion } from '../quizzesRegions';
+import { codes } from '../../../patterns/regionsCodes';
 
 export class PopulationQuizPage extends Page {
-    constructor(id: string) {
+    constructor(id: string, private code: string = '', private countriesArr = world) {
         super(id);
     }
 
@@ -15,7 +17,7 @@ export class PopulationQuizPage extends Page {
             const previousQuestion = document.querySelector('.question');
             if (previousQuestion && rules) {
                 previousQuestion.remove();
-                const newQuestion = new PopulationQuestion(this.generateData()).render();
+                const newQuestion = new PopulationQuestion(this.generateData(), this.code).render();
                 rules.after(newQuestion);
                 nextBtn.setAttribute('disabled', 'disabled');
             }
@@ -25,7 +27,7 @@ export class PopulationQuizPage extends Page {
 
     private generateData() {
         const countriesOnMap = [];
-        const arrayCopy = asia.slice(0);
+        const arrayCopy = this.countriesArr.slice(0);
         for (let i = 0; i < 3; i++) {
             const randomIndex = Math.floor(Math.random() * arrayCopy.length);
             countriesOnMap.push(arrayCopy[randomIndex]);
@@ -35,11 +37,39 @@ export class PopulationQuizPage extends Page {
         return countriesOnMap;
     }
 
-    render() {
+    private choseCode(region: string) {
+        switch (region) {
+            case 'africa':
+                this.code = codes.africa;
+                this.countriesArr = africa;
+                break;
+            case 'europe':
+                this.code = codes.europe;
+                this.countriesArr = europe;
+                break;
+            case 'asia':
+                this.code = codes.asia;
+                this.countriesArr = asia;
+                break;
+            case 'america':
+                this.code = codes.america;
+                this.countriesArr = america;
+                break;
+            case 'world':
+                this.code = codes.world;
+                break;
+        }
+    }
+
+    renderMain(region: string) {
+        this.choseCode(region);
         PopulationQuestion.roundNum = 1;
         PopulationQuestion.rightAnswer = 0;
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title', 'Угадай численность населения');
+        const mainTitle = createOurElement('h1', 'main__title title-flag', 'Угадай численность населения');
+        const titleAndRound = createOurElement('div', 'main__wrapper wrapper title-and-round');
+        const round = createOurElement('h1', 'quizz-round', '1/10');
+        titleAndRound.append(mainTitle, round);
         const rules = createOurElement(
             'p',
             'main__rules',
@@ -47,9 +77,14 @@ export class PopulationQuizPage extends Page {
             Наведи чтобы узнать информацию о стране и кликни, чтобы добавить в поле для ответов.
             Пока ты не нажал "Проверить", можешь изменить окончательный порядок, кликнув на ответы.`
         );
-        const playSpace = new PopulationQuestion(this.generateData()).render();
-        mainWrapper.append(mainTitle, rules, playSpace, this.createNextBtn(rules));
+        const playSpace = new PopulationQuestion(this.generateData(), this.code).render();
+        mainWrapper.append(titleAndRound, rules, playSpace, this.createNextBtn(rules));
         this.container.append(mainWrapper);
+        return this.container;
+    }
+
+    render() {
+        this.container.append(new QuizRegion('div', 'none', this).render());
         return this.container;
     }
 }

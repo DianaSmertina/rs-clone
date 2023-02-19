@@ -2,33 +2,36 @@ import Page from '../../../patterns/pagePattern';
 import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
 import { africa, america, asia, europe, oceania, world } from '../../../components/countries/data';
+import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
 
 export class CountryQuiz extends Page {
+    static ourChart: google.visualization.GeoChart;
     private regionCode: string;
     private regionDataArr: typeof world;
     private min: number;
     private max: number;
-    private usedCountries: string[];
+    private usedCountryInd: number[];
     private round: number;
     private score: number;
-
-    static ourChart: google.visualization.GeoChart;
-    public static randomCountry: string;
+    private randomCountry: string | undefined;
 
     constructor(id: string) {
         super(id);
         this.regionCode = '002';
-        this.regionDataArr = this.getDataArr(this.regionCode);
+        this.regionDataArr = this.getData(this.regionCode);
         this.min = 0;
         this.max = this.regionDataArr.length - 1;
-        this.usedCountries = [];
+        this.usedCountryInd = [];
         this.round = 1;
         this.score = 0;
+        this.randomCountry = '';
     }
 
     private renderPlayField(geoChartWrap: HTMLElement, answersBlock: HTMLElement, nextBtn: HTMLElement) {
-        CountryQuiz.randomCountry = this.getRandomCountry(this.regionDataArr);
-        const country = [['Country'], [CountryQuiz.randomCountry]];
+        this.randomCountry = this.getRandomCountry(this.regionDataArr);
+        if (!this.randomCountry) return;
+
+        const country = [['Country'], [this.randomCountry]];
 
         drawChart(geoChartWrap, country, 'countries', {
             region: this.regionCode,
@@ -38,14 +41,13 @@ export class CountryQuiz extends Page {
             enableRegionInteractivity: false,
         });
 
-        const countriesForAnswer = this.shuffle(this.getAnswers(CountryQuiz.randomCountry, this.regionDataArr));
+        const countriesForAnswer = this.shuffle(this.getAnswers(this.randomCountry, this.regionDataArr));
 
         countriesForAnswer.forEach((country) => {
             const answer = createOurElement('button', 'btn btn__bordered answer', `${country}`);
             answer.id = `${country}`;
-            const arrAnswers = this.regionDataArr;
             answer.addEventListener('click', (e) => {
-                this.checkAnswer(e.target, CountryQuiz.randomCountry, arrAnswers);
+                this.checkAnswer(e.target, this.randomCountry, this.regionDataArr);
             });
             answersBlock.append(answer);
         });
@@ -58,9 +60,9 @@ export class CountryQuiz extends Page {
         const mainTitle = createOurElement('h1', 'main__title', 'Угадай страну');
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
+        const answersBlock = createOurElement('div', 'answers flex-rows', '');
         const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
         nextBtn.id = 'nextBtn';
-        const answersBlock = createOurElement('div', 'answers flex-rows', '');
 
         this.renderPlayField(geoChartWrap, answersBlock, nextBtn);
 
@@ -74,7 +76,7 @@ export class CountryQuiz extends Page {
         return this.container;
     }
 
-    getDataArr(regionCode: string): typeof world {
+    getData(regionCode: string): typeof world {
         switch (regionCode) {
             case '002': {
                 return africa;
@@ -96,7 +98,6 @@ export class CountryQuiz extends Page {
                 return europe;
                 break;
             }
-
             case 'world': {
                 return world;
                 break;
@@ -113,36 +114,36 @@ export class CountryQuiz extends Page {
     }
 
     getRandomCountry(arr: typeof world) {
-        const randomNumber = this.getRandomNumber(this.min, this.max);
-        const possibleRandCountry = arr[randomNumber].countryCodeLetters;
+        let randomNumber = this.getRandomNumber(this.min, this.max);
 
-        if (this.usedCountries.includes(possibleRandCountry)) {
-            this.getRandomCountry(arr);
+        if (this.usedCountryInd.includes(randomNumber)) {
+            randomNumber = this.getRandomNumber(this.min, this.max);
         }
 
-        this.usedCountries.push(possibleRandCountry);
+        this.usedCountryInd.push(randomNumber);
+        const possibleRandCountry = arr[randomNumber].countryCodeLetters;
         return possibleRandCountry;
     }
 
-    getAnswers(country: string, arr: typeof world) {
-        const setAnswer = new Set<string>();
+    getAnswers(rightCountry: string, arr: typeof world) {
+        const setAnswers = new Set<string>();
 
         arr.forEach((item) => {
-            if (item.countryCodeLetters === country) {
-                setAnswer.add(item.countryRu);
+            if (item.countryCodeLetters === rightCountry) {
+                setAnswers.add(item.countryRu);
             }
         });
 
-        while (setAnswer.size < 4) {
-            const index = this.getRandomNumber(0, arr.length - 1);
-            if (arr[index].countryCodeLetters === country) {
+        while (setAnswers.size < 4) {
+            const index = this.getRandomNumber(this.min, this.max);
+            if (arr[index].countryCodeLetters === rightCountry) {
                 continue;
             } else {
-                setAnswer.add(arr[index].countryRu);
+                setAnswers.add(arr[index].countryRu);
             }
         }
 
-        return setAnswer;
+        return setAnswers;
     }
 
     shuffle(set: Set<string>) {
@@ -154,30 +155,31 @@ export class CountryQuiz extends Page {
         return new Set(arr);
     }
 
-    checkAnswer(eTarget: EventTarget | null, rightAnswer: string, arr: typeof world) {
-        // if (!eTarget || !rightAnswer) return;
-
-        const nextBtn = document.getElementById('nextBtn');
-        nextBtn?.removeAttribute('disabled');
+    checkAnswer(eTarget: EventTarget | null, rightAnswer: string | undefined, arr: typeof world) {
+        if (!eTarget || !rightAnswer) return;
 
         const target = eTarget as HTMLElement;
         const rightAnswerName = arr.find((item) => item.countryCodeLetters === rightAnswer)?.countryRu;
         if (!rightAnswerName) return;
 
+        const allAnswers = document.querySelectorAll('.answer');
+        allAnswers.forEach((item) => item.classList.add('btn__wrong'));
+
         if (target.id === rightAnswerName) {
-            const anotherAnsw = document.querySelectorAll('.answer');
-            anotherAnsw.forEach((item) => item.classList.add('btn__wrong'));
             target.classList.remove('btn__wrong');
             target.classList.add('btn__right');
             this.changeRoundAndScore(true);
+            playAudio(rightAnswAudio);
         } else {
-            const anotherAnsw = document.querySelectorAll('.answer');
-            anotherAnsw.forEach((item) => item.classList.add('btn__wrong'));
             const trulyRightAnsw = document.getElementById(rightAnswerName);
             trulyRightAnsw?.classList.remove('btn__wrong');
             trulyRightAnsw?.classList.add('btn__right');
             this.changeRoundAndScore(false);
+            playAudio(wrongAnswAudio);
         }
+
+        const nextBtn = document.getElementById('nextBtn');
+        nextBtn?.removeAttribute('disabled');
     }
 
     changeRoundAndScore(flag: boolean) {
@@ -187,14 +189,13 @@ export class CountryQuiz extends Page {
         } else {
             this.round++;
         }
+
         if (this.round === 15) {
             this.goToTheResults();
         }
-        console.log(this.score, this.round);
     }
 
     goToTheResults() {
-        alert("That's all!");
         window.location.href = '/results';
     }
 }

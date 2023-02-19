@@ -13,8 +13,8 @@
     height: 75px;
 }
 .switcher-theme {
-   padding-left: 30px;
-   padding-right: 15px;
+    padding-left: 30px;
+    padding-right: 15px;
 }
 
 .nav__list {
@@ -68,22 +68,19 @@
 .header__radio-btn > input:checked + span {
     color: $color-bright;
 }
-
-.sound {
+.sound-block {
     padding-right: 30px;
 }
 
-.loud {
+.sound-on {
     background-image: url(../assets/icons/loud.svg);
     width: 35px;
     height: 35px;
 }
-
-.mute {
+.sound-off {
     background-image: url(../assets/icons/mute.svg);
     width: 35px;
     height: 35px;
-    display: none;
 }
 
 .profile-icon {

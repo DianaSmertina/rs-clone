@@ -2,13 +2,14 @@ import { Icountry } from '../../../components/countries/data';
 import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
 import { Api, QuizName } from '../../../server/server-api';
+import { QuizResult } from '../quizzesResults';
 
 export class PopulationQuestion {
     static ourChart: google.visualization.GeoChart;
     static rightAnswer: number;
     static roundNum: number;
 
-    constructor(private mapData: Array<Icountry>) {}
+    constructor(private mapData: Array<Icountry>, private code: string) {}
 
     private createGeoChart() {
         const geoChartWrap = document.createElement('div');
@@ -16,9 +17,10 @@ export class PopulationQuestion {
         const countries = this.mapData.map((el: Icountry) => [el.countryCodeLetters, el.countryRu, el.area]);
         countries.unshift(['Country', 'Назание', 'Площадь']);
         drawChart(geoChartWrap, countries, 'population', {
-            region: '142',
+            region: this.code,
             colorAxis: { colors: ['blue', 'orange', 'green'] },
             legend: 'none',
+            backgroundColor: '#81d4fa',
         });
 
         setTimeout(() => {
@@ -63,13 +65,13 @@ export class PopulationQuestion {
             checkBtn.setAttribute('disabled', 'disabled');
 
             PopulationQuestion.roundNum += 1;
-            if (PopulationQuestion.roundNum <= 15) {
+
+            if (PopulationQuestion.roundNum <= 2) {
                 document.querySelector('.btn__next')?.removeAttribute('disabled');
             } else {
-                const res = await Api.addResult(
-                    QuizName.Population,
-                    Number(((PopulationQuestion.rightAnswer / 45) * 100).toFixed(2))
-                );
+                const result = Number(((PopulationQuestion.rightAnswer / 6) * 100).toFixed(2));
+                checkBtn.after(new QuizResult('div', 'none', `${result}%`).render());
+                const res = await Api.addResult(QuizName.Population, result);
                 console.log(res);
             }
         });
@@ -99,6 +101,10 @@ export class PopulationQuestion {
     }
 
     render() {
+        const round = document.querySelector('.quizz-round');
+        if (round) {
+            round.textContent = `${PopulationQuestion.roundNum}/10`;
+        }
         const wrap = createOurElement('div', 'question flex-columns');
         wrap.append(this.createGeoChart(), this.createAnswerBlock());
         return wrap;
