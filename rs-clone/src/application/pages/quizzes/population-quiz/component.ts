@@ -3,6 +3,7 @@ import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
 import { QuizName } from '../../../server/server-api';
 import { QuizResult } from '../quizzesResults';
+import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
 
 export class PopulationQuestion {
     static ourChart: google.visualization.GeoChart;
@@ -49,10 +50,12 @@ export class PopulationQuestion {
         checkBtn.setAttribute('disabled', 'disabled');
 
         checkBtn.addEventListener('click', async () => {
-            answerBtns.forEach((btn, i) => {
+            const rightAnsw = answerBtns.map((btn, i) => {
+                let isRight = 0;
                 if (btn.innerText === answers[i].countryRu) {
                     btn.classList.add('btn__right');
                     PopulationQuestion.rightAnswer += 1;
+                    isRight = 1;
                 } else {
                     btn.classList.add('btn__wrong');
                 }
@@ -61,7 +64,13 @@ export class PopulationQuestion {
                 ).toFixed(2);
 
                 btn.innerText += ` ${rightPopulation} млн`;
+                return isRight;
             });
+            if (rightAnsw.every((el) => el === 0)) {
+                playAudio(wrongAnswAudio);
+            } else {
+                playAudio(rightAnswAudio);
+            }
             checkBtn.setAttribute('disabled', 'disabled');
 
             PopulationQuestion.roundNum += 1;
