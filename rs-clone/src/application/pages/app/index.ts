@@ -7,8 +7,8 @@ class App {
     private static header: Header = new Header('header', 'header');
     private static footer: Footer = new Footer('footer', 'footer');
 
-    run() {
-        App.container.append(App.header.render(), App.footer.render());
+    async run() {
+        App.container.append(await App.header.renderHeader(), App.footer.render());
         window.onpopstate = handleLocation;
         window.route = route;
         handleLocation();

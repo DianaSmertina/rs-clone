@@ -28,7 +28,6 @@
     justify-content: center;
     padding-top: 50px;
 }
-
 .menu__item {
     width: 210px;
     height: 270px;
@@ -42,6 +41,17 @@
 .menu__item:hover {
     transition: 0.5s ease-in-out;
     transform: scale(1.05);
+}
+
+.title-and-round {
+    display: flex;
+    justify-content: space-between;
+}
+.title-flag {
+    margin-left: 35%;
+}
+.quizz-round {
+    color: black;
 }
 .main__rules {
     margin-bottom: 20px;
@@ -87,4 +97,12 @@
         width: 280px;
         height: 110px;
     }
+}
+.form__wrapp {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-wrap__is-record {
+    text-align: center;
 }

@@ -13,11 +13,11 @@ class Quizzes extends Page {
             'div',
             'menu flex-rows ',
             `<a href="country-quiz">
-            <div class="menu__item flex-columns">
-                <h3>Угадай страну</h3>
-                <div class="menu__quiz-cover img">
+                <div class="menu__item flex-columns">
+                    <h3>Угадай страну</h3>
+                    <div class="menu__quiz-cover img">
+                    </div>
                 </div>
-            </div>
             </a>
             <a href="population-quiz">
                 <div class="menu__item">

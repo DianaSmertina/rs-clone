@@ -1,24 +1,27 @@
 import { Icountry } from '../../../components/countries/data';
 import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
-import { Api, QuizName } from '../../../server/server-api';
+import { QuizName } from '../../../server/server-api';
+import { QuizResult } from '../quizzesResults';
+import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
 
 export class PopulationQuestion {
     static ourChart: google.visualization.GeoChart;
     static rightAnswer: number;
     static roundNum: number;
 
-    constructor(private mapData: Array<Icountry>) {}
+    constructor(private mapData: Array<Icountry>, private code: string) {}
 
     private createGeoChart() {
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
-        const countries = this.mapData.map((el) => [el.countryCodeLetters, el.countryRu, el.area]);
+        const countries = this.mapData.map((el: Icountry) => [el.countryCodeLetters, el.countryRu, el.area]);
         countries.unshift(['Country', 'Назание', 'Площадь']);
         drawChart(geoChartWrap, countries, 'population', {
-            region: '142',
+            region: this.code,
             colorAxis: { colors: ['blue', 'orange', 'green'] },
             legend: 'none',
+            backgroundColor: '#81d4fa',
         });
 
         setTimeout(() => {
@@ -47,10 +50,12 @@ export class PopulationQuestion {
         checkBtn.setAttribute('disabled', 'disabled');
 
         checkBtn.addEventListener('click', async () => {
-            answerBtns.forEach((btn, i) => {
+            const rightAnsw = answerBtns.map((btn, i) => {
+                let isRight = 0;
                 if (btn.innerText === answers[i].countryRu) {
                     btn.classList.add('btn__right');
                     PopulationQuestion.rightAnswer += 1;
+                    isRight = 1;
                 } else {
                     btn.classList.add('btn__wrong');
                 }
@@ -59,18 +64,24 @@ export class PopulationQuestion {
                 ).toFixed(2);
 
                 btn.innerText += ` ${rightPopulation} млн`;
+                return isRight;
             });
+            if (rightAnsw.every((el) => el === 0)) {
+                playAudio(wrongAnswAudio);
+            } else {
+                playAudio(rightAnswAudio);
+            }
             checkBtn.setAttribute('disabled', 'disabled');
 
             PopulationQuestion.roundNum += 1;
-            if (PopulationQuestion.roundNum <= 15) {
+
+            if (PopulationQuestion.roundNum <= 10) {
                 document.querySelector('.btn__next')?.removeAttribute('disabled');
             } else {
-                const res = await Api.addResult(
-                    QuizName.Population,
-                    Number(((PopulationQuestion.rightAnswer / 45) * 100).toFixed(2))
+                const result = Number(((PopulationQuestion.rightAnswer / 30) * 100).toFixed(2));
+                checkBtn.after(
+                    await new QuizResult('div', 'none', result, QuizName.Population, this.code).renderResult()
                 );
-                console.log(res);
             }
         });
         return checkBtn;
@@ -79,6 +90,7 @@ export class PopulationQuestion {
     private createAnswerBlock() {
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
         const answers = this.mapData.slice(0);
+        console.log(answers);
 
         const answerBtns = answers?.map(() => {
             const answer = createOurElement('button', 'btn btn__population');
@@ -99,6 +111,10 @@ export class PopulationQuestion {
     }
 
     render() {
+        const round = document.querySelector('.quizz-round');
+        if (round) {
+            round.textContent = `${PopulationQuestion.roundNum}/10`;
+        }
         const wrap = createOurElement('div', 'question flex-columns');
         wrap.append(this.createGeoChart(), this.createAnswerBlock());
         return wrap;
