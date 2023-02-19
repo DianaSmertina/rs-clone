@@ -467,6 +467,13 @@ a:hover {
   left: 0;
 }
 
+.profile-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #01579b;
+}
+
 .wrapper {
   width: 100%;
   max-width: 1280px;
@@ -680,6 +687,19 @@ a:hover {
   transform: scale(1.05);
 }
 
+.title-and-round {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-flag {
+  margin-left: 35%;
+}
+
+.quizz-round {
+  color: black;
+}
+
 .main__rules {
   margin-bottom: 20px;
   line-height: 1.5;
@@ -724,6 +744,15 @@ a:hover {
     height: 110px;
   }
 }
+.form__wrapp {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-wrap__is-record {
+  text-align: center;
+}
+
 .img-flag {
   width: 20%;
   height: 169px;
@@ -740,4 +769,44 @@ a:hover {
 .wrong-world {
   color: red;
   margin-top: 1%;
+}
+
+.main-user-info {
+  height: 200px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.main-user-info__img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.main-user-info__img-wrap {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid #0d98ba;
+}
+
+.main-user-info__data-wrap {
+  height: 200px;
+  width: calc(100% - 300px);
+  padding: 0 30px;
+}
+
+.records__title {
+  margin-bottom: 20px;
+}
+
+.achievement__img-fire {
+  width: 100px;
+  height: 100px;
+  background-image: url(../assets/images/fire.png);
+  background-size: 100px 100px;
+}
+
+.achievement__range {
+  pointer-events: none;
 }/*# sourceMappingURL=global.css.map */

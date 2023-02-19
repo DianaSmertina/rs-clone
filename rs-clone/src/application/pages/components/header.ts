@@ -160,7 +160,7 @@ class Header extends Component {
 
         const username = localStorage.getItem('username') || '';
 
-        headerWrapper.append(logo, navigation, switcherBlock, async createAuthBlock(username));
+        headerWrapper.append(burger, logo, navigation, switcherBlock, await this.createAuthBlock(username));
         this.container.append(headerWrapper);
         return this.container;
     }
