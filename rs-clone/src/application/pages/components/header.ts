@@ -3,6 +3,9 @@ import { createOurElement } from '../../patterns/createElement';
 import { ModalWindow } from './modal-window';
 import route from '../../routing/router';
 import { playAudio, soundOn } from '../../components/sound/sound';
+import { Api } from '../../server/server-api';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const defaultUserImg = require('../../../assets/images/user-default.png');
 
 const NavLinks = [
     {
@@ -24,7 +27,7 @@ class Header extends Component {
         super(tagname, className);
     }
 
-    private createBtn(type: string) {
+    private createRegBtns(type: string) {
         const btn = createOurElement('button', 'btn btn__colored', type);
         btn.addEventListener('click', () => {
             const modal = new ModalWindow('div', 'none', type);
@@ -34,11 +37,42 @@ class Header extends Component {
         return btn;
     }
 
-    private createAuthBlock() {
+    public async createProfileImg(btnsWrap: HTMLElement, username: string) {
+        btnsWrap.innerHTML = '';
+        const imgWrap = createOurElement('a', 'profile-page-btn');
+        imgWrap.setAttribute('href', 'user');
+        const img = createOurElement('img', 'profile-icon');
+        const userImg = await Api.getAvatar(username);
+        if (userImg) {
+            img.setAttribute('src', userImg);
+        } else {
+            img.setAttribute('src', defaultUserImg);
+        }
+        imgWrap.append(img);
+        const logOutBtn = createOurElement('button', 'btn btn__colored', 'Выйти');
+
+        logOutBtn.addEventListener('click', () => {
+            btnsWrap.innerHTML = '';
+            btnsWrap.append(this.createRegBtns('Регистрация'), this.createRegBtns('Войти'));
+            localStorage.removeItem('username');
+            if (window.location.pathname === '/user') {
+                window.location.pathname = '/main-page';
+            }
+        });
+
+        btnsWrap.append(imgWrap, logOutBtn);
+        return btnsWrap;
+    }
+
+    private async createAuthBlock(username: string) {
         const authorization = createOurElement('div', 'autho');
         const btnsWrap = createOurElement('div', 'account-btns flex-rows');
-        btnsWrap.append(this.createBtn('Регистрация'), this.createBtn('Войти'));
-        authorization.append(btnsWrap);
+        if (username) {
+            authorization.append(await this.createProfileImg(btnsWrap, JSON.parse(username)));
+        } else {
+            btnsWrap.append(this.createRegBtns('Регистрация'), this.createRegBtns('Войти'));
+            authorization.append(btnsWrap);
+        }
         return authorization;
     }
 
@@ -58,7 +92,7 @@ class Header extends Component {
         return navLinksList;
     }
 
-    render() {
+    async renderHeader() {
         const headerWrapper = createOurElement('div', 'header__wrapper wrapper flex-rows');
 
         const logo = document.createElement('a');
@@ -97,7 +131,8 @@ class Header extends Component {
             playAudio(soundOn);
         });
         soundWrap.append(soundBtn);
-        rightBlock.append(headerLang, switcherTheme, soundWrap, this.createAuthBlock());
+        const username = localStorage.getItem('username') || '';
+        rightBlock.append(headerLang, switcherTheme, soundWrap, await this.createAuthBlock(username));
 
         headerWrapper.append(logo, navigation, rightBlock);
         this.container.append(headerWrapper);
