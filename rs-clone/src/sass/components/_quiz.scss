@@ -54,6 +54,7 @@
 .main__rules {
     margin-bottom: 20px;
     line-height: 1.5;
+    width: 70%;
 }
 
 .menu__quiz-cover {
@@ -82,6 +83,10 @@
 @media (max-width: $tablet-width) {
     .menu {
         padding-top: 10px;
+    }
+    #regions_div {
+        width: 500px;
+        height: 300px;
     }
 }
 @media (max-width: $mobile-big-width) {

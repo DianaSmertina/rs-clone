@@ -700,6 +700,7 @@ a:hover {
 .main__rules {
   margin-bottom: 20px;
   line-height: 1.5;
+  width: 70%;
 }
 
 .menu__quiz-cover {
@@ -729,6 +730,10 @@ a:hover {
 @media (max-width: 768px) {
   .menu {
     padding-top: 10px;
+  }
+  #regions_div {
+    width: 500px;
+    height: 300px;
   }
 }
 @media (max-width: 500px) {
