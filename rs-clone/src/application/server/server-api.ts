@@ -29,22 +29,34 @@ export class Api {
         return data;
     }
 
-    static async addResult(quiz: QuizName, result: number): Promise<string | { message: string }> {
+    static async addResult(quiz: string, result: number, region: string): Promise<string | { message: string }> {
         const username = localStorage.getItem('username');
         if (!username) return 'please register or login to save the record';
-        const prevRecord = await Api.getUserQuizResult(quiz, JSON.stringify(username));
-        if (result <= prevRecord) return 'not record';
+        const prevRecord = await Api.getUserQuizResult(quiz, JSON.parse(username));
+        if (result <= Number(prevRecord)) return 'not record';
         const response = await fetch(`${Api.base}/${quiz}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify({ username: JSON.stringify(username), [quiz]: result }),
+            body: JSON.stringify({ username: JSON.parse(username), [quiz]: result }),
+        });
+        await Api.updateRegion(quiz, region, username);
+        return response.json();
+    }
+
+    static async updateRegion(quiz: string, region: string, username: string) {
+        const response = await fetch(`${Api.base}/${quiz}-region`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({ username: JSON.parse(username), region: region }),
         });
         return response.json();
     }
 
-    static async getUserQuizResult(quiz: QuizName, userName: string): Promise<number | { message: string }> {
+    static async getUserQuizResult(quiz: string, userName: string): Promise<number | { message: string }> {
         const response = await fetch(`${Api.base}/${quiz}/${userName}`);
         const data = await response.json();
         return data;

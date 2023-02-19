@@ -6,6 +6,7 @@ import { QuizResult } from '../quizzesResults';
 import { codes } from '../../../patterns/regionsCodes';
 import { QuizRegion } from '../quizzesRegions';
 import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
+import { QuizName } from '../../../server/server-api';
 
 type countryWithFlag = typeof world & { flag: string };
 
@@ -64,11 +65,13 @@ export class QuizFlag extends Page {
 
         this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag, round);
 
-        nextBtn.addEventListener('click', () => {
+        nextBtn.addEventListener('click', async () => {
             if (this.rightAnswers !== 10) {
                 this.renderContent(nextBtn, rightWorld, wrongWorld, geoChartWrap, flag, round);
             } else {
-                this.container.append(new QuizResult('div', 'none', `${this.countResult()}%`).render());
+                this.container.append(
+                    await new QuizResult('div', 'none', this.countResult(), QuizName.Flags, this.code).renderResult()
+                );
             }
         });
         mainWrapper.append(titleAndRound, geoChartWrap, rightWorld, wrongWorld, flag, nextBtn);

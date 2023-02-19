@@ -1,7 +1,7 @@
 import { Icountry } from '../../../components/countries/data';
 import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
-import { Api, QuizName } from '../../../server/server-api';
+import { QuizName } from '../../../server/server-api';
 import { QuizResult } from '../quizzesResults';
 
 export class PopulationQuestion {
@@ -66,13 +66,13 @@ export class PopulationQuestion {
 
             PopulationQuestion.roundNum += 1;
 
-            if (PopulationQuestion.roundNum <= 2) {
+            if (PopulationQuestion.roundNum <= 10) {
                 document.querySelector('.btn__next')?.removeAttribute('disabled');
             } else {
-                const result = Number(((PopulationQuestion.rightAnswer / 6) * 100).toFixed(2));
-                checkBtn.after(new QuizResult('div', 'none', `${result}%`).render());
-                const res = await Api.addResult(QuizName.Population, result);
-                console.log(res);
+                const result = Number(((PopulationQuestion.rightAnswer / 30) * 100).toFixed(2));
+                checkBtn.after(
+                    await new QuizResult('div', 'none', result, QuizName.Population, this.code).renderResult()
+                );
             }
         });
         return checkBtn;
@@ -81,6 +81,7 @@ export class PopulationQuestion {
     private createAnswerBlock() {
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
         const answers = this.mapData.slice(0);
+        console.log(answers);
 
         const answerBtns = answers?.map(() => {
             const answer = createOurElement('button', 'btn btn__population');
