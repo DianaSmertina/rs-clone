@@ -16,6 +16,8 @@
 @media (max-width: $mobile-big-width) {
     .wrapper {
         max-width: $mobile-big-width;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 @media (max-width: $mobile-small-width) {

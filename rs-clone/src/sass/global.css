@@ -80,8 +80,17 @@ a:hover {
 }
 
 @media (max-width: 1024px) {
+  body {
+    font-size: 1.4rem;
+  }
   a {
     font-size: 1.6rem;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
   }
 }
 @media (max-width: 768px) {
@@ -492,6 +501,8 @@ a:hover {
 @media (max-width: 500px) {
   .wrapper {
     max-width: 500px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 @media (max-width: 320px) {
@@ -688,12 +699,11 @@ a:hover {
   transform: scale(1.05);
 }
 
-.main__title_quiz {
-  padding-left: 205px;
+.title-and-round {
+  gap: 70px;
 }
 
 .quizz-round {
-  padding-left: 135px;
   padding-bottom: 25px;
 }
 
@@ -701,6 +711,7 @@ a:hover {
   margin-bottom: 20px;
   line-height: 1.5;
   width: 70%;
+  text-align: justify;
 }
 
 .menu__quiz-cover {
@@ -726,6 +737,9 @@ a:hover {
     width: 430px;
     height: 140px;
   }
+  .title-and-round {
+    gap: 60px;
+  }
 }
 @media (max-width: 768px) {
   .menu {
@@ -735,16 +749,26 @@ a:hover {
     width: 500px;
     height: 300px;
   }
+  .title-and-round {
+    gap: 32px;
+  }
 }
 @media (max-width: 500px) {
   #regions_div {
-    width: 400px;
-    height: 200px;
+    width: 300px;
+    height: 150px;
   }
   .answers {
-    width: 400px;
+    width: 300px;
     height: 130px;
     padding: 7px;
+  }
+  .title-and-round {
+    flex-direction: column;
+    gap: 0;
+  }
+  .quizz-round {
+    padding-bottom: 15px;
   }
 }
 @media (max-width: 320px) {
@@ -784,6 +808,12 @@ a:hover {
   margin-top: 1%;
 }
 
+@media (max-width: 500px) {
+  .img-flag {
+    width: 102px;
+    height: 77px;
+  }
+}
 .main-user-info {
   height: 200px;
   width: 100%;

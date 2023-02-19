@@ -13,3 +13,9 @@
     color: red;
     margin-top: 1%;
 }
+@media (max-width: $mobile-big-width) {
+    .img-flag {
+        width: 102px;
+        height: 77px;
+    }
+}

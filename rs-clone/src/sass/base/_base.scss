@@ -79,8 +79,17 @@ a:hover {
 }
 
 @media (max-width: $content-small-width) {
+    body {
+        font-size: 1.4rem;
+    }
     a {
         font-size: 1.6rem;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2rem;
     }
 }
 @media (max-width: $tablet-width) {
