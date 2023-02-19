@@ -1,3 +1,4 @@
+import { codesTranslate, ICodes } from '../../components/countries/regionsCodes';
 import { createOurElement } from '../../patterns/createElement';
 import { Api, IResult, Iuser } from '../../server/server-api';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -53,18 +54,23 @@ export class ProfilePage {
         recordsWrap.append(title);
         const quizesWrap = createOurElement('div', 'flex-rows');
         quizesWrap.append(
-            this.createQuizRecordBlock('Угадай страну', result.country, result.region_country),
-            this.createQuizRecordBlock('Угадай численность населения', result.population, result.region_population),
-            this.createQuizRecordBlock('Угадай флаг', result.flags, result.region_flags)
+            this.createQuizRecordBlock('Угадай страну', result.country, result.region_country || 'world'),
+            this.createQuizRecordBlock(
+                'Угадай численность населения',
+                result.population,
+                result.region_population || 'world'
+            ),
+            this.createQuizRecordBlock('Угадай флаг', result.flags, result.region_flags || 'world')
         );
         recordsWrap.append(quizesWrap);
         return recordsWrap;
     }
 
-    private createQuizRecordBlock(quiz: string, result: number, region: string | null) {
+    private createQuizRecordBlock(quiz: string, result: number, region: string) {
         const quizWrap = createOurElement('div', 'records__quiz flex-columns');
         const quizName = createOurElement('p', 'records__quiz-name', quiz);
         const quizRes = createOurElement('div', 'records__quiz-results');
+        const regionName = codesTranslate[region as keyof ICodes].ru;
         google.charts.load('current', { packages: ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
@@ -73,7 +79,7 @@ export class ProfilePage {
             dataTable.addColumn('number', 'Результат');
             dataTable.addColumn({ type: 'string', role: 'tooltip' });
             dataTable.addRows([
-                [quiz, result, `${result}%, рекорд набран в регионе ${region}`],
+                [quiz, result, `${result}%, рекорд набран в регионе ${regionName}`],
                 ['', 100 - result, `Осталось набрать ${100 - result}%`],
             ]);
 

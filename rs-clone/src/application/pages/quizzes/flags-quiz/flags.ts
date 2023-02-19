@@ -3,7 +3,7 @@ import Page from '../../../patterns/pagePattern';
 import { createOurElement } from '../../../patterns/createElement';
 import { world, africa, america, asia, europe } from '../../../components/countries/data';
 import { QuizResult } from '../quizzesResults';
-import { codes } from '../../../patterns/regionsCodes';
+import { codes } from '../../../components/countries/regionsCodes';
 import { QuizRegion } from '../quizzesRegions';
 import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
 import { QuizName } from '../../../server/server-api';

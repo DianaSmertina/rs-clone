@@ -3,7 +3,7 @@ import Page from '../../../patterns/pagePattern';
 import { PopulationQuestion } from './component';
 import { world, africa, america, asia, europe } from '../../../components/countries/data';
 import { QuizRegion } from '../quizzesRegions';
-import { codes } from '../../../patterns/regionsCodes';
+import { codes } from '../../../components/countries/regionsCodes';
 
 export class PopulationQuizPage extends Page {
     constructor(id: string, private code: string = '', private countriesArr = world) {
