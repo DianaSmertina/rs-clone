@@ -54,12 +54,37 @@ export class QuizResult extends Component {
             isRecord.innerText = 'Пожалуйста, зарегистрируйся, чтобы сохранять результаты';
         }
 
-        form.append(title, result, isRecord, btn);
+        form.append(title, result, isRecord, btn, ...this.createShare());
         return form;
     }
 
     private async sendResult() {
         const res = await Api.addResult(this.quizName, this.result, this.region);
         return res;
+    }
+
+    private createShare() {
+        const name = this.findName();
+
+        const icon = document.createElement('div');
+        icon.innerHTML = `<div data-copy="hidden" data-curtain class="ya-share2" data-title='Я прошёл викторину ${name} на ${this.result}%!' data-shape="round" data-more-button-type="short" data-services="vkontakte,telegram"></div>`;
+
+        const script = document.createElement('script');
+        script.src = `https://yastatic.net/share2/share.js`;
+        script.defer = true;
+        script.type = 'text/javascript';
+
+        return [icon, script];
+    }
+
+    private findName() {
+        switch (this.quizName) {
+            case 'flags':
+                return '"Узнай страну по флагу"';
+            case 'country':
+                return '"Угадай страну"';
+            case 'population':
+                return '"Угадай страну по населению"';
+        }
     }
 }
