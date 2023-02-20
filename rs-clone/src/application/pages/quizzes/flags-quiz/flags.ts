@@ -188,4 +188,3 @@ export class QuizFlag extends Page {
         }
     }
 }
-// так, это работает, но нужно разобраться с площадью
