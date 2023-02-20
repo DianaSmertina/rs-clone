@@ -1,7 +1,12 @@
+.geo-chart__block {
+    width: 50%;
+    height: 400px;
+}
 #regions_div {
     width: 600px;
     height: 400px;
     align-self: center;
+    outline: 1px solid $color-dark1;
 }
 .gmnoprint {
     display: none;
@@ -11,52 +16,117 @@
 }
 
 .answers {
-    width: 400px;
-    height: 120px;
+    width: 450px;
+    height: 160px;
     background-color: $color-light2;
     border-radius: 5px;
-    padding: 10px;
+    padding: 12px;
     margin-top: 30px;
 }
 
 .menu {
-    row-gap: 20px;
-    column-gap: 20px;
-    padding: 50px 0 130px;
     justify-content: center;
+    padding-top: 30px;
 }
 .menu__item {
-    width: 215px;
-    height: 250px;
+    width: 210px;
+    height: 280px;
     background: $color-light2;
     border-radius: 10px;
     text-align: center;
+    margin: 20px;
     padding: 20px;
+    box-shadow: 10px 5px 5px $color-dark1;
+    justify-content: space-around;
 }
-
-.title-and-round{
-    display: flex;
-    justify-content: space-between;
+.menu__item:hover {
+    transition: 0.5s ease-in-out;
+    transform: scale(1.05);
 }
-.title-flag{
-    margin-left: 35%;
+.title-and-round {
+    gap: 70px;
 }
-.quizz-round{
-    color: black;
+.main__title_quiz {
+    // padding-left: 205px;
+}
+.quizz-round {
+    // padding-left: 135px;
+    padding-bottom: 25px;
 }
 .main__rules {
-    margin: 20px 0;
+    margin-bottom: 20px;
     line-height: 1.5;
+    width: 70%;
+    text-align: justify;
 }
 
 .menu__quiz-cover {
-    background-image: url(../assets/images/country-cover.png);
-    width: 160px;
-    height: 150px;
-    border-radius: 5px;
+    width: 150px;
+    height: 147px;
+    border-radius: 7px;
 }
 
-.form__wrapp{
+.country-cover {
+    background-image: url(../assets/images/country-cover.png);
+}
+.population-cover {
+    background-image: url(../assets/images/population-cover.png);
+}
+.flag-cover {
+    background-image: url(../assets/images/flag-cover.png);
+}
+
+@media (max-width: $content-small-width) {
+    .answers {
+        width: 430px;
+        height: 140px;
+    }
+    .title-and-round {
+        gap: 60px;
+    }
+}
+
+@media (max-width: $tablet-width) {
+    .menu {
+        padding-top: 10px;
+    }
+    #regions_div {
+        width: 500px;
+        height: 300px;
+    }
+    .title-and-round {
+        gap: 32px;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    #regions_div {
+        width: 300px;
+        height: 150px;
+    }
+    .answers {
+        width: 300px;
+        height: 130px;
+        padding: 7px;
+    }
+    .title-and-round {
+        flex-direction: column;
+        gap: 0;
+    }
+    .quizz-round {
+        padding-bottom: 15px;
+    }
+}
+@media (max-width: $mobile-small-width) {
+    #regions_div {
+        width: 280px;
+        height: 140px;
+    }
+    .answers {
+        width: 280px;
+        height: 110px;
+    }
+}
+.form__wrapp {
     display: flex;
     flex-direction: column;
 }

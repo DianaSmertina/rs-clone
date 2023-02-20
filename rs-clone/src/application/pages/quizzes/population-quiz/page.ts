@@ -66,8 +66,8 @@ export class PopulationQuizPage extends Page {
         PopulationQuestion.roundNum = 1;
         PopulationQuestion.rightAnswer = 0;
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title title-flag', 'Угадай численность населения');
-        const titleAndRound = createOurElement('div', 'main__wrapper wrapper title-and-round');
+        const mainTitle = createOurElement('h1', 'main__title main__title_quiz', 'Угадай численность населения');
+        const titleAndRound = createOurElement('div', 'flex-rows title-and-round');
         const round = createOurElement('h1', 'quizz-round', '1/10');
         titleAndRound.append(mainTitle, round);
         const rules = createOurElement(

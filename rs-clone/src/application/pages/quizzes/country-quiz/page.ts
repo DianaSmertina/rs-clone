@@ -37,7 +37,7 @@ export class CountryQuiz extends Page {
             region: this.regionCode,
             colorAxis: { colors: ['#00853F'] },
             backgroundColor: '#0D98BA',
-            datalessRegionColor: '#E0FFFF',
+            // datalessRegionColor: '#E0FFFF',
             enableRegionInteractivity: false,
         });
 

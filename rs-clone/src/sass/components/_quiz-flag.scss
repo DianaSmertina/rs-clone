@@ -1,13 +1,21 @@
 .img-flag {
-    width: 30%;
-    height: 272px;
+    width: 190px;
+    height: 143px;
     border: 1px black solid;
     margin-top: 1%;
     background-repeat: no-repeat;
 }
-.right-world{
+.right-world {
     color: green;
+    margin-top: 1%;
 }
-.wrong-world{
+.wrong-world {
     color: red;
+    margin-top: 1%;
+}
+@media (max-width: $mobile-big-width) {
+    .img-flag {
+        width: 102px;
+        height: 77px;
+    }
 }
