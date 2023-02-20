@@ -11,7 +11,7 @@ class Footer extends Component {
         const developers = createOurElement(
             'div',
             'developers',
-            `<ul>
+            `<ul class = "developers-list">
               <li>
                 <a href="https://github.com/DianaSmertina">Diana Smertina</a>  
               </li>

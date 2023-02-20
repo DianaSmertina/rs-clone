@@ -17,11 +17,10 @@ body {
     font-size: 1.6rem;
     font-weight: normal;
     color: $color-dark1;
-    background-color: $color-light3;
+    background-color: $color-light4;
 }
 
 p,
-ul,
 h1,
 h2,
 h3 {
@@ -30,11 +29,11 @@ h3 {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 3.2rem;
 }
 
 h2 {
-font-size: 2.4rem;
+    font-size: 2.6rem;
 }
 
 h3 {
@@ -43,6 +42,7 @@ h3 {
 
 a {
     color: $color-dark1;
+    font-size: 1.8rem;
     text-decoration: none;
     cursor: pointer;
     transition: 0.3s;
@@ -78,6 +78,30 @@ a:hover {
     justify-content: space-between;
 }
 
-.main {
-    min-height: 80%;
+@media (max-width: $content-small-width) {
+    body {
+        font-size: 1.4rem;
+    }
+    a {
+        font-size: 1.6rem;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+}
+@media (max-width: $tablet-width) {
+    h1 {
+        font-size: 2.4rem;
+    }
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    h1 {
+        font-size: 2.2rem;
+    }
 }

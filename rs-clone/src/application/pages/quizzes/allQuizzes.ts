@@ -15,19 +15,21 @@ class Quizzes extends Page {
             `<a href="country-quiz">
                 <div class="menu__item flex-columns">
                     <h3>Угадай страну</h3>
-                    <div class="menu__quiz-cover img">
+                    <div class="menu__quiz-cover country-cover img">
                     </div>
                 </div>
             </a>
             <a href="population-quiz">
-                <div class="menu__item">
+                <div class="menu__item flex-columns">
                     <h3>Угадай численность населения</h3>
+                    <div class="menu__quiz-cover population-cover img"></div>
                 </div>
             </a>
             <a href="quizz-flag">
-                <div class="menu__item">
-                    <h3>Узнай страну по флагу</h3>
-                </div>
+            <div class="menu__item flex-columns">
+                <h3>Угадай страну по флагу</h3>
+                <div class="menu__quiz-cover flag-cover img"></div>
+            </div>
             </a>`
         );
 
