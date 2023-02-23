@@ -23,8 +23,11 @@ const NavLinks = [
 ];
 
 class Header extends Component {
+    static nowLanguage: string;
+
     constructor(tagname: string, className: string) {
         super(tagname, className);
+        Header.nowLanguage = 'ru';
     }
 
     private createRegBtns(type: string) {
@@ -105,19 +108,9 @@ class Header extends Component {
         navigation.append(this.renderNavLinksList());
 
         const switcherBlock = createOurElement('div', 'header__switcher-block flex-rows');
-        const headerLang = createOurElement(
-            'div',
-            'header__lang',
-            `<label class="header__radio-btn">
-              <input name="language" type="radio" value="en" />
-              <span>EN</span>
-            </label>
-            <span>&nbsp;/&nbsp;</span>
-            <label class="header__radio-btn">
-             <input name="language" type="radio" value="ru" checked />
-              <span>RU</span>
-            </label>`
-        );
+        const headerLang = createOurElement('div', 'header__lang');
+        headerLang.append(...this.createLocalithation());
+
         const switcherTheme = createOurElement(
             'div',
             'switcher-theme',
@@ -185,6 +178,31 @@ class Header extends Component {
             html?.classList.remove('antiscroll');
             overlay?.classList.remove('overlay__active');
         }
+    }
+
+    private createLocalithation() {
+        const firstLabel = createOurElement(
+            'label',
+            'header__radio-btn',
+            `<input name="language" type="radio" value="en" />
+        <span>EN</span>`
+        );
+        const span = createOurElement('span', '', '&nbsp;/&nbsp;');
+        const secondLabel = createOurElement(
+            'label',
+            'header__radio-btn',
+            `<input name="language" type="radio" value="ru" checked />
+            <span>RU</span>`
+        );
+
+        firstLabel.addEventListener('click', () => {
+            Header.nowLanguage = 'en';
+        });
+        secondLabel.addEventListener('click', () => {
+            Header.nowLanguage = 'ru';
+        });
+
+        return [firstLabel, span, secondLabel];
     }
 }
 

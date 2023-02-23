@@ -30,7 +30,8 @@ class MainPage extends Page {
         const mainTitleText = createOurElement(
             'h2',
             'main__title_text',
-            'увлекательные викторины для изучения стран мира'
+            'увлекательные викторины для изучения стран мира',
+            'mainTitleText'
         );
         const text = createOurElement(
             'div',
