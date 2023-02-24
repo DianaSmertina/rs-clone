@@ -45,7 +45,8 @@ class MainPage extends Page {
             </ul>
             <p class="main__text_p1">Также вы сможете отслеживать свой прогресс изучения зарегистрировавшись в личном кабинете.</p>
             <p class="main__text_p">Весь мир открыт для Вас!</p>
-           `
+           `,
+            'main__text'
         );
 
         promo.append(mainTitle, mainTitleText, text);

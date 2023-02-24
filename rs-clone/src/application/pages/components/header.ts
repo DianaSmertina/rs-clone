@@ -4,6 +4,7 @@ import { ModalWindow } from './modal-window';
 import route from '../../routing/router';
 import { playAudio, soundOn } from '../../components/sound/sound';
 import { Api } from '../../server/server-api';
+import { Translation } from '../../patterns/translation';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const defaultUserImg = require('../../../assets/images/user-default.png');
 
@@ -27,7 +28,6 @@ class Header extends Component {
 
     constructor(tagname: string, className: string) {
         super(tagname, className);
-        Header.nowLanguage = 'ru';
     }
 
     private createRegBtns(type: string) {
@@ -196,10 +196,12 @@ class Header extends Component {
         );
 
         firstLabel.addEventListener('click', () => {
-            Header.nowLanguage = 'en';
+            Translation.nowLanguage = 'en';
+            Translation.translate();
         });
         secondLabel.addEventListener('click', () => {
-            Header.nowLanguage = 'ru';
+            Translation.nowLanguage = 'ru';
+            Translation.translate();
         });
 
         return [firstLabel, span, secondLabel];
