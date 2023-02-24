@@ -28,12 +28,24 @@ export class QuizRegion extends Component {
         const form = createOurElement('div', 'form-wrap');
         const btn = createOurElement('button', 'btn btn__colored', this.btnText);
         const title = createOurElement('h1', '', 'Выберите регион');
+        const closeBlock = createOurElement(
+            'div',
+            'closeBtn',
+            `
+        <span class="closeBtn__line closeBtn__line_first"></span>
+        <span class="closeBtn__line closeBtn__line_second"></span>
+       `
+        );
 
         btn.addEventListener('click', () => {
             this.closeModal();
         });
 
-        form.append(title, this.createVariants(), btn);
+        closeBlock.addEventListener('click', () => {
+            window.location.pathname = './quizzes';
+        });
+
+        form.append(title, this.createVariants(), btn, closeBlock);
         return form;
     }
 

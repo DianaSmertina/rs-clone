@@ -90,7 +90,6 @@ export class CountryQuiz extends Page {
         drawChart(geoChartWrap, country, 'countries', {
             region: this.regionCode,
             // magnifyingGlass: { enable: true, zoomFactor: 1 },
-            colorAxis: { colors: ['#FFA500'] },
             backgroundColor: '#0D98BA',
             enableRegionInteractivity: false,
         });
