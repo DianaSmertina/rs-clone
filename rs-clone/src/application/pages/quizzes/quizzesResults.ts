@@ -3,8 +3,6 @@ import { createOurElement } from '../../patterns/createElement';
 import { Api } from '../../server/server-api';
 
 export class QuizResult extends Component {
-    private btnText: string;
-
     constructor(
         tagName: string,
         className: string,
@@ -13,7 +11,6 @@ export class QuizResult extends Component {
         private region: string
     ) {
         super(tagName, className);
-        this.btnText = 'Дальше';
     }
 
     async renderResult() {
@@ -33,13 +30,8 @@ export class QuizResult extends Component {
 
     private async createResults() {
         const form = createOurElement('div', 'form-wrap flex-columns');
-        const btn = createOurElement(
-            'button',
-            'btn btn__colored',
-            `
-        <a href="quizzes">${this.btnText}</a>`
-        );
-        const title = createOurElement('h1', '', 'Результат');
+        const btn = createOurElement('button', 'btn btn__colored', '', 'quizz-next');
+        const title = createOurElement('h1', '', '', 'Результат');
         const result = createOurElement('h1', '', `${this.result}%`);
         const sendRes = await this.sendResult();
 
@@ -47,11 +39,11 @@ export class QuizResult extends Component {
             this.container.remove();
         });
 
-        const isRecord = createOurElement('p', 'form-wrap__is-record', '');
+        let isRecord = createOurElement('p', 'form-wrap__is-record', '');
         if (sendRes === 'new record') {
-            isRecord.innerText = 'Новый рекорд!';
+            isRecord = createOurElement('p', 'form-wrap__is-record', '', 'form-wrap__is-record');
         } else if (sendRes === 'please register or login to save the record') {
-            isRecord.innerText = 'Пожалуйста, зарегистрируйся, чтобы сохранять результаты';
+            isRecord = createOurElement('p', 'form-wrap__is-record', '', 'form-wrap__is-record-register');
         }
 
         form.append(title, result, isRecord, btn, ...this.createShare());

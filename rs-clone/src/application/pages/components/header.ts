@@ -31,7 +31,7 @@ class Header extends Component {
     }
 
     private createRegBtns(type: string) {
-        const btn = createOurElement('button', 'btn btn__colored btn__autho', type);
+        const btn = createOurElement('button', 'btn btn__colored btn__autho', type, type);
         btn.addEventListener('click', () => {
             const modal = new ModalWindow('div', 'none', type);
             btn.after(modal.render());
@@ -52,7 +52,7 @@ class Header extends Component {
             img.setAttribute('src', defaultUserImg);
         }
         imgWrap.append(img);
-        const logOutBtn = createOurElement('button', 'btn btn__colored', 'Выйти');
+        const logOutBtn = createOurElement('button', 'btn btn__colored', 'Выйти', 'Log out');
 
         logOutBtn.addEventListener('click', () => {
             btnsWrap.innerHTML = '';
@@ -83,7 +83,7 @@ class Header extends Component {
         const navLinksList = createOurElement('ul', 'nav__list', '');
         NavLinks.forEach((item) => {
             const li = createOurElement('li', 'nav__item');
-            const link = createOurElement('a', 'nav__item_link', '');
+            const link = createOurElement('a', 'nav__item_link', '', item.text);
             (link as HTMLLinkElement).href = `/${item.id}`;
             link.innerHTML = item.text;
             link.addEventListener('click', (e) => {

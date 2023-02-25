@@ -46,7 +46,7 @@ export class PopulationQuestion {
     }
 
     private createCheckBtn(answerBtns: HTMLElement[], answers: Icountry[]) {
-        const checkBtn = createOurElement('button', 'btn btn__bordered btn__check-population', 'Проверить');
+        const checkBtn = createOurElement('button', 'btn btn__bordered btn__check-population', '', 'Проверить');
         checkBtn.setAttribute('disabled', 'disabled');
 
         checkBtn.addEventListener('click', async () => {

@@ -27,7 +27,64 @@ export const i18Obj = {
         </ul>
         <p class="main__text_p1">You will also be able to track your progress by registering in your personal account.</p>
         <p class="main__text_p">The whole world is open to you!</p>
-       `
+       `,
+       'Регистрация': 'Sign in',
+       'Войти': 'Log in',
+       'Log out': 'Log out',
+       'Главная': 'Main',
+       'Викторины': 'Quizzes',
+       'Достижения': 'Achievements',
+       'choose quizz': 'Choose quizz',
+       'quizzes variants': `<a href="country-quiz">
+       <div class="menu__item flex-columns">
+           <h3>Guess the country</h3>
+           <div class="menu__quiz-cover country-cover img">
+           </div>
+       </div>
+   </a>
+   <a href="population-quiz">
+       <div class="menu__item flex-columns">
+           <h3>Guess the population</h3>
+           <div class="menu__quiz-cover population-cover img"></div>
+       </div>
+   </a>
+   <a href="quizz-flag">
+   <div class="menu__item flex-columns">
+       <h3>Guess the country by the flag</h3>
+       <div class="menu__quiz-cover flag-cover img"></div>
+   </div>
+   </a>`,
+   'registerGreetings': 'We are glad to welcome a new connoisseur of countries!',
+   'registerText': 'Come up with a username and password, the length of which should be 6 or more characters',
+   'signInGreetings': 'Glad to see you again!',
+   'signInText': 'Please enter your username and password from your account',
+   'Пароль': 'Password',
+   'Логин': 'Login',
+   'Дальше': 'Next',
+   'Выберите регион': 'Choose region',
+   'regionInputs': `<div><input type="radio" name="place" id="choice1" checked="checked" value="world"> 
+   <label for="choice1">All world</label></div>
+   <div><input type="radio" name="place" id="choice2" value="africa">
+   <label for="choice2">Africa</label></div>
+   <div><input type="radio" name="place" id="choice3" value="asia">
+   <label for="choice3">Asia</label></div>
+   <div><input type="radio" name="place" id="choice4" value="america">
+   <label for="choice4">America</label></div>
+   <div><input type="radio" name="place" id="choice5" value="europe">
+   <label for="choice5">Europe</label></div>`,
+   'Результат': 'Result',
+   'quizz-next': '<a href="quizzes">Next</a>',
+   'form-wrap__is-record': 'New Record!',
+   'form-wrap__is-record-register': 'Please register to save the results',
+   'main__title_quiz-flag': 'Guess the country by the flag',
+   'Правильно!': 'Right!',
+   'Неправильно!': 'Wrong!',
+   'Проверить': 'Check',
+   'main__title_quiz-population': 'Guess the population',
+   'main__rules': `In this quiz, you need to arrange the countries highlighted on the map in ascending order of population.
+   Hover to find out information about the country and click to add to the field for answers.
+   Until you click "Check", you can change the final order by clicking on the answers.`,
+   'main__title-quizz-country': 'Guess the country',
     },
     'ru': {
         'mainTitleText': 'увлекательные викторины для изучения стран мира',
@@ -40,6 +97,63 @@ export const i18Obj = {
         </ul>
         <p class="main__text_p1">Также вы сможете отслеживать свой прогресс изучения зарегистрировавшись в личном кабинете.</p>
         <p class="main__text_p">Весь мир открыт для Вас!</p>
-       `
+       `,
+       'Регистрация': 'Регистрация',
+       'Войти': 'Войти',
+       'Log out': 'Выйти',
+       'Главная': 'Главная',
+       'Викторины': 'Викторины',
+       'Достижения': 'Достижения',
+       'choose quizz': 'Выберите викторину',
+       'quizzes variants': `<a href="country-quiz">
+       <div class="menu__item flex-columns">
+           <h3>Угадай страну</h3>
+           <div class="menu__quiz-cover country-cover img">
+           </div>
+       </div>
+   </a>
+   <a href="population-quiz">
+       <div class="menu__item flex-columns">
+           <h3>Угадай численность населения</h3>
+           <div class="menu__quiz-cover population-cover img"></div>
+       </div>
+   </a>
+   <a href="quizz-flag">
+   <div class="menu__item flex-columns">
+       <h3>Угадай страну по флагу</h3>
+       <div class="menu__quiz-cover flag-cover img"></div>
+   </div>
+   </a>`,
+   'registerGreetings': 'Рады приветсвовать нового знатока стран!',
+   'registerText': 'Придумай логин и пароль, длина которого должна быть 6 или больше символов',
+   'signInGreetings': 'Рады видеть тебя снова!',
+   'signInText': 'Пожалуйста, введи логин и пароль от своей учетной записи',
+   'Пароль': 'Пароль',
+   'Логин': 'Логин',
+   'Дальше': 'Дальше',
+   'Выберите регион': 'Выберите регион',
+   'regionInputs': `<div><input type="radio" name="place" id="choice1" checked="checked" value="world"> 
+   <label for="choice1">Весь мир</label></div>
+   <div><input type="radio" name="place" id="choice2" value="africa">
+   <label for="choice2">Африка</label></div>
+   <div><input type="radio" name="place" id="choice3" value="asia">
+   <label for="choice3">Азия</label></div>
+   <div><input type="radio" name="place" id="choice4" value="america">
+   <label for="choice4">Америка</label></div>
+   <div><input type="radio" name="place" id="choice5" value="europe">
+   <label for="choice5">Европа</label></div>`,
+   'Результат': 'Результат',
+   'quizz-next': '<a href="quizzes">Дальше</a>',
+   'form-wrap__is-record': 'Новый рекорд!',
+   'form-wrap__is-record-register': 'Пожалуйста, зарегистрируйся, чтобы сохранять результаты',
+   'main__title_quiz-flag': 'Угадай страну по флагу',
+   'Правильно!': 'Правильно!',
+   'Неправильно!': 'Неправильно!',
+   'Проверить': 'Проверить',
+   'main__title_quiz-population': 'Угадай численность населения',
+   'main__rules': `В этом квизе тебе нужно расположить выделенные на карте страны в порядке возрастания численности населения.
+   Наведи чтобы узнать информацию о стране и кликни, чтобы добавить в поле для ответов.
+   Пока ты не нажал "Проверить", можешь изменить окончательный порядок, кликнув на ответы.`,
+   'main__title-quizz-country': 'Угадай страну',
     },
 };

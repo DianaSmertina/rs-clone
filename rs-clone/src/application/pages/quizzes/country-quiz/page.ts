@@ -57,11 +57,11 @@ export class CountryQuiz extends Page {
 
     render() {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title', 'Угадай страну');
+        const mainTitle = createOurElement('h1', 'main__title', '', 'main__title-quizz-country');
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
-        const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
+        const nextBtn = createOurElement('button', 'btn btn__colored btn__next', '', 'Дальше');
         nextBtn.id = 'nextBtn';
 
         this.renderPlayField(geoChartWrap, answersBlock, nextBtn);

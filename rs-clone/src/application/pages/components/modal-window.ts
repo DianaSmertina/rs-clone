@@ -11,14 +11,14 @@ export class ModalWindow extends Component {
 
     private createGreeting() {
         const greetWrap = createOurElement('div', 'greet-wrap');
-        const greeting = createOurElement('h3', 'form-wrap__greetings');
-        const text = createOurElement('p', 'form-wrap__text');
+        let greeting = createOurElement('h3', 'form-wrap__greetings');
+        let text = createOurElement('p', 'form-wrap__text');
         if (this.btnText === 'Регистрация') {
-            greeting.innerText = 'Рады приветсвовать нового знатока стран!';
-            text.innerText = 'Придумай логин и пароль, длина которого должна быть 6 или больше символов';
+            greeting = createOurElement('h3', 'form-wrap__greetings', '', 'registerGreetings');
+            text = createOurElement('p', 'form-wrap__text', '', 'registerText');
         } else if (this.btnText === 'Войти') {
-            greeting.innerText = 'Рады видеть тебя снова!';
-            text.innerText = 'Пожалуйста, введи логин и пароль от своей учетной записи';
+            greeting = createOurElement('h3', 'form-wrap__greetings', '', 'signInGreetings');
+            text = createOurElement('p', 'form-wrap__text', '', 'signInText');
         }
         greetWrap.append(greeting, text);
         return greetWrap;
@@ -26,7 +26,7 @@ export class ModalWindow extends Component {
 
     private createInput(text: string) {
         const inpurWrap = createOurElement('div', 'input-wrap');
-        const label = createOurElement('label', 'form-wrap__label', text);
+        const label = createOurElement('label', 'form-wrap__label', '', text);
         const input = createOurElement('input', 'form-wrap__input');
         input.setAttribute('required', 'true');
         if (text === 'Пароль') {

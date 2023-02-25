@@ -26,8 +26,8 @@ export class QuizRegion extends Component {
 
     private createRegions() {
         const form = createOurElement('div', 'form-wrap');
-        const btn = createOurElement('button', 'btn btn__colored', this.btnText);
-        const title = createOurElement('h1', '', 'Выберите регион');
+        const btn = createOurElement('button', 'btn btn__colored', '', this.btnText);
+        const title = createOurElement('h1', '', '', 'Выберите регион');
 
         btn.addEventListener('click', () => {
             this.closeModal();
@@ -38,20 +38,7 @@ export class QuizRegion extends Component {
     }
 
     private createVariants() {
-        const wrapp = createOurElement(
-            'form',
-            'form__wrapp',
-            `<div><input type="radio" name="place" id="choice1" checked="checked" value="world"> 
-            <label for="choice1">Весь мир</label></div>
-            <div><input type="radio" name="place" id="choice2" value="africa">
-            <label for="choice2">Африка</label></div>
-            <div><input type="radio" name="place" id="choice3" value="asia">
-            <label for="choice3">Азия</label></div>
-            <div><input type="radio" name="place" id="choice4" value="america">
-            <label for="choice4">Америка</label></div>
-            <div><input type="radio" name="place" id="choice5" value="europe">
-            <label for="choice5">Европа</label></div>`
-        );
+        const wrapp = createOurElement('form', 'form__wrapp', '', 'regionInputs');
         this.addListenersToForm(wrapp);
 
         return wrapp;

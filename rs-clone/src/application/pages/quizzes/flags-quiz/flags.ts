@@ -49,11 +49,11 @@ export class QuizFlag extends Page {
 
     renderMain(region: string) {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title main__title_quiz', 'Угадай страну по флагу');
+        const mainTitle = createOurElement('h1', 'main__title main__title_quiz', '', 'main__title_quiz-flag');
         const titleAndRound = createOurElement('div', 'flex-rows title-and-round');
-        const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
-        const rightWorld = createOurElement('h2', 'right-world', 'Правильно!');
-        const wrongWorld = createOurElement('h2', 'wrong-world', 'Неправильно!');
+        const nextBtn = createOurElement('button', 'btn btn__colored btn__next', '', 'Дальше');
+        const rightWorld = createOurElement('h2', 'right-world', '', 'Правильно!');
+        const wrongWorld = createOurElement('h2', 'wrong-world', '', 'Неправильно!');
         const round = createOurElement('h1', 'quizz-round');
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';

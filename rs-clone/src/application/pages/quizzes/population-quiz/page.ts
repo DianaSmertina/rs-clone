@@ -66,17 +66,11 @@ export class PopulationQuizPage extends Page {
         PopulationQuestion.roundNum = 1;
         PopulationQuestion.rightAnswer = 0;
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title main__title_quiz', 'Угадай численность населения');
+        const mainTitle = createOurElement('h1', 'main__title main__title_quiz', '', 'main__title_quiz-population');
         const titleAndRound = createOurElement('div', 'flex-rows title-and-round');
         const round = createOurElement('h1', 'quizz-round', '1/10');
         titleAndRound.append(mainTitle, round);
-        const rules = createOurElement(
-            'p',
-            'main__rules',
-            `В этом квизе тебе нужно расположить выделенные на карте страны в порядке возрастания численности населения.
-            Наведи чтобы узнать информацию о стране и кликни, чтобы добавить в поле для ответов.
-            Пока ты не нажал "Проверить", можешь изменить окончательный порядок, кликнув на ответы.`
-        );
+        const rules = createOurElement('p', 'main__rules', ``, 'main__rules');
         const playSpace = new PopulationQuestion(this.generateData(), this.code).render();
         mainWrapper.append(titleAndRound, rules, playSpace, this.createNextBtn(rules));
         this.container.append(mainWrapper);
