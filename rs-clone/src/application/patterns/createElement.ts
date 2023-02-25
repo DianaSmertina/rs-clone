@@ -2,7 +2,9 @@ import { i18Obj } from './translation';
 import { Translation } from './translation';
 
 export function createOurElement(type: string, classText: string, text = '', i18 = '') {
-    if (Translation.nowLanguage === undefined) new Translation();
+    if (Translation.nowLanguage === undefined) {
+        new Translation();
+    }
 
     const elem = document.createElement(`${type}`) as HTMLLinkElement & { dataI18n: string };
     elem.className = classText;
