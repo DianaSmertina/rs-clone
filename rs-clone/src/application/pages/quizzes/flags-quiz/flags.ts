@@ -149,7 +149,9 @@ export class QuizFlag extends Page {
             arr.splice(arr.indexOf(country), 1);
         }
 
-        return [country.countryCodeLetters, country.countryRu];
+        const countryName = localStorage.getItem('nowLanguage') === 'ru' ? country.countryRu : country.countryEn;
+
+        return [country.countryCodeLetters, countryName];
     }
 
     private countResult() {
