@@ -108,7 +108,6 @@
 }
 
 .burger__line {
-    // display: none;
     width: 100%;
     height: 3px;
     border-radius: 3px;
@@ -229,7 +228,7 @@
         left: 0;
         height: 100%;
         width: 100%;
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(28, 28, 28, 0.8);
         z-index: 1;
     }
     .overlay__active {

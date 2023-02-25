@@ -15,6 +15,11 @@ export class QuizRegion extends Component {
     render() {
         this.container.append(this.createRegions());
         this.container.className = 'modal';
+        this.container.addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                window.location.pathname = './quizzes';
+            }
+        });
 
         return this.container;
     }
@@ -22,6 +27,17 @@ export class QuizRegion extends Component {
     private closeModal() {
         this.container.remove();
         this.ourClass.renderMain(this.value);
+    }
+
+    private createCloseBtn() {
+        const closeBlock = createOurElement('div', 'closeBtn', '');
+        const firstLine = createOurElement('span', 'closeBtn__line closeBtn__line_first', '');
+        const secondLine = createOurElement('span', 'closeBtn__line closeBtn__line_second', '');
+        closeBlock.append(firstLine, secondLine);
+        closeBlock.addEventListener('click', () => {
+            window.location.pathname = './quizzes';
+        });
+        return closeBlock;
     }
 
     private createRegions() {
@@ -33,7 +49,7 @@ export class QuizRegion extends Component {
             this.closeModal();
         });
 
-        form.append(title, this.createVariants(), btn);
+        form.append(title, this.createVariants(), btn, this.createCloseBtn());
         return form;
     }
 
