@@ -3,8 +3,6 @@ import { createOurElement } from '../../patterns/createElement';
 import { Api } from '../../server/server-api';
 
 export class QuizResult extends Component {
-    private btnText: string;
-
     constructor(
         tagName: string,
         className: string,
@@ -13,7 +11,6 @@ export class QuizResult extends Component {
         private region: string
     ) {
         super(tagName, className);
-        this.btnText = 'Дальше';
     }
 
     async renderResult() {
@@ -31,19 +28,29 @@ export class QuizResult extends Component {
         this.container.remove();
     }
 
+    private createCloseBtn() {
+        const closeBlock = createOurElement('div', 'closeBtn', '');
+        const firstLine = createOurElement('span', 'closeBtn__line closeBtn__line_first', '');
+        const secondLine = createOurElement('span', 'closeBtn__line closeBtn__line_second', '');
+        closeBlock.append(firstLine, secondLine);
+        closeBlock.addEventListener('click', () => {
+            this.container.remove();
+        });
+        return closeBlock;
+    }
+
     private async createResults() {
         const form = createOurElement('div', 'form-wrap flex-columns');
-        const btn = createOurElement(
-            'button',
-            'btn btn__colored',
-            `
-        <a href="quizzes">${this.btnText}</a>`
-        );
+        const link = createOurElement('a', '', '');
+        (link as HTMLLinkElement).href = './quizzes';
+        const btn = createOurElement('button', 'btn btn__colored', 'Дальше');
+        link.append(btn);
+
         const title = createOurElement('h1', '', 'Результат');
         const result = createOurElement('h1', '', `${this.result}%`);
         const sendRes = await this.sendResult();
 
-        btn.addEventListener('click', () => {
+        link.addEventListener('click', () => {
             this.container.remove();
         });
 
@@ -54,7 +61,7 @@ export class QuizResult extends Component {
             isRecord.innerText = 'Пожалуйста, зарегистрируйся, чтобы сохранять результаты';
         }
 
-        form.append(title, result, isRecord, btn, ...this.createShare());
+        form.append(title, result, isRecord, link, ...this.createShare(), this.createCloseBtn());
         return form;
     }
 
@@ -80,7 +87,7 @@ export class QuizResult extends Component {
     private findName() {
         switch (this.quizName) {
             case 'flags':
-                return '"Узнай страну по флагу"';
+                return '"Угадай страну по флагу"';
             case 'country':
                 return '"Угадай страну"';
             case 'population':

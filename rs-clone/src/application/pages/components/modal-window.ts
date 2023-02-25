@@ -40,6 +40,17 @@ export class ModalWindow extends Component {
         return inpurWrap;
     }
 
+    private createCloseBtn() {
+        const closeBlock = createOurElement('div', 'closeBtn', '');
+        const firstLine = createOurElement('span', 'closeBtn__line closeBtn__line_first', '');
+        const secondLine = createOurElement('span', 'closeBtn__line closeBtn__line_second', '');
+        closeBlock.append(firstLine, secondLine);
+        closeBlock.addEventListener('click', () => {
+            this.container.remove();
+        });
+        return closeBlock;
+    }
+
     private async createSubmitHandler(e: Event) {
         e.preventDefault();
 
@@ -80,7 +91,13 @@ export class ModalWindow extends Component {
         form.addEventListener('submit', async (e) => {
             return await this.createSubmitHandler(e);
         });
-        form.append(this.createGreeting(), this.createInput('Логин'), this.createInput('Пароль'), btn);
+        form.append(
+            this.createGreeting(),
+            this.createInput('Логин'),
+            this.createInput('Пароль'),
+            btn,
+            this.createCloseBtn()
+        );
         return form;
     }
 
