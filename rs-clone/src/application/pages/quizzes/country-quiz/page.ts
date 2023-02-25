@@ -166,7 +166,7 @@ export class CountryQuiz extends Page {
 
         arr.forEach((item) => {
             if (item.countryCodeLetters === rightCountry) {
-                setAnswers.add(item.countryRu);
+                setAnswers.add(localStorage.getItem('nowLanguage') === 'ru' ? item.countryRu : item.countryEn);
             }
         });
 
@@ -175,7 +175,9 @@ export class CountryQuiz extends Page {
             if (arr[index].countryCodeLetters === rightCountry) {
                 continue;
             } else {
-                setAnswers.add(arr[index].countryRu);
+                setAnswers.add(
+                    localStorage.getItem('nowLanguage') === 'ru' ? arr[index].countryRu : arr[index].countryEn
+                );
             }
         }
 
@@ -195,7 +197,10 @@ export class CountryQuiz extends Page {
         if (!eTarget || !rightAnswer) return;
 
         const target = eTarget as HTMLElement;
-        const rightAnswerName = arr.find((item) => item.countryCodeLetters === rightAnswer)?.countryRu;
+        const rightAnswerName =
+            localStorage.getItem('nowLanguage') === 'ru'
+                ? arr.find((item) => item.countryCodeLetters === rightAnswer)?.countryRu
+                : arr.find((item) => item.countryCodeLetters === rightAnswer)?.countryEn;
         if (!rightAnswerName) return;
 
         const allAnswers = document.querySelectorAll('.answer');
