@@ -53,7 +53,7 @@ export class CountryQuiz extends Page {
         this.renderPlayField(geoChartWrap, answersBlock, nextBtn, roundBlock);
 
         nextBtn.addEventListener('click', async () => {
-            if (this.round != 15) {
+            if (this.round != 10) {
                 (document.querySelector('.answers') as HTMLElement).innerHTML = '';
                 this.renderPlayField(geoChartWrap, answersBlock, nextBtn, roundBlock);
             } else {
@@ -82,7 +82,6 @@ export class CountryQuiz extends Page {
     ) {
         this.round++;
         this.randomCountry = this.getRandomCountry(this.regionDataArr);
-        console.log(this.randomCountry, this.usedCountryInd);
         if (!this.randomCountry) return;
 
         const country = [['Country'], [this.randomCountry]];
@@ -106,7 +105,7 @@ export class CountryQuiz extends Page {
         });
 
         nextBtn.setAttribute('disabled', 'disabled');
-        roundBlock.textContent = this.round + '/15';
+        roundBlock.textContent = this.round + '/10';
     }
 
     getData(regionCode: string) {
@@ -217,13 +216,13 @@ export class CountryQuiz extends Page {
         const nextBtn = document.getElementById('nextBtn');
         if (!nextBtn) return;
         nextBtn.removeAttribute('disabled');
-        if (this.round === 15) {
+        if (this.round === 10) {
             nextBtn.textContent = 'Посмотреть результат';
         }
     }
 
     private countResult() {
-        return Number(((this.rightAnswers / 15) * 100).toFixed(2));
+        return Math.round((this.rightAnswers / 10) * 100);
     }
 }
 

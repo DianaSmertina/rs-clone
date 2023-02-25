@@ -15,6 +15,11 @@ export class QuizRegion extends Component {
     render() {
         this.container.append(this.createRegions());
         this.container.className = 'modal';
+        this.container.addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                window.location.pathname = './quizzes';
+            }
+        });
 
         return this.container;
     }
@@ -24,28 +29,27 @@ export class QuizRegion extends Component {
         this.ourClass.renderMain(this.value);
     }
 
+    private createCloseBtn() {
+        const closeBlock = createOurElement('div', 'closeBtn', '');
+        const firstLine = createOurElement('span', 'closeBtn__line closeBtn__line_first', '');
+        const secondLine = createOurElement('span', 'closeBtn__line closeBtn__line_second', '');
+        closeBlock.append(firstLine, secondLine);
+        closeBlock.addEventListener('click', () => {
+            window.location.pathname = './quizzes';
+        });
+        return closeBlock;
+    }
+
     private createRegions() {
         const form = createOurElement('div', 'form-wrap');
         const btn = createOurElement('button', 'btn btn__colored', this.btnText);
         const title = createOurElement('h1', '', 'Выберите регион');
-        const closeBlock = createOurElement(
-            'div',
-            'closeBtn',
-            `
-        <span class="closeBtn__line closeBtn__line_first"></span>
-        <span class="closeBtn__line closeBtn__line_second"></span>
-       `
-        );
 
         btn.addEventListener('click', () => {
             this.closeModal();
         });
 
-        closeBlock.addEventListener('click', () => {
-            window.location.pathname = './quizzes';
-        });
-
-        form.append(title, this.createVariants(), btn, closeBlock);
+        form.append(title, this.createVariants(), btn, this.createCloseBtn());
         return form;
     }
 

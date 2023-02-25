@@ -46,11 +46,8 @@
 .title-and-round {
     gap: 70px;
 }
-.main__title_quiz {
-    // padding-left: 205px;
-}
+
 .quizz-round {
-    // padding-left: 135px;
     padding-bottom: 25px;
 }
 .main__rules {
@@ -140,8 +137,8 @@
     width: 30px;
     height: 23px;
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 25px;
+    right: 25px;
     cursor: pointer;
     transition: 0.3s all linear;
 }
