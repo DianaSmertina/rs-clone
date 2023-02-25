@@ -26,6 +26,10 @@ const NavLinks = [
 class Header extends Component {
     static nowLanguage: string;
 
+    static firstLabel: HTMLElement;
+
+    static secondLabel: HTMLElement;
+
     constructor(tagname: string, className: string) {
         super(tagname, className);
     }
@@ -181,30 +185,30 @@ class Header extends Component {
     }
 
     private createLocalithation() {
-        const firstLabel = createOurElement(
+        Header.firstLabel = createOurElement(
             'label',
             'header__radio-btn',
             `<input name="language" type="radio" value="en" />
         <span>EN</span>`
         );
         const span = createOurElement('span', '', '&nbsp;/&nbsp;');
-        const secondLabel = createOurElement(
+        Header.secondLabel = createOurElement(
             'label',
             'header__radio-btn',
             `<input name="language" type="radio" value="ru" checked />
             <span>RU</span>`
         );
 
-        firstLabel.addEventListener('click', () => {
+        Header.firstLabel.addEventListener('click', () => {
             localStorage.setItem('nowLanguage', 'en');
             translate();
         });
-        secondLabel.addEventListener('click', () => {
+        Header.secondLabel.addEventListener('click', () => {
             localStorage.setItem('nowLanguage', 'ru');
             translate();
         });
 
-        return [firstLabel, span, secondLabel];
+        return [Header.firstLabel, span, Header.secondLabel];
     }
 }
 

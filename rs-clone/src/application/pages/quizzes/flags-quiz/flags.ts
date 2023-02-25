@@ -7,6 +7,7 @@ import { codes } from '../../../components/countries/regionsCodes';
 import { QuizRegion } from '../quizzesRegions';
 import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
 import { QuizName } from '../../../server/server-api';
+import Header from '../../components/header';
 
 type countryWithFlag = typeof world & { flag: string };
 
@@ -107,9 +108,14 @@ export class QuizFlag extends Page {
         ];
 
         drawChart(geoChartWrap, countriesForAnswer, 'flag', { region: this.code, backgroundColor: '#81d4fa' });
+        this.addLabelsListeners(geoChartWrap, countriesForAnswer, nextBtn, wrongWorld, rightWorld);
 
         flag.style.backgroundImage = world.find((el) => el.countryCodeLetters === answer[0])?.flag || '';
 
+        this.addMapListener(nextBtn, wrongWorld, rightWorld);
+    }
+
+    private addMapListener(nextBtn: HTMLElement, wrongWorld: HTMLElement, rightWorld: HTMLElement) {
         setTimeout(() => {
             google.visualization.events.addListener(QuizFlag.ourChart, 'select', () => {
                 const selected = QuizFlag.ourChart.getSelection()[0];
@@ -188,5 +194,41 @@ export class QuizFlag extends Page {
                 this.code = codes.world;
                 break;
         }
+    }
+
+    private addLabelsListeners(
+        wrap: HTMLElement,
+        arr: string[][],
+        nextBtn: HTMLElement,
+        wrongWorld: HTMLElement,
+        rightWorld: HTMLElement
+    ) {
+        Header.firstLabel.addEventListener('click', () => {
+            this.redrawMap(wrap, arr, nextBtn, wrongWorld, rightWorld);
+        });
+        Header.secondLabel.addEventListener('click', () => {
+            this.redrawMap(wrap, arr, nextBtn, wrongWorld, rightWorld);
+        });
+    }
+
+    private redrawMap(
+        wrap: HTMLElement,
+        arr: string[][],
+        nextBtn: HTMLElement,
+        wrongWorld: HTMLElement,
+        rightWorld: HTMLElement
+    ) {
+        const newArr = [arr[0]].concat(
+            arr.slice(1).map(function (country) {
+                const name =
+                    localStorage.getItem('nowLanguage') === 'en'
+                        ? world.find((el) => el.countryCodeLetters === country[0])?.countryEn
+                        : world.find((el) => el.countryCodeLetters === country[0])?.countryRu;
+                return [country[0], name || ''];
+            })
+        );
+
+        drawChart(wrap, newArr, 'flag', { region: this.code, backgroundColor: '#81d4fa' });
+        this.addMapListener(nextBtn, wrongWorld, rightWorld);
     }
 }
