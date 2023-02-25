@@ -11,7 +11,7 @@ export class PopulationQuizPage extends Page {
     }
 
     private createNextBtn(rules: HTMLElement) {
-        const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
+        const nextBtn = createOurElement('button', 'btn btn__colored btn__next', '', 'Дальше');
         nextBtn.setAttribute('disabled', 'disabled');
         nextBtn.addEventListener('click', () => {
             const previousQuestion = document.querySelector('.question');
