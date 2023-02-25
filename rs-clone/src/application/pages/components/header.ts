@@ -4,7 +4,7 @@ import { ModalWindow } from './modal-window';
 import route from '../../routing/router';
 import { playAudio, soundOn } from '../../components/sound/sound';
 import { Api } from '../../server/server-api';
-import { Translation } from '../../patterns/translation';
+import { translate } from '../../patterns/translation';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const defaultUserImg = require('../../../assets/images/user-default.png');
 
@@ -196,12 +196,12 @@ class Header extends Component {
         );
 
         firstLabel.addEventListener('click', () => {
-            Translation.nowLanguage = 'en';
-            Translation.translate();
+            localStorage.setItem('nowLanguage', 'en');
+            translate();
         });
         secondLabel.addEventListener('click', () => {
-            Translation.nowLanguage = 'ru';
-            Translation.translate();
+            localStorage.setItem('nowLanguage', 'ru');
+            translate();
         });
 
         return [firstLabel, span, secondLabel];

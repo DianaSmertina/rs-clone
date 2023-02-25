@@ -1,19 +1,12 @@
 /* eslint-disable prettier/prettier */
-export class Translation {
-    static nowLanguage: string;
+export function translate() {
+    const elements = document.querySelectorAll('[dataI18n]');
 
-    constructor() {
-        Translation.nowLanguage = 'ru';
-    }
-
-    static translate() {
-        const elements = document.querySelectorAll('[dataI18n]');
-
-        elements.forEach((el) => {
-            el.innerHTML = i18Obj[Translation.nowLanguage as keyof typeof i18Obj][el.getAttribute('dataI18n') as keyof typeof i18Obj.en];
-        })
-    }
+    elements.forEach((el) => {
+        el.innerHTML = i18Obj[localStorage.getItem('nowLanguage') as keyof typeof i18Obj][el.getAttribute('dataI18n') as keyof typeof i18Obj.en];
+    })
 }
+
 
 export const i18Obj = {
     'en': {

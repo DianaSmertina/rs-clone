@@ -7,7 +7,7 @@ import { PopulationQuizPage } from '../pages/quizzes/population-quiz/page';
 import QuizTemplate from '../patterns/quizTemplate';
 import { QuizFlag } from '../pages/quizzes/flags-quiz/flags';
 import CountryQuiz from '../pages/quizzes/country-quiz/page';
-import { Translation } from '../patterns/translation';
+import { translate } from '../patterns/translation';
 
 const route = (event?: Event) => {
     event = event || window.event;
@@ -40,7 +40,7 @@ export const handleLocation = async () => {
     if (mainBlock) mainBlock.remove();
     const header = document.querySelector('.header');
     header?.after(await route);
-    Translation.translate();
+    translate();
 };
 
 export default route;
