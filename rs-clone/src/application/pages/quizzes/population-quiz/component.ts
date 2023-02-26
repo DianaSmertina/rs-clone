@@ -15,7 +15,11 @@ export class PopulationQuestion {
     private createGeoChart() {
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
-        const countries = this.mapData.map((el: Icountry) => [el.countryCodeLetters, el.countryRu, el.area]);
+        const countries = this.mapData.map((el: Icountry) => [
+            el.countryCodeLetters,
+            localStorage.getItem('nowLanguage') === 'ru' ? el.countryRu : el.countryEn,
+            el.area,
+        ]);
         countries.unshift(['Country', 'Назание', 'Площадь']);
         drawChart(geoChartWrap, countries, 'population', {
             region: this.code,
@@ -46,13 +50,13 @@ export class PopulationQuestion {
     }
 
     private createCheckBtn(answerBtns: HTMLElement[], answers: Icountry[]) {
-        const checkBtn = createOurElement('button', 'btn btn__bordered btn__check-population', 'Проверить');
+        const checkBtn = createOurElement('button', 'btn btn__bordered btn__check-population', '', 'Проверить');
         checkBtn.setAttribute('disabled', 'disabled');
 
         checkBtn.addEventListener('click', async () => {
             const rightAnsw = answerBtns.map((btn, i) => {
                 let isRight = 0;
-                if (btn.innerText === answers[i].countryRu) {
+                if (btn.innerText === answers[i].countryRu || btn.innerText === answers[i].countryEn) {
                     btn.classList.add('btn__right');
                     PopulationQuestion.rightAnswer += 1;
                     isRight = 1;
@@ -60,7 +64,10 @@ export class PopulationQuestion {
                     btn.classList.add('btn__wrong');
                 }
                 const rightPopulation = (
-                    Number(answers.find((el) => el.countryRu === btn.innerText)?.population) / 1000000
+                    Number(
+                        answers.find((el) => el.countryRu === btn.innerText || el.countryEn === btn.innerText)
+                            ?.population
+                    ) / 1000000
                 ).toFixed(2);
 
                 btn.innerText += ` ${rightPopulation} млн`;

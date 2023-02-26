@@ -39,12 +39,12 @@ export class CountryQuiz extends Page {
     renderMain(region: string) {
         this.getData(region);
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title main__title_quiz', 'Угадай страну');
+        const mainTitle = createOurElement('h1', 'main__title main__title_quiz', '', 'main__title_quiz-population');
         const titleAndRound = createOurElement('div', 'flex-rows title-and-round');
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
-        const nextBtn = createOurElement('button', 'btn btn__colored btn__next', 'Дальше');
+        const nextBtn = createOurElement('button', 'btn btn__colored btn__next', '', 'Дальше');
         nextBtn.id = 'nextBtn';
         const roundBlock = createOurElement('h1', 'quizz-round');
 
@@ -166,7 +166,7 @@ export class CountryQuiz extends Page {
 
         arr.forEach((item) => {
             if (item.countryCodeLetters === rightCountry) {
-                setAnswers.add(item.countryRu);
+                setAnswers.add(localStorage.getItem('nowLanguage') === 'ru' ? item.countryRu : item.countryEn);
             }
         });
 
@@ -175,7 +175,9 @@ export class CountryQuiz extends Page {
             if (arr[index].countryCodeLetters === rightCountry) {
                 continue;
             } else {
-                setAnswers.add(arr[index].countryRu);
+                setAnswers.add(
+                    localStorage.getItem('nowLanguage') === 'ru' ? arr[index].countryRu : arr[index].countryEn
+                );
             }
         }
 
@@ -195,7 +197,10 @@ export class CountryQuiz extends Page {
         if (!eTarget || !rightAnswer) return;
 
         const target = eTarget as HTMLElement;
-        const rightAnswerName = arr.find((item) => item.countryCodeLetters === rightAnswer)?.countryRu;
+        const rightAnswerName =
+            localStorage.getItem('nowLanguage') === 'ru'
+                ? arr.find((item) => item.countryCodeLetters === rightAnswer)?.countryRu
+                : arr.find((item) => item.countryCodeLetters === rightAnswer)?.countryEn;
         if (!rightAnswerName) return;
 
         const allAnswers = document.querySelectorAll('.answer');
@@ -217,7 +222,8 @@ export class CountryQuiz extends Page {
         if (!nextBtn) return;
         nextBtn.removeAttribute('disabled');
         if (this.round === 10) {
-            nextBtn.textContent = 'Посмотреть результат';
+            nextBtn.textContent =
+                localStorage.getItem('nowLanguage') === 'ru' ? 'Посмотреть результат' : 'Check the result';
         }
     }
 

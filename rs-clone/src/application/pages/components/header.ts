@@ -4,6 +4,7 @@ import { ModalWindow } from './modal-window';
 import route from '../../routing/router';
 import { playAudio, soundOn } from '../../components/sound/sound';
 import { Api } from '../../server/server-api';
+import { translate } from '../../patterns/translation';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const defaultUserImg = require('../../../assets/images/user-default.png');
 
@@ -23,12 +24,18 @@ const NavLinks = [
 ];
 
 class Header extends Component {
+    static nowLanguage: string;
+
+    static firstLabel: HTMLElement;
+
+    static secondLabel: HTMLElement;
+
     constructor(tagname: string, className: string) {
         super(tagname, className);
     }
 
     private createRegBtns(type: string) {
-        const btn = createOurElement('button', 'btn btn__colored btn__autho', type);
+        const btn = createOurElement('button', 'btn btn__colored btn__autho', type, type);
         btn.addEventListener('click', () => {
             const modal = new ModalWindow('div', 'none', type);
             btn.after(modal.render());
@@ -49,7 +56,7 @@ class Header extends Component {
             img.setAttribute('src', defaultUserImg);
         }
         imgWrap.append(img);
-        const logOutBtn = createOurElement('button', 'btn btn__colored', 'Выйти');
+        const logOutBtn = createOurElement('button', 'btn btn__colored', 'Выйти', 'Log out');
 
         logOutBtn.addEventListener('click', () => {
             btnsWrap.innerHTML = '';
@@ -80,7 +87,7 @@ class Header extends Component {
         const navLinksList = createOurElement('ul', 'nav__list', '');
         NavLinks.forEach((item) => {
             const li = createOurElement('li', 'nav__item');
-            const link = createOurElement('a', 'nav__item_link', '');
+            const link = createOurElement('a', 'nav__item_link', '', item.text);
             (link as HTMLLinkElement).href = `/${item.id}`;
             link.innerHTML = item.text;
             link.addEventListener('click', (e) => {
@@ -105,19 +112,9 @@ class Header extends Component {
         navigation.append(this.renderNavLinksList());
 
         const switcherBlock = createOurElement('div', 'header__switcher-block flex-rows');
-        const headerLang = createOurElement(
-            'div',
-            'header__lang',
-            `<label class="header__radio-btn">
-              <input name="language" type="radio" value="en" />
-              <span>EN</span>
-            </label>
-            <span>&nbsp;/&nbsp;</span>
-            <label class="header__radio-btn">
-             <input name="language" type="radio" value="ru" checked />
-              <span>RU</span>
-            </label>`
-        );
+        const headerLang = createOurElement('div', 'header__lang');
+        headerLang.append(...this.createLocalithation());
+
         const switcherTheme = createOurElement(
             'div',
             'switcher-theme',
@@ -185,6 +182,33 @@ class Header extends Component {
             html?.classList.remove('antiscroll');
             overlay?.classList.remove('overlay__active');
         }
+    }
+
+    private createLocalithation() {
+        Header.firstLabel = createOurElement(
+            'label',
+            'header__radio-btn',
+            `<input name="language" type="radio" value="en" />
+        <span>EN</span>`
+        );
+        const span = createOurElement('span', '', '&nbsp;/&nbsp;');
+        Header.secondLabel = createOurElement(
+            'label',
+            'header__radio-btn',
+            `<input name="language" type="radio" value="ru" checked />
+            <span>RU</span>`
+        );
+
+        Header.firstLabel.addEventListener('click', () => {
+            localStorage.setItem('nowLanguage', 'en');
+            translate();
+        });
+        Header.secondLabel.addEventListener('click', () => {
+            localStorage.setItem('nowLanguage', 'ru');
+            translate();
+        });
+
+        return [Header.firstLabel, span, Header.secondLabel];
     }
 }
 
