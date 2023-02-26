@@ -44,10 +44,10 @@ export class QuizResult extends Component {
         const form = createOurElement('div', 'form-wrap flex-columns');
         const link = createOurElement('a', '', '');
         (link as HTMLLinkElement).href = './quizzes';
-        const btn = createOurElement('button', 'btn btn__colored', 'Дальше');
+        const btn = createOurElement('button', 'btn btn__colored', '', 'quizz-next');
         link.append(btn);
 
-        const title = createOurElement('h1', '', 'Результат');
+        const title = createOurElement('h1', '', '', 'Результат');
         const result = createOurElement('h1', '', `${this.result}%`);
         const sendRes = await this.sendResult();
 
@@ -55,11 +55,11 @@ export class QuizResult extends Component {
             route(e);
         });
 
-        const isRecord = createOurElement('p', 'form-wrap__is-record', '');
+        let isRecord = createOurElement('p', 'form-wrap__is-record', '');
         if (sendRes === 'new record') {
-            isRecord.innerText = 'Новый рекорд!';
+            isRecord = createOurElement('p', 'form-wrap__is-record', '', 'form-wrap__is-record');
         } else if (sendRes === 'please register or login to save the record') {
-            isRecord.innerText = 'Пожалуйста, зарегистрируйся, чтобы сохранять результаты';
+            isRecord = createOurElement('p', 'form-wrap__is-record', '', 'form-wrap__is-record-register');
         }
 
         form.append(title, result, isRecord, link, ...this.createShare(), this.createCloseBtn());
