@@ -65,7 +65,7 @@ export class ProfilePage {
         const recordsWrap = createOurElement('div', 'records flex-columns');
         const title = createOurElement('h2', 'records__title', 'Мои рекорды');
         recordsWrap.append(title);
-        const quizesWrap = createOurElement('div', 'flex-rows');
+        const quizesWrap = createOurElement('div', 'records__container');
         quizesWrap.append(
             this.createQuizRecordBlock('Угадай страну', result.country, result.region_country || 'world'),
             this.createQuizRecordBlock(
