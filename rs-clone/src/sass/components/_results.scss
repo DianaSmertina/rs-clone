@@ -1,7 +1,7 @@
 .table {
     width: 300px;
     background-color: $color-light2;
-    border: 2px solid $color-dark1;
+    outline: 2px solid $color-dark1;
     font-size: 1.6rem;
 }
 .quizBtns {
@@ -17,27 +17,37 @@
     border: 2px solid #26453e;
     color: #26453e;
 }
-.tableNumbers {
-    width: 15%;
+.btn-active {
+    background-color: $color-middle2;
+    pointer-events: none;
 }
-.usersNames {
-    width: 50%;
+.row {
+    width: 300px;
+    outline: 1px solid $color-dark1;
+    justify-content: start;
 }
-.userResults {
-    width: 35%;
+.number,
+.userName,
+.userResult,
+.region {
+    outline: 1px solid $color-dark1;
+    padding: 7px;
 }
 .number {
-    // width: 30px;
-    outline: 1px solid $color-dark1;
-    padding: 5px;
+    width: 10%;
 }
 .userName {
-    // width: 100px;
-    outline: 1px solid $color-dark1;
-    padding: 5px;
+    width: 35%;
 }
-.userRes {
-    // width: 70px;
-    outline: 1px solid $color-dark1;
-    padding: 5px;
+.userResult {
+    width: 30%;
+}
+.region {
+    width: 25%;
+}
+@media (max-width: $tablet-width) {
+    .table {
+        width: 270px;
+        font-size: 1.4rem;
+    }
 }

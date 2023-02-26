@@ -48,7 +48,7 @@ interface PathType {
     '/': HTMLElement;
     '/quizzes': HTMLElement;
     '/main-page': HTMLElement;
-    '/results': HTMLElement;
+    '/results': Promise<HTMLElement>;
     '/user': Promise<HTMLElement>;
     '/temp': HTMLElement;
     '/quizz-flag': HTMLElement;
