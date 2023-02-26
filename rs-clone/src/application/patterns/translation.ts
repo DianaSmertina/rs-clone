@@ -78,7 +78,20 @@ export const i18Obj = {
    Hover to find out information about the country and click to add to the field for answers.
    Until you click "Check", you can change the final order by clicking on the answers.`,
    'main__title-quizz-country': 'Guess the country',
+   'update-photo': 'Update photo',
+   'registration-date': 'Registration date: ',
+   'my-records': 'My records',
+   'record-country': 'Guess the country',
+   'record-population': 'Guess the population',
+   'record-flag': 'Guess the country by the flag',
+   'achievements-title': 'My achievements',
+   'achiev-all-quiz': 'All quizzes are passed',
+   'achiev-all-quiz-100': 'All quizzes are 100% passed',
+   'achiev-record-country': 'TOP-10 in the quiz guess the country',
+   'achiev-record-population': 'TOP 10 in the quiz guess the population',
+   'achiev-record-flags': 'TOP 10 in the quiz guess the country by the flag',
     },
+
     'ru': {
         'mainTitleText': 'увлекательные викторины для изучения стран мира',
         'main__text': `<p class="main__text_p">Наше приложение включает в себя три викторины:</p>
@@ -148,5 +161,17 @@ export const i18Obj = {
    Наведи чтобы узнать информацию о стране и кликни, чтобы добавить в поле для ответов.
    Пока ты не нажал "Проверить", можешь изменить окончательный порядок, кликнув на ответы.`,
    'main__title-quizz-country': 'Угадай страну',
+   'update-photo': 'Обновить фото',
+   'registration-date': 'Дата регистрации: ',
+   'my-records': 'Мои рекорды',
+   'record-country': 'Угадай страну',
+   'record-population': 'Угадай численность населения',
+   'record-flag': 'Угадай страну по флагу',
+   'achievements-title': 'Мои достижения',
+   'achiev-all-quiz': 'Все квизы пройдены',
+   'achiev-all-quiz-100': 'Все квизы пройдены на 100%',
+   'achiev-record-country': 'ТОП-10 в квизе угадай страну',
+   'achiev-record-population': 'ТОП-10 в квизе угадай население',
+   'achiev-record-flags': 'ТОП-10 в квизе угадай флаг'
     },
 };

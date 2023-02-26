@@ -24,7 +24,7 @@ export class ProfilePage {
         const img = createOurElement('img', 'main-user-info__img');
         const label = createOurElement('label', 'main-user-info__label');
         const input = createOurElement('input', 'main-user-info__input');
-        const btnText = createOurElement('span', 'main-user-info__input-text btn btn__colored', 'Обновить аватар');
+        const btnText = createOurElement('span', 'main-user-info__input-text btn btn__colored', '', 'update-photo');
         input.setAttribute('type', 'file');
         input.setAttribute('name', 'avatar');
         input.addEventListener('change', async (e) => {
@@ -55,25 +55,24 @@ export class ProfilePage {
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const year = date.getFullYear();
         const formattedDate = `${day}.${month}.${year}`;
-        const registrationDate = createOurElement('p', 'username', `Дата регистрации: ${formattedDate}`);
-        dataWrap.append(username, registrationDate, label);
+        const registrationDate = createOurElement('span', 'username', '', 'registration-date');
+        const registrationDateSpan = createOurElement('span', '', `${formattedDate}`);
+        const containerRegistrationDate = createOurElement('p', '');
+        containerRegistrationDate.append(registrationDate, registrationDateSpan);
+        dataWrap.append(username, containerRegistrationDate, label);
         mainInfo.append(imgWrap, dataWrap);
         return mainInfo;
     }
 
     private createRecordsBlock(result: IResult) {
         const recordsWrap = createOurElement('div', 'records flex-columns');
-        const title = createOurElement('h2', 'records__title', 'Мои рекорды');
+        const title = createOurElement('h2', 'records__title', '', 'my-records');
         recordsWrap.append(title);
         const quizesWrap = createOurElement('div', 'records__container');
         quizesWrap.append(
-            this.createQuizRecordBlock('Угадай страну', result.country, result.region_country || 'world'),
-            this.createQuizRecordBlock(
-                'Угадай численность населения',
-                result.population,
-                result.region_population || 'world'
-            ),
-            this.createQuizRecordBlock('Угадай флаг', result.flags, result.region_flags || 'world')
+            this.createQuizRecordBlock('record-country', result.country, result.region_country || 'world'),
+            this.createQuizRecordBlock('record-population', result.population, result.region_population || 'world'),
+            this.createQuizRecordBlock('record-flag', result.flags, result.region_flags || 'world')
         );
         recordsWrap.append(quizesWrap);
         return recordsWrap;
@@ -81,19 +80,29 @@ export class ProfilePage {
 
     private createQuizRecordBlock(quiz: string, result: number, region: string) {
         const quizWrap = createOurElement('div', 'records__quiz flex-columns');
-        const quizName = createOurElement('p', 'records__quiz-name', quiz);
+        const quizName = createOurElement('p', 'records__quiz-name', '', quiz);
         const quizRes = createOurElement('div', 'records__quiz-results');
-        const regionName = codesTranslate[region as keyof ICodes].ru;
         google.charts.load('current', { packages: ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
             const dataTable = new google.visualization.DataTable();
+            let textRec: string;
+            let textLeft: string;
+            if (localStorage.getItem('nowLanguage') === 'ru') {
+                const regionName = codesTranslate[region as keyof ICodes].ru;
+                textRec = `${result}%, рекорд набран в регионе ${regionName}`;
+                textLeft = `Осталось набрать ${100 - result}%`;
+            } else {
+                const regionName = codesTranslate[region as keyof ICodes].en;
+                textRec = `${result}%, the record was set in the region ${regionName}`;
+                textLeft = `Left to score ${100 - result}%`;
+            }
             dataTable.addColumn('string', 'Квиз');
             dataTable.addColumn('number', 'Результат');
             dataTable.addColumn({ type: 'string', role: 'tooltip' });
             dataTable.addRows([
-                [quiz, result, `${result}%, рекорд набран в регионе ${regionName}`],
-                ['', 100 - result, `Осталось набрать ${100 - result}%`],
+                [quiz, result, textRec],
+                ['', 100 - result, textLeft],
             ]);
 
             const options: google.visualization.PieChartOptions = {
@@ -123,14 +132,19 @@ export class ProfilePage {
         return quizWrap;
     }
 
-    private createOneAchiv(min: number, max: number, value: number, imgClass: string, nameString: string) {
+    private createOneAchiv(min: number, max: number, value: number, imgClass: string) {
         const achievement = createOurElement('div', 'achievement flex-rows');
         const achievInfo = createOurElement('div', 'achievement__info');
         const img = createOurElement('div', `achievement__img ${imgClass} flex-columns`);
         if (value < max) {
             img.style.filter = 'grayscale(100%)';
         }
-        const name = createOurElement('p', 'achievement__name', nameString);
+        let name;
+        if (imgClass === 'img-fire') {
+            name = createOurElement('p', 'achievement__name', '', 'achiev-all-quiz');
+        } else {
+            name = createOurElement('p', 'achievement__name', '', 'achiev-all-quiz-100');
+        }
         const input = createOurElement('input', 'achievement__range');
         input.setAttribute('type', 'range');
         input.setAttribute('min', `${min}`);
@@ -142,9 +156,16 @@ export class ProfilePage {
         return achievement;
     }
 
-    private createRecordAciv(imgClass: string, nameString: string) {
+    private createRecordAciv(imgClass: string) {
         const recordAchiev = createOurElement('div', 'record-achievment flex-columns');
-        const name = createOurElement('p', 'record-achievment__name', nameString);
+        let name;
+        if (imgClass === 'record-country') {
+            name = createOurElement('p', 'record-achievment__name', '', 'achiev-record-country');
+        } else if (imgClass === 'record-population') {
+            name = createOurElement('p', 'record-achievment__name', '', 'achiev-record-population');
+        } else {
+            name = createOurElement('p', 'record-achievment__name', '', 'achiev-record-flags');
+        }
         const img = createOurElement('div', `achievement__img ${imgClass} flex-columns`);
         recordAchiev.append(img, name);
         const userName = localStorage.getItem('username');
@@ -163,7 +184,7 @@ export class ProfilePage {
 
     private createAchievementsBlock() {
         const achievementsWrap = createOurElement('div', 'achievements flex-columns');
-        const title = createOurElement('h2', 'achivments__title', 'Мои достижения');
+        const title = createOurElement('h2', 'achivments__title', '', 'achievements-title');
         achievementsWrap.append(title);
         let allQuiz: HTMLElement;
         let allQuizFull: HTMLElement;
@@ -172,15 +193,15 @@ export class ProfilePage {
                 return typeof el[1] === 'number' && el[1] > 0;
             });
             const winnerQuizCount = valueAllQuiz.filter((el) => el[1] === 100).length;
-            allQuiz = this.createOneAchiv(0, 3, valueAllQuiz.length, 'img-fire', 'Все квизы пройдены');
-            allQuizFull = this.createOneAchiv(0, 3, winnerQuizCount, 'img-winner', 'Все квизы пройдены на 100%');
+            allQuiz = this.createOneAchiv(0, 3, valueAllQuiz.length, 'img-fire');
+            allQuizFull = this.createOneAchiv(0, 3, winnerQuizCount, 'img-winner');
             achievementsWrap.append(allQuiz, allQuizFull);
         }
         const recordAcievments = createOurElement('div', 'achievement flex-rows');
         recordAcievments.append(
-            this.createRecordAciv('record-country', 'ТОП-10 в квизе угадай страну'),
-            this.createRecordAciv('record-population', 'ТОП-10 в квизе угадай население'),
-            this.createRecordAciv('record-flags', 'ТОП-10 в квизе угадай флаг')
+            this.createRecordAciv('record-country'),
+            this.createRecordAciv('record-population'),
+            this.createRecordAciv('record-flags')
         );
         achievementsWrap.append(recordAcievments);
         return achievementsWrap;
