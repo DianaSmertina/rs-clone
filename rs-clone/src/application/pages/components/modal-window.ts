@@ -11,14 +11,14 @@ export class ModalWindow extends Component {
 
     private createGreeting() {
         const greetWrap = createOurElement('div', 'greet-wrap');
-        const greeting = createOurElement('h3', 'form-wrap__greetings');
-        const text = createOurElement('p', 'form-wrap__text');
+        let greeting = createOurElement('h3', 'form-wrap__greetings');
+        let text = createOurElement('p', 'form-wrap__text');
         if (this.btnText === 'Регистрация') {
-            greeting.innerText = 'Рады приветсвовать нового знатока стран!';
-            text.innerText = 'Придумай логин и пароль, длина которого должна быть 6 или больше символов';
+            greeting = createOurElement('h3', 'form-wrap__greetings', '', 'registerGreetings');
+            text = createOurElement('p', 'form-wrap__text', '', 'registerText');
         } else if (this.btnText === 'Войти') {
-            greeting.innerText = 'Рады видеть тебя снова!';
-            text.innerText = 'Пожалуйста, введи логин и пароль от своей учетной записи';
+            greeting = createOurElement('h3', 'form-wrap__greetings', '', 'signInGreetings');
+            text = createOurElement('p', 'form-wrap__text', '', 'signInText');
         }
         greetWrap.append(greeting, text);
         return greetWrap;
@@ -26,7 +26,7 @@ export class ModalWindow extends Component {
 
     private createInput(text: string) {
         const inpurWrap = createOurElement('div', 'input-wrap');
-        const label = createOurElement('label', 'form-wrap__label', text);
+        const label = createOurElement('label', 'form-wrap__label', '', text);
         const input = createOurElement('input', 'form-wrap__input');
         input.setAttribute('required', 'true');
         if (text === 'Пароль') {
@@ -39,6 +39,17 @@ export class ModalWindow extends Component {
         }
         inpurWrap.append(label, input);
         return inpurWrap;
+    }
+
+    private createCloseBtn() {
+        const closeBlock = createOurElement('div', 'closeBtn', '');
+        const firstLine = createOurElement('span', 'closeBtn__line closeBtn__line_first', '');
+        const secondLine = createOurElement('span', 'closeBtn__line closeBtn__line_second', '');
+        closeBlock.append(firstLine, secondLine);
+        closeBlock.addEventListener('click', () => {
+            this.container.remove();
+        });
+        return closeBlock;
     }
 
     private async createSubmitHandler(e: Event) {
@@ -81,7 +92,13 @@ export class ModalWindow extends Component {
         form.addEventListener('submit', async (e) => {
             return await this.createSubmitHandler(e);
         });
-        form.append(this.createGreeting(), this.createInput('Логин'), this.createInput('Пароль'), btn);
+        form.append(
+            this.createGreeting(),
+            this.createInput('Логин'),
+            this.createInput('Пароль'),
+            btn,
+            this.createCloseBtn()
+        );
         return form;
     }
 
