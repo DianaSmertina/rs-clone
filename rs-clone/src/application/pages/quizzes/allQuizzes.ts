@@ -36,7 +36,8 @@ class Quizzes extends Page {
             <div class="menu__quiz-cover ${item.cover} img"></div>
             </div>`;
 
-            // link.addEventListener('click', (e) => { // РОУТИНГ с которым квизы не работают(
+            // РОУТИНГ с которым квизы не работают(
+            // link.addEventListener('click', (e) => {
             //     route(e);
             // });
 

@@ -1,6 +1,8 @@
 import Page from '../../patterns/pagePattern';
 import { createOurElement } from '../../patterns/createElement';
+// import { Api, IResult, Iuser } from '../../server/server-api';
 
+// const allUsers =
 class ResultsPage extends Page {
     constructor(id: string) {
         super(id);
@@ -36,7 +38,7 @@ class ResultsPage extends Page {
         { userName: 'Adam1', userRes: '60' },
     ];
 
-    getResults(e: Event) {
+    showResults(e: Event) {
         const target = e.target as HTMLElement;
         let obj: IObjResult[] = [];
         switch (target.id) {
@@ -49,6 +51,8 @@ class ResultsPage extends Page {
                 break;
         }
         const mainWrapper = document.querySelector('.main__wrapper');
+        const lastTable = document.querySelector('.table');
+        if (lastTable) lastTable.remove();
         mainWrapper?.append(this.renderTable(obj));
     }
 
@@ -59,7 +63,7 @@ class ResultsPage extends Page {
         this.quizzes.forEach((quiz) => {
             const btn = createOurElement('button', 'btn  btn-quiz', `${quiz.name}`);
             btn.id = quiz.id;
-            btn.addEventListener('click', (e) => this.getResults(e));
+            btn.addEventListener('click', (e) => this.showResults(e));
             quizBtns.append(btn);
         });
 
@@ -93,4 +97,5 @@ interface IObjResult {
     userName: string;
     userRes: string;
 }
+
 export default ResultsPage;
