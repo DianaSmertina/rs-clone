@@ -222,7 +222,7 @@ export class CountryQuiz extends Page {
     }
 
     private countResult() {
-        return Math.round((this.rightAnswers / 10) * 100);
+        return this.rightAnswers * 10;
     }
 }
 

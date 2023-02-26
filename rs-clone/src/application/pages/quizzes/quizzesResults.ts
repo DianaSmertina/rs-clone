@@ -1,6 +1,7 @@
 import Component from '../../patterns/component';
 import { createOurElement } from '../../patterns/createElement';
 import { Api } from '../../server/server-api';
+import route from '../../routing/router';
 
 export class QuizResult extends Component {
     constructor(
@@ -50,8 +51,8 @@ export class QuizResult extends Component {
         const result = createOurElement('h1', '', `${this.result}%`);
         const sendRes = await this.sendResult();
 
-        link.addEventListener('click', () => {
-            this.container.remove();
+        link.addEventListener('click', (e) => {
+            route(e);
         });
 
         const isRecord = createOurElement('p', 'form-wrap__is-record', '');

@@ -1,0 +1,43 @@
+.table {
+    width: 300px;
+    background-color: $color-light2;
+    border: 2px solid $color-dark1;
+    font-size: 1.6rem;
+}
+.quizBtns {
+    gap: 15px;
+    padding: 30px 0;
+    justify-content: center;
+}
+.btn-quiz {
+    width: 165px;
+    height: 57px;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid #26453e;
+    color: #26453e;
+}
+.tableNumbers {
+    width: 15%;
+}
+.usersNames {
+    width: 50%;
+}
+.userResults {
+    width: 35%;
+}
+.number {
+    // width: 30px;
+    outline: 1px solid $color-dark1;
+    padding: 5px;
+}
+.userName {
+    // width: 100px;
+    outline: 1px solid $color-dark1;
+    padding: 5px;
+}
+.userRes {
+    // width: 70px;
+    outline: 1px solid $color-dark1;
+    padding: 5px;
+}

@@ -1,7 +1,7 @@
 import MainPage from '../pages/main-page/index';
 import Quizzes from '../pages/quizzes/allQuizzes';
 import ErrorPage, { ErrorTypes } from '../pages/error-page/index';
-import ResultsPage from '../pages/results/results';
+import ResultsPage from '../pages/results/index';
 import { ProfilePage } from '../pages/profile/profile-page';
 import { PopulationQuizPage } from '../pages/quizzes/population-quiz/page';
 import QuizTemplate from '../patterns/quizTemplate';
@@ -13,7 +13,7 @@ const route = (event?: Event) => {
     let href = '/';
     if (event) {
         event.preventDefault();
-        href = (event.target as HTMLLinkElement).href;
+        href = (event.currentTarget as HTMLLinkElement).href;
     }
     window.history.pushState({}, '', href);
     handleLocation();

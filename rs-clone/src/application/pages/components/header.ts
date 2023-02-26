@@ -98,8 +98,11 @@ class Header extends Component {
 
         const logo = document.createElement('a');
         logo.className = 'header__logo_link';
-        logo.href = 'main-page';
+        logo.href = '/main-page';
         logo.innerHTML = `<div class ="header__logo_ico ico"></div>`;
+        logo.addEventListener('click', (e) => {
+            route(e);
+        });
 
         const navigation = createOurElement('nav', 'header__nav', '');
         navigation.append(this.renderNavLinksList());

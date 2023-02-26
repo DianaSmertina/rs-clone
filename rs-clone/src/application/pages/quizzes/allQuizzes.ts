@@ -1,39 +1,54 @@
 import Page from '../../patterns/pagePattern';
 import { createOurElement } from '../../patterns/createElement';
+// import route from '../../routing/router'; // РОУТИНГ с которым квизы не работают(
+
+const QuizLinks = [
+    {
+        id: 'country-quiz',
+        name: 'Угадай страну',
+        cover: 'country-cover',
+    },
+    {
+        id: 'population-quiz',
+        name: 'Угадай численность населения',
+        cover: 'population-cover',
+    },
+    {
+        id: 'quizz-flag',
+        name: 'Угадай страну по флагу',
+        cover: 'flag-cover',
+    },
+];
 
 class Quizzes extends Page {
     constructor(id: string) {
         super(id);
     }
 
+    private createMenu() {
+        const menuBlock = createOurElement('div', 'menu flex-rows', '');
+        QuizLinks.forEach((item) => {
+            const link = createOurElement('a', 'quiz-link', '');
+
+            (link as HTMLLinkElement).href = `/${item.id}`;
+            link.innerHTML = `<div class="menu__item flex-columns">
+            <h3>${item.name}</h3>
+            <div class="menu__quiz-cover ${item.cover} img"></div>
+            </div>`;
+
+            // link.addEventListener('click', (e) => { // РОУТИНГ с которым квизы не работают(
+            //     route(e);
+            // });
+
+            menuBlock.append(link);
+        });
+        return menuBlock;
+    }
     render() {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
         const mainTitle = createOurElement('h1', 'main__title', 'Выберите викторину');
-        const menu = createOurElement(
-            'div',
-            'menu flex-rows ',
-            `<a href="country-quiz">
-                <div class="menu__item flex-columns">
-                    <h3>Угадай страну</h3>
-                    <div class="menu__quiz-cover country-cover img">
-                    </div>
-                </div>
-            </a>
-            <a href="population-quiz">
-                <div class="menu__item flex-columns">
-                    <h3>Угадай численность населения</h3>
-                    <div class="menu__quiz-cover population-cover img"></div>
-                </div>
-            </a>
-            <a href="quizz-flag">
-            <div class="menu__item flex-columns">
-                <h3>Угадай страну по флагу</h3>
-                <div class="menu__quiz-cover flag-cover img"></div>
-            </div>
-            </a>`
-        );
 
-        mainWrapper.append(mainTitle, menu);
+        mainWrapper.append(mainTitle, this.createMenu());
         this.container.append(mainWrapper);
         return this.container;
     }
