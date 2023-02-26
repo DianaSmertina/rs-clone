@@ -4,18 +4,18 @@ import { createOurElement } from '../../patterns/createElement';
 
 const QuizLinks = [
     {
-        id: 'country-quiz',
-        name: 'Угадай страну',
+        link: 'country-quiz',
+        name: 'country-quiz',
         cover: 'country-cover',
     },
     {
-        id: 'population-quiz',
-        name: 'Угадай численность населения',
+        link: 'population-quiz',
+        name: 'population-quiz',
         cover: 'population-cover',
     },
     {
-        id: 'quizz-flag',
-        name: 'Угадай страну по флагу',
+        link: 'quizz-flag',
+        name: 'flag-quiz',
         cover: 'flag-cover',
     },
 ];
@@ -28,13 +28,15 @@ class Quizzes extends Page {
     private createMenu() {
         const menuBlock = createOurElement('div', 'menu flex-rows', '');
         QuizLinks.forEach((item) => {
-            const link = createOurElement('a', 'quiz-link', '');
+            const link = createOurElement('a', 'quiz-link', '', ``);
 
-            (link as HTMLLinkElement).href = `/${item.id}`;
-            link.innerHTML = `<div class="menu__item flex-columns">
-            <h3>${item.name}</h3>
-            <div class="menu__quiz-cover ${item.cover} img"></div>
-            </div>`;
+            (link as HTMLLinkElement).href = `/${item.link}`;
+            const menuItemBlock = createOurElement('div', 'menu__item flex-columns', '', '');
+            const header = createOurElement('h3', '', '', `${item.name}`);
+            const cover = createOurElement('div', `menu__quiz-cover ${item.cover} img`, '', '');
+
+            menuItemBlock.append(header, cover);
+            link.append(menuItemBlock);
 
             // РОУТИНГ с которым квизы не работают(
             // link.addEventListener('click', (e) => {
@@ -49,7 +51,6 @@ class Quizzes extends Page {
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
 
         const mainTitle = createOurElement('h1', 'main__title', 'Выберите викторину', 'choose quizz');
-        // const menu = createOurElement('div', 'menu flex-rows ', ``, 'quizzes variants');
         mainWrapper.append(mainTitle, this.createMenu());
         this.container.append(mainWrapper);
         return this.container;

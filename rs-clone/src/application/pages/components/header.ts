@@ -10,15 +10,15 @@ const defaultUserImg = require('../../../assets/images/user-default.png');
 
 const NavLinks = [
     {
-        id: 'main-page',
+        link: 'main-page',
         text: 'Главная',
     },
     {
-        id: 'quizzes',
+        link: 'quizzes',
         text: 'Викторины',
     },
     {
-        id: 'results',
+        link: 'results',
         text: 'Достижения',
     },
 ];
@@ -88,7 +88,7 @@ class Header extends Component {
         NavLinks.forEach((item) => {
             const li = createOurElement('li', 'nav__item');
             const link = createOurElement('a', 'nav__item_link', '', item.text);
-            (link as HTMLLinkElement).href = `/${item.id}`;
+            (link as HTMLLinkElement).href = `/${item.link}`;
             link.innerHTML = item.text;
             link.addEventListener('click', (e) => {
                 route(e);

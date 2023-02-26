@@ -12,15 +12,15 @@ class ResultsPage {
 
     quizzes = [
         {
-            name: 'Угадай страну',
+            name: 'country-quiz',
             id: 'countryRes',
         },
         {
-            name: 'Угадай численность населения',
+            name: 'population-quiz',
             id: 'populationRes',
         },
         {
-            name: 'Угадай страну по флагу',
+            name: 'flag-quiz',
             id: 'flagRes',
         },
     ];
@@ -28,10 +28,10 @@ class ResultsPage {
     async render() {
         this.allRes = await Api.getAllResults();
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title', 'Достижения');
+        const mainTitle = createOurElement('h1', 'main__title', '', 'Достижения');
         const quizBtns = createOurElement('div', 'quizBtns flex-rows', '');
         this.quizzes.forEach((quiz) => {
-            const btn = createOurElement('button', 'btn  btn-quiz', `${quiz.name}`);
+            const btn = createOurElement('button', 'btn  btn-quiz', ' ', quiz.name);
             btn.id = quiz.id;
             btn.addEventListener('click', (e) => this.getResults(e));
             quizBtns.append(btn);
@@ -73,18 +73,18 @@ class ResultsPage {
     private renderTable(arr: IResObj[]) {
         const table = createOurElement('div', 'table flex-columns', '');
         const firstRow = createOurElement('div', 'row flex-rows', '');
-        const numberF = createOurElement('div', 'number', '№');
-        const nameF = createOurElement('div', 'userName', 'Имя');
-        const resultF = createOurElement('div', 'userResult', 'Результат');
-        const regionF = createOurElement('div', 'region', 'Регион');
+        const numberF = createOurElement('div', 'number', '№', '');
+        const nameF = createOurElement('div', 'userName', '', 'name');
+        const resultF = createOurElement('div', 'userResult', '', 'result');
+        const regionF = createOurElement('div', 'userRegion', '', 'region');
         firstRow.append(numberF, nameF, resultF, regionF);
         table.append(firstRow);
 
         arr.forEach((item, ind) => {
             if (ind === 10) return;
-            const row = createOurElement('div', 'row flex-rows', '');
-            const number = createOurElement('div', 'number', `${ind + 1}`);
-            const name = createOurElement('div', 'userName', `${item.user_name}`);
+            const row = createOurElement('div', 'row flex-rows', '', '');
+            const number = createOurElement('div', 'number', `${ind + 1}`, '');
+            const name = createOurElement('div', 'userName', `${item.user_name}`, '');
 
             let quizRes: number | undefined = 0;
             let quizReg: string | undefined | null = '';
@@ -105,8 +105,8 @@ class ResultsPage {
                     break;
                 }
             }
-            const result = createOurElement('div', 'userResult', `${quizRes}`);
-            const region = createOurElement('div', 'region', `${quizReg}`);
+            const result = createOurElement('div', 'userResult', `${quizRes}`, '');
+            const region = createOurElement('div', 'userRegion', '', `${quizReg}`);
 
             row.append(number, name, result, region);
             table.append(row);

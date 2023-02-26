@@ -1,8 +1,8 @@
 .table {
-    width: 300px;
     background-color: $color-light2;
     outline: 2px solid $color-dark1;
     font-size: 1.6rem;
+    justify-content: center;
 }
 .quizBtns {
     gap: 15px;
@@ -22,32 +22,41 @@
     pointer-events: none;
 }
 .row {
-    width: 300px;
-    outline: 1px solid $color-dark1;
-    justify-content: start;
+    width: 430px;
 }
 .number,
 .userName,
 .userResult,
-.region {
+.userRegion {
     outline: 1px solid $color-dark1;
     padding: 7px;
 }
+
 .number {
     width: 10%;
 }
 .userName {
-    width: 35%;
+    width: 36%;
 }
 .userResult {
-    width: 30%;
+    width: 27%;
 }
-.region {
-    width: 25%;
+.userRegion {
+    width: 27%;
 }
 @media (max-width: $tablet-width) {
     .table {
-        width: 270px;
         font-size: 1.4rem;
+    }
+    .row {
+        width: 390px;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    .table {
+        font-size: 1.2rem;
+    }
+    .row {
+        width: 300px;
     }
 }
