@@ -19,10 +19,6 @@
 .header__switcher-block {
     margin-left: auto;
 }
-.switcher-theme {
-    padding-left: 30px;
-    padding-right: 15px;
-}
 
 .nav__list {
     display: flex;
@@ -34,19 +30,6 @@
 
 .nav__item {
     padding: 0 15px;
-}
-
-.theme__light {
-    background-image: url(../assets/icons/sun.svg);
-    width: 35px;
-    height: 35px;
-    display: none;
-}
-
-.theme__dark {
-    background-image: url(../assets/icons/moon.svg);
-    width: 30px;
-    height: 30px;
 }
 
 .header__lang {
@@ -78,6 +61,7 @@
     color: $color-bright;
 }
 .sound-block {
+    padding-left: 30px;
     padding-right: 30px;
 }
 
@@ -140,20 +124,15 @@
     .header__radio-btn > span {
         font-size: 1.6rem;
     }
-    .theme__light,
+
     .sound-on,
     .sound-off {
         width: 30px;
         height: 30px;
     }
-    .theme__dark {
-        width: 25px;
-        height: 25px;
-    }
-    .switcher-theme {
-        padding-left: 15px;
-    }
+
     .sound-block {
+        padding-left: 17px;
         padding-right: 17px;
     }
 }
@@ -217,7 +196,7 @@
         align-items: center;
         gap: 25px;
     }
-    .switcher-theme,
+
     .sound-block {
         padding: 0;
     }

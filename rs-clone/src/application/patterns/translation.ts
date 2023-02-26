@@ -52,7 +52,7 @@ export const i18Obj = {
    <div><input type="radio" name="place" id="choice5" value="europe">
    <label for="choice5">Europe</label></div>`,
         'Результат': 'Result',
-        'quizz-next': '<a href="quizzes">Next</a>',
+        'quizz-next': '<a class = "link-modal-btn" href="quizzes">Next</a>',
         'form-wrap__is-record': 'New Record!',
         'form-wrap__is-record-register': 'Please register to save the results',
         'main__title_quiz-flag': 'Guess the country by the flag',
@@ -116,7 +116,7 @@ export const i18Obj = {
    <div><input type="radio" name="place" id="choice5" value="europe">
    <label for="choice5">Европа</label></div>`,
         'Результат': 'Результат',
-        'quizz-next': '<a href="quizzes">Дальше</a>',
+        'quizz-next': '<a class = "link-modal-btn" href="quizzes">Дальше</a>',
         'form-wrap__is-record': 'Новый рекорд!',
         'form-wrap__is-record-register': 'Пожалуйста, зарегистрируйся, чтобы сохранять результаты',
         'main__title_quiz-flag': 'Угадай страну по флагу',

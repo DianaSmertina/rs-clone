@@ -42,7 +42,7 @@ export class QuizResult extends Component {
 
     private async createResults() {
         const form = createOurElement('div', 'form-wrap flex-columns');
-        const link = createOurElement('a', '', '');
+        const link = createOurElement('a', 'link-modal-btn', '');
         (link as HTMLLinkElement).href = './quizzes';
         const btn = createOurElement('button', 'btn btn__colored', '', 'quizz-next');
         link.append(btn);
