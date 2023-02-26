@@ -120,10 +120,16 @@ class Header extends Component {
 
         const soundWrap = createOurElement('div', 'sound-block');
         const soundBtn = createOurElement('div', 'ico sound sound-on');
-        soundBtn.addEventListener('click', (e) => {
-            const target = e.target as HTMLElement;
-            target.classList.toggle('sound-off');
-            playAudio(soundOn);
+
+        soundBtn.addEventListener('click', () => {
+            const soundState = localStorage.getItem('quizSound');
+            if (soundState === 'on') {
+                localStorage.setItem('quizSound', 'off');
+                playAudio(soundOn);
+            } else if (soundState === 'off') {
+                localStorage.setItem('quizSound', 'on');
+                playAudio(soundOn);
+            }
         });
         soundWrap.append(soundBtn);
 
@@ -157,6 +163,7 @@ class Header extends Component {
         headerWrapper.append(burger, logo, navigation, switcherBlock, await this.createAuthBlock(username), overlay);
         this.container.append(headerWrapper);
         setTimeout(this.getLang, 0);
+        setTimeout(this.getSoundState, 0);
         return this.container;
     }
 
@@ -221,6 +228,19 @@ class Header extends Component {
         } else {
             document.getElementById('inputEn')?.removeAttribute('checked');
             document.getElementById('inputRu')?.setAttribute('checked', 'checked');
+        }
+    }
+
+    getSoundState() {
+        const savedSound = localStorage.getItem('quizSound');
+        if (!savedSound) {
+            localStorage.setItem('quizSound', 'on');
+        } else {
+            if (savedSound === 'off') {
+                const soundBtn = document.querySelector('.sound');
+                soundBtn?.classList.remove('sound-on');
+                soundBtn?.classList.add('sound-off');
+            }
         }
     }
 }
