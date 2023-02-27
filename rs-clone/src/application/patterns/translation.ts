@@ -90,6 +90,7 @@ export const i18Obj = {
    'achiev-record-country': 'TOP-10 in the quiz guess the country',
    'achiev-record-population': 'TOP 10 in the quiz guess the population',
    'achiev-record-flags': 'TOP 10 in the quiz guess the country by the flag',
+   'photo-limit': 'please select an image that is 500 kb or smaller',
     },
 
     'ru': {
@@ -172,6 +173,7 @@ export const i18Obj = {
    'achiev-all-quiz-100': 'Все квизы пройдены на 100%',
    'achiev-record-country': 'ТОП-10 в квизе угадай страну',
    'achiev-record-population': 'ТОП-10 в квизе угадай население',
-   'achiev-record-flags': 'ТОП-10 в квизе угадай флаг'
+   'achiev-record-flags': 'ТОП-10 в квизе угадай флаг',
+   'photo-limit': 'пожалуйста, выберете изображение размером 500 кб или меньше',
     },
 };

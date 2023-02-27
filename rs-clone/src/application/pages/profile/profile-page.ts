@@ -27,19 +27,7 @@ export class ProfilePage {
         const btnText = createOurElement('span', 'main-user-info__input-text btn btn__colored', '', 'update-photo');
         input.setAttribute('type', 'file');
         input.setAttribute('name', 'avatar');
-        input.addEventListener('change', async (e) => {
-            const files = (e.target as HTMLInputElement).files;
-            if (files) {
-                const file = files[0];
-                await Api.addAvatar(user.username, file);
-                const userInfo = await Api.getUser(user.username);
-                const headerAvatar = document.querySelector('.profile-icon');
-                if (userInfo.avatar && headerAvatar) {
-                    img.setAttribute('src', userInfo.avatar);
-                    headerAvatar.setAttribute('src', userInfo.avatar);
-                }
-            }
-        });
+        input.setAttribute('accept', 'image/*');
         if (user.avatar) {
             img.setAttribute('src', user.avatar);
         } else {
@@ -59,6 +47,30 @@ export class ProfilePage {
         const registrationDateSpan = createOurElement('span', '', `${formattedDate}`);
         const containerRegistrationDate = createOurElement('p', '');
         containerRegistrationDate.append(registrationDate, registrationDateSpan);
+
+        input.addEventListener('change', async (e) => {
+            const files = (e.target as HTMLInputElement).files;
+            if (files) {
+                const file = files[0];
+                const size = files[0].size;
+                if (size <= 500000) {
+                    const error = document.querySelector('.photo-limit');
+                    if (error) {
+                        error.remove();
+                    }
+                    await Api.addAvatar(user.username, file);
+                    const userInfo = await Api.getUser(user.username);
+                    const headerAvatar = document.querySelector('.profile-icon');
+                    if (userInfo.avatar && headerAvatar) {
+                        img.setAttribute('src', userInfo.avatar);
+                        headerAvatar.setAttribute('src', userInfo.avatar);
+                    }
+                } else {
+                    const error = createOurElement('p', 'photo-limit', '', 'photo-limit');
+                    dataWrap.append(error);
+                }
+            }
+        });
         dataWrap.append(username, containerRegistrationDate, label);
         mainInfo.append(imgWrap, dataWrap);
         return mainInfo;

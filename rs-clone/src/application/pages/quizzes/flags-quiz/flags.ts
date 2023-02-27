@@ -123,7 +123,6 @@ export class QuizFlag extends Page {
                     if (selected.row === 0) {
                         playAudio(rightAnswAudio);
                         nextBtn.removeAttribute('disabled');
-                        console.log(this.rightAnswers);
                         if (this.rightAnswers === 9) {
                             nextBtn.textContent =
                                 localStorage.getItem('nowLanguage') === 'ru'

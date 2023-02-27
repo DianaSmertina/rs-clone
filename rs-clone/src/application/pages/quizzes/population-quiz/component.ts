@@ -105,7 +105,6 @@ export class PopulationQuestion {
     private createAnswerBlock() {
         const answersBlock = createOurElement('div', 'answers flex-rows', '');
         const answers = this.mapData.slice(0);
-        console.log(answers);
 
         const answerBtns = answers?.map(() => {
             const answer = createOurElement('button', 'btn btn__population');
