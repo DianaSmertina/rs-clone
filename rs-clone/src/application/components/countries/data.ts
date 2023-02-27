@@ -1754,7 +1754,7 @@ export const world = [
         flag: 'url(https://flagicons.lipis.dev/flags/4x3/mr.svg)',
     },
     {
-        countryEn: 'Bolivia (Plurinational State of)',
+        countryEn: 'Bolivia',
         countryRu: 'Боливия',
         regionEn: 'America',
         regionRu: 'Америка',

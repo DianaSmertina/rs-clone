@@ -1,8 +1,8 @@
 import { Icountry } from '../../../components/countries/data';
 import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
-import { QuizName } from '../../../server/server-api';
-import { QuizResult } from '../quizzesResults';
+// import { QuizName } from '../../../server/server-api';
+// import { QuizResult } from '../quizzesResults';
 import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
 
 export class PopulationQuestion {
@@ -20,7 +20,13 @@ export class PopulationQuestion {
             localStorage.getItem('nowLanguage') === 'ru' ? el.countryRu : el.countryEn,
             el.area,
         ]);
-        countries.unshift(['Country', 'Назание', 'Площадь']);
+        let title: Array<string>;
+        if (localStorage.getItem('nowLanguage') === 'ru') {
+            title = ['Country', 'Назание', 'Площадь'];
+        } else {
+            title = ['Country', 'Name', 'Area'];
+        }
+        countries.unshift(title);
         drawChart(geoChartWrap, countries, 'population', {
             region: this.code,
             colorAxis: { colors: ['blue', 'orange', 'green'] },
@@ -81,14 +87,16 @@ export class PopulationQuestion {
             checkBtn.setAttribute('disabled', 'disabled');
 
             PopulationQuestion.roundNum += 1;
+            const nextBtn = document.querySelector('.btn__next');
 
-            if (PopulationQuestion.roundNum <= 10) {
-                document.querySelector('.btn__next')?.removeAttribute('disabled');
-            } else {
-                const result = Number(((PopulationQuestion.rightAnswer / 30) * 100).toFixed(2));
-                checkBtn.after(
-                    await new QuizResult('div', 'none', result, QuizName.Population, this.code).renderResult()
-                );
+            if (PopulationQuestion.roundNum <= 11) {
+                nextBtn?.removeAttribute('disabled');
+                if (PopulationQuestion.roundNum === 11) {
+                    if (nextBtn) {
+                        nextBtn.textContent =
+                            localStorage.getItem('nowLanguage') === 'ru' ? 'Посмотреть результат' : 'Check the result';
+                    }
+                }
             }
         });
         return checkBtn;

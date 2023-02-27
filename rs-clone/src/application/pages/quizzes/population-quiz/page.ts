@@ -4,6 +4,8 @@ import { PopulationQuestion } from './component';
 import { world, africa, america, asia, europe } from '../../../components/countries/data';
 import { QuizRegion } from '../quizzesRegions';
 import { codes } from '../../../components/countries/regionsCodes';
+import { QuizResult } from '../quizzesResults';
+import { QuizName } from '../../../server/server-api';
 
 export class PopulationQuizPage extends Page {
     constructor(id: string, private code: string = '', private countriesArr = world) {
@@ -13,13 +15,20 @@ export class PopulationQuizPage extends Page {
     private createNextBtn(rules: HTMLElement) {
         const nextBtn = createOurElement('button', 'btn btn__colored btn__next', '', 'Дальше');
         nextBtn.setAttribute('disabled', 'disabled');
-        nextBtn.addEventListener('click', () => {
-            const previousQuestion = document.querySelector('.question');
-            if (previousQuestion && rules) {
-                previousQuestion.remove();
-                const newQuestion = new PopulationQuestion(this.generateData(), this.code).render();
-                rules.after(newQuestion);
-                nextBtn.setAttribute('disabled', 'disabled');
+        nextBtn.addEventListener('click', async () => {
+            if (PopulationQuestion.roundNum <= 10) {
+                const previousQuestion = document.querySelector('.question');
+                if (previousQuestion && rules) {
+                    previousQuestion.remove();
+                    const newQuestion = new PopulationQuestion(this.generateData(), this.code).render();
+                    rules.after(newQuestion);
+                    nextBtn.setAttribute('disabled', 'disabled');
+                }
+            } else {
+                const result = Number(((PopulationQuestion.rightAnswer / 30) * 100).toFixed(2));
+                this.container.append(
+                    await new QuizResult('div', 'none', result, QuizName.Population, this.code).renderResult()
+                );
             }
         });
         return nextBtn;
@@ -27,7 +36,10 @@ export class PopulationQuizPage extends Page {
 
     private generateData() {
         const countriesOnMap = [];
-        const arrayCopy = this.countriesArr.slice(0);
+        let arrayCopy = this.countriesArr.slice(0);
+        if (this.code === codes.america || this.code === codes.world || this.code === codes.africa) {
+            arrayCopy = arrayCopy.filter((el) => el.area > 100000);
+        }
         for (let i = 0; i < 3; i++) {
             const randomIndex = Math.floor(Math.random() * arrayCopy.length);
             countriesOnMap.push(arrayCopy[randomIndex]);
