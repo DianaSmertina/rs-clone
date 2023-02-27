@@ -10,15 +10,15 @@ const defaultUserImg = require('../../../assets/images/user-default.png');
 
 const NavLinks = [
     {
-        id: 'main-page',
+        link: 'main-page',
         text: 'Главная',
     },
     {
-        id: 'quizzes',
+        link: 'quizzes',
         text: 'Викторины',
     },
     {
-        id: 'results',
+        link: 'results',
         text: 'Достижения',
     },
 ];
@@ -88,7 +88,7 @@ class Header extends Component {
         NavLinks.forEach((item) => {
             const li = createOurElement('li', 'nav__item');
             const link = createOurElement('a', 'nav__item_link', '', item.text);
-            (link as HTMLLinkElement).href = `/${item.id}`;
+            (link as HTMLLinkElement).href = `/${item.link}`;
             link.innerHTML = item.text;
             link.addEventListener('click', (e) => {
                 route(e);
@@ -105,8 +105,11 @@ class Header extends Component {
 
         const logo = document.createElement('a');
         logo.className = 'header__logo_link';
-        logo.href = 'main-page';
+        logo.href = '/main-page';
         logo.innerHTML = `<div class ="header__logo_ico ico"></div>`;
+        logo.addEventListener('click', (e) => {
+            route(e);
+        });
 
         const navigation = createOurElement('nav', 'header__nav', '');
         navigation.append(this.renderNavLinksList());
@@ -115,22 +118,22 @@ class Header extends Component {
         const headerLang = createOurElement('div', 'header__lang');
         headerLang.append(...this.createLocalithation());
 
-        const switcherTheme = createOurElement(
-            'div',
-            'switcher-theme',
-            `<div class="theme__light ico"></div>
-            <div class="theme__dark ico"></div>`
-        );
         const soundWrap = createOurElement('div', 'sound-block');
         const soundBtn = createOurElement('div', 'ico sound sound-on');
-        soundBtn.addEventListener('click', (e) => {
-            const target = e.target as HTMLElement;
-            target.classList.toggle('sound-off');
-            playAudio(soundOn);
+
+        soundBtn.addEventListener('click', () => {
+            const soundState = localStorage.getItem('quizSound');
+            if (soundState === 'on') {
+                localStorage.setItem('quizSound', 'off');
+                playAudio(soundOn);
+            } else if (soundState === 'off') {
+                localStorage.setItem('quizSound', 'on');
+                playAudio(soundOn);
+            }
         });
         soundWrap.append(soundBtn);
 
-        switcherBlock.append(headerLang, switcherTheme, soundWrap);
+        switcherBlock.append(headerLang, soundWrap);
 
         const burger = createOurElement(
             'div',
@@ -159,6 +162,8 @@ class Header extends Component {
 
         headerWrapper.append(burger, logo, navigation, switcherBlock, await this.createAuthBlock(username), overlay);
         this.container.append(headerWrapper);
+        setTimeout(this.getLang, 0);
+        setTimeout(this.getSoundState, 0);
         return this.container;
     }
 
@@ -188,27 +193,55 @@ class Header extends Component {
         Header.firstLabel = createOurElement(
             'label',
             'header__radio-btn',
-            `<input name="language" type="radio" value="en" />
+            `<input id= "inputEn" name="language" type="radio" value="en" />
         <span>EN</span>`
         );
         const span = createOurElement('span', '', '&nbsp;/&nbsp;');
         Header.secondLabel = createOurElement(
             'label',
             'header__radio-btn',
-            `<input name="language" type="radio" value="ru" checked />
+            `<input id= "inputRu" name="language" type="radio" value="ru" />
             <span>RU</span>`
         );
 
         Header.firstLabel.addEventListener('click', () => {
             localStorage.setItem('nowLanguage', 'en');
             translate();
+            document.getElementById('inputRu')?.removeAttribute('checked');
+            document.getElementById('inputEn')?.setAttribute('checked', 'checked');
         });
         Header.secondLabel.addEventListener('click', () => {
             localStorage.setItem('nowLanguage', 'ru');
             translate();
+            document.getElementById('inputEn')?.removeAttribute('checked');
+            document.getElementById('inputRu')?.setAttribute('checked', 'checked');
         });
 
         return [Header.firstLabel, span, Header.secondLabel];
+    }
+
+    getLang() {
+        const lang = localStorage.getItem('nowLanguage');
+        if (lang === 'en') {
+            document.getElementById('inputRu')?.removeAttribute('checked');
+            document.getElementById('inputEn')?.setAttribute('checked', 'checked');
+        } else {
+            document.getElementById('inputEn')?.removeAttribute('checked');
+            document.getElementById('inputRu')?.setAttribute('checked', 'checked');
+        }
+    }
+
+    getSoundState() {
+        const savedSound = localStorage.getItem('quizSound');
+        if (!savedSound) {
+            localStorage.setItem('quizSound', 'on');
+        } else {
+            if (savedSound === 'off') {
+                const soundBtn = document.querySelector('.sound');
+                soundBtn?.classList.remove('sound-on');
+                soundBtn?.classList.add('sound-off');
+            }
+        }
     }
 }
 

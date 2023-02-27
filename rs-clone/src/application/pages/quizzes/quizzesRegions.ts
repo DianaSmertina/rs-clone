@@ -16,8 +16,8 @@ export class QuizRegion extends Component {
         this.container.append(this.createRegions());
         this.container.className = 'modal';
         this.container.addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) {
-                window.location.pathname = './quizzes';
+            if ((e.target as HTMLElement).classList.contains('modal')) {
+                window.history.back();
             }
         });
 
@@ -35,7 +35,7 @@ export class QuizRegion extends Component {
         const secondLine = createOurElement('span', 'closeBtn__line closeBtn__line_second', '');
         closeBlock.append(firstLine, secondLine);
         closeBlock.addEventListener('click', () => {
-            window.location.pathname = './quizzes';
+            window.history.back();
         });
         return closeBlock;
     }

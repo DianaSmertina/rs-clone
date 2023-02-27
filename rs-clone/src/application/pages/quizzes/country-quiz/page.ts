@@ -39,7 +39,7 @@ export class CountryQuiz extends Page {
     renderMain(region: string) {
         this.getData(region);
         const mainWrapper = createOurElement('div', 'main__wrapper wrapper flex-columns');
-        const mainTitle = createOurElement('h1', 'main__title main__title_quiz', '', 'main__title_quiz-population');
+        const mainTitle = createOurElement('h1', 'main__title main__title_quiz', '', 'country-quiz');
         const titleAndRound = createOurElement('div', 'flex-rows title-and-round');
         const geoChartWrap = document.createElement('div');
         geoChartWrap.id = 'regions_div';
@@ -228,7 +228,7 @@ export class CountryQuiz extends Page {
     }
 
     private countResult() {
-        return Math.round((this.rightAnswers / 10) * 100);
+        return this.rightAnswers * 10;
     }
 }
 

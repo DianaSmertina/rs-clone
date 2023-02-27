@@ -1,4 +1,5 @@
 .btn {
+    width: 12rem;
     height: 4rem;
     padding: 0 15px;
     border-radius: 4px;
@@ -62,17 +63,14 @@
     pointer-events: none;
 }
 @media (max-width: $content-small-width) {
-    .btn__autho {
-        height: 3.2rem;
-        padding: 0 10px;
-    }
-}
-
-@media (max-width: $tablet-width) {
     .btn {
         font-size: 1.3rem;
     }
+    .btn__autho {
+        height: 3.2rem;
+    }
 }
+
 @media (max-width: $mobile-big-width) {
     .btn {
         font-size: 1.2rem;
