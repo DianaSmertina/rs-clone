@@ -1,5 +1,5 @@
 export class Api {
-    private static base = 'http://localhost:5000/api'; // поменять, когда будет задеплоеный сервер
+    private static base = 'https://rs-clone-backend-d1sl.onrender.com/api';
 
     static async signIn(data: { username: string; password: string }): Promise<string> {
         const response = await fetch(`${Api.base}/sign-in`, {
