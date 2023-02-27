@@ -72,7 +72,7 @@ export class PopulationQuestion {
                         answers.find((el) => el.countryRu === btn.innerText || el.countryEn === btn.innerText)
                             ?.population
                     ) / 1000000
-                ).toFixed(0);
+                ).toFixed(2);
 
                 btn.innerText += ` ${rightPopulation} млн`;
                 return isRight;

@@ -25,7 +25,7 @@ export class PopulationQuizPage extends Page {
                     nextBtn.setAttribute('disabled', 'disabled');
                 }
             } else {
-                const result = Number(((PopulationQuestion.rightAnswer / 30) * 100).toFixed(2));
+                const result = Number(((PopulationQuestion.rightAnswer / 30) * 100).toFixed(0));
                 this.container.append(
                     await new QuizResult('div', 'none', result, QuizName.Population, this.code).renderResult()
                 );
