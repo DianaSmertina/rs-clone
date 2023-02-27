@@ -35,6 +35,7 @@ export class ModalWindow extends Component {
             input.classList.add('password');
         } else {
             input.classList.add('login');
+            input.setAttribute('pattern', '^\\S\\S+$');
         }
         inpurWrap.append(label, input);
         return inpurWrap;

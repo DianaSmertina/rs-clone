@@ -33,6 +33,10 @@ export function drawChart(
     google.charts.setOnLoadCallback(drawRegionsMap);
 
     function drawRegionsMap() {
+        // const data = google.visualization.arrayToDataTable([
+        //     ['Country', 'Popularity'],
+        //     ['GW', 12345],
+        // ]);
         const data = google.visualization.arrayToDataTable(countries);
         const options = mapOptions;
         const chart = new google.visualization.GeoChart(container);

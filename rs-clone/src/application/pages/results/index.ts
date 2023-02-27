@@ -51,15 +51,15 @@ class ResultsPage {
         if (Array.isArray(this.allRes)) {
             switch (target.id) {
                 case 'countryRes':
-                    arr = this.allRes.sort((a, b) => b.country - a.country).slice(0, 10);
+                    arr = this.allRes.sort((a, b) => b.country - a.country).slice(0, 20);
                     arr.push({ id: 'country' });
                     break;
                 case 'populationRes':
-                    arr = this.allRes.sort((a, b) => b.population - a.population).slice(0, 10);
+                    arr = this.allRes.sort((a, b) => b.population - a.population).slice(0, 20);
                     arr.push({ id: 'population' });
                     break;
                 case 'flagRes':
-                    arr = this.allRes.sort((a, b) => b.flags - a.flags).slice(0, 10);
+                    arr = this.allRes.sort((a, b) => b.flags - a.flags).slice(0, 20);
                     arr.push({ id: 'flags' });
                     break;
             }
@@ -70,6 +70,7 @@ class ResultsPage {
         if (lastTable) lastTable.remove();
         mainWrapper?.append(this.renderTable(arr));
     }
+
     private renderTable(arr: IResObj[]) {
         const table = createOurElement('div', 'table flex-columns', '');
         const firstRow = createOurElement('div', 'row flex-rows', '');
@@ -81,7 +82,7 @@ class ResultsPage {
         table.append(firstRow);
 
         arr.forEach((item, ind) => {
-            if (ind === 10) return;
+            if (ind === arr.length - 1) return;
             const row = createOurElement('div', 'row flex-rows', '', '');
             const number = createOurElement('div', 'number', `${ind + 1}`, '');
             const name = createOurElement('div', 'userName', `${item.user_name}`, '');
