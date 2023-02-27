@@ -1,3 +1,5 @@
+import { markersStrings } from '../../patterns/translation';
+
 declare global {
     interface Window {
         initMap: () => void;
@@ -89,7 +91,9 @@ export function initMap(): void {
 }
 
 function _createMarker(map: google.maps.Map, position: { lat: number; lng: number }, title: string, content: string) {
-    const contentString = `
+    let contentString;
+    if (localStorage.getItem('nowLanguage') === 'ru') {
+        contentString = `
         <div id="content">
           <div id="siteNotice"></div>
           <h1 id="firstHeading" class="firstHeading">${title}</h1>
@@ -97,6 +101,16 @@ function _createMarker(map: google.maps.Map, position: { lat: number; lng: numbe
             <p>${content}</p>
           </div>
         </div>`;
+    } else {
+        contentString = `
+        <div id="content">
+          <div id="siteNotice"></div>
+          <h1 id="firstHeading" class="firstHeading">${markersStrings[title as keyof typeof markersStrings]}</h1>
+          <div id="bodyContent">
+            <p>${markersStrings[content as keyof typeof markersStrings]}</p>
+          </div>
+        </div>`;
+    }
     const infowindow = new google.maps.InfoWindow({
         content: contentString,
         ariaLabel: title,
