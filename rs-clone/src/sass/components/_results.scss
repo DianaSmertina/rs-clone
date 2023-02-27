@@ -1,0 +1,63 @@
+.table {
+    background-color: $color-light2;
+    outline: 2px solid $color-dark1;
+    font-size: 1.6rem;
+    justify-content: center;
+}
+.quizBtns {
+    gap: 15px;
+    padding-top: 15px;
+    padding-bottom: 40px;
+    justify-content: center;
+}
+.btn-quiz {
+    width: 165px;
+    height: 57px;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid #26453e;
+    color: #26453e;
+}
+.btn-active {
+    background-color: $color-middle2;
+    pointer-events: none;
+}
+.row {
+    width: 430px;
+}
+.number,
+.userName,
+.userResult,
+.userRegion {
+    outline: 1px solid $color-dark1;
+    padding: 7px;
+}
+
+.number {
+    width: 10%;
+}
+.userName {
+    width: 36%;
+}
+.userResult {
+    width: 27%;
+}
+.userRegion {
+    width: 27%;
+}
+@media (max-width: $tablet-width) {
+    .table {
+        font-size: 1.4rem;
+    }
+    .row {
+        width: 390px;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    .table {
+        font-size: 1.2rem;
+    }
+    .row {
+        width: 300px;
+    }
+}
