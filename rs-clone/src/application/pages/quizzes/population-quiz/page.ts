@@ -37,8 +37,10 @@ export class PopulationQuizPage extends Page {
     private generateData() {
         const countriesOnMap = [];
         let arrayCopy = this.countriesArr.slice(0);
-        if (this.code === codes.america || this.code === codes.world || this.code === codes.africa) {
+        if (this.code === codes.america || this.code === codes.africa) {
             arrayCopy = arrayCopy.filter((el) => el.area > 100000);
+        } else if (this.code === codes.world) {
+            arrayCopy = arrayCopy.filter((el) => el.area > 300000);
         }
         for (let i = 0; i < 3; i++) {
             const randomIndex = Math.floor(Math.random() * arrayCopy.length);

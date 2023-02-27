@@ -89,7 +89,7 @@ export class CountryQuiz extends Page {
         drawChart(geoChartWrap, country, 'countries', {
             region: this.regionCode,
             // magnifyingGlass: { enable: true, zoomFactor: 1 },
-            backgroundColor: '#0D98BA',
+            backgroundColor: '#6bcbd1',
             enableRegionInteractivity: false,
         });
 

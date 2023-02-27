@@ -234,7 +234,7 @@ export class QuizFlag extends Page {
             })
         );
 
-        drawChart(wrap, newArr, 'flag', { region: this.code, backgroundColor: '#81d4fa' });
+        drawChart(wrap, newArr, 'flag', { region: this.code, backgroundColor: '#6bcbd1' });
         this.addMapListener(nextBtn, wrongWorld, rightWorld);
     }
 }

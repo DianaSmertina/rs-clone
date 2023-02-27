@@ -1,8 +1,6 @@
 import { Icountry } from '../../../components/countries/data';
 import { drawChart } from '../../../components/maps/geoChart';
 import { createOurElement } from '../../../patterns/createElement';
-// import { QuizName } from '../../../server/server-api';
-// import { QuizResult } from '../quizzesResults';
 import { playAudio, rightAnswAudio, wrongAnswAudio } from '../../../../application/components/sound/sound';
 
 export class PopulationQuestion {
@@ -31,7 +29,7 @@ export class PopulationQuestion {
             region: this.code,
             colorAxis: { colors: ['blue', 'orange', 'green'] },
             legend: 'none',
-            backgroundColor: '#81d4fa',
+            backgroundColor: '#6bcbd1',
         });
 
         setTimeout(() => {
@@ -74,7 +72,7 @@ export class PopulationQuestion {
                         answers.find((el) => el.countryRu === btn.innerText || el.countryEn === btn.innerText)
                             ?.population
                     ) / 1000000
-                ).toFixed(2);
+                ).toFixed(0);
 
                 btn.innerText += ` ${rightPopulation} млн`;
                 return isRight;
