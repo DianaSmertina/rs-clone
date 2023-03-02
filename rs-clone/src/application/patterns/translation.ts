@@ -193,4 +193,10 @@ export const markersStrings = {
     'В Аргентине живет множество потомков людей, сбежавших из России перед революцией и сразу после нее.': "There are many descendants of people living in Argentina who fled Russia before the revolution and immediately after it.",
     'Казахстан': 'Kazakhstan',
     'Средняя плотность населения в Казахстане ненамного выше, чем в Сибири — около 6 человек на квадратный километр.': "The average population density in Kazakhstan is not much higher than in Siberia — about 6 people per square kilometer.",
+    'Россия': 'Russia',
+    'Россия граничит с 16 странами.': 'Russia borders with 16 countries.',
+    'Египет': 'Egypt',
+    'Более 95% всей египетской территории — бесплодные пустыни.': 'More than 95% of the entire Egyptian territory is barren deserts.',
+    'Франция': 'France',
+    'Красное вино в этой стране более популярно, нежели белое.': 'Red wine is more popular in this country than white wine.',
 }
