@@ -87,7 +87,7 @@ export class ModalWindow extends Component {
 
     private createForm() {
         const form = createOurElement('form', 'form-wrap');
-        const btn = createOurElement('input', 'btn btn__colored', this.btnText);
+        const btn = createOurElement('input', 'btn btn__colored', '', 'btnText');
         btn.setAttribute('type', 'submit');
         form.addEventListener('submit', async (e) => {
             return await this.createSubmitHandler(e);

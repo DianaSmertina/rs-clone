@@ -12,7 +12,7 @@
 .form-wrap {
     width: 50%;
     max-width: 400px;
-    height: calc(100vh * 0.6);
+    height: calc(100vh * 0.65);
     background-color: $color-light4;
     position: absolute;
     padding: 0 20px;
@@ -39,14 +39,16 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .form-wrap__label {
-    width: 60px;
+    width: 70px;
 }
 
 .form-wrap__input {
     height: 30px;
+    padding: 0;
     padding-left: 10px;
 }
 
@@ -69,4 +71,60 @@
 }
 .link-modal-btn:hover {
     color: $color-light4;
+}
+
+@media (max-width: $content-small-width) {
+    .form-wrap {
+        max-width: 350px;
+    }
+    .form-wrap__greetings {
+        margin-bottom: 15px;
+    }
+
+    .form-wrap__text {
+        margin-bottom: 15px;
+    }
+    .input-wrap {
+        gap: 14px;
+    }
+    .form-wrap__label {
+        width: 60px;
+    }
+    .form-wrap > .btn {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: $tablet-width) {
+    .form-wrap {
+        gap: 15px;
+    }
+    .form-wrap__greetings {
+        margin-bottom: 10px;
+    }
+
+    .form-wrap__text {
+        margin-bottom: 10px;
+    }
+    .input-wrap {
+        width: 100%;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    .form-wrap {
+        gap: 12px;
+    }
+    .input-wrap {
+        gap: 5px;
+    }
+    .form-wrap__label {
+        width: 50px;
+    }
+
+    .form-wrap__input {
+        height: 25px;
+    }
+    .form-wrap > .btn {
+        margin-top: 15px;
+    }
 }

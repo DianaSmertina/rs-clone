@@ -26,6 +26,7 @@ h2,
 h3 {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 h1 {
@@ -89,19 +90,37 @@ a:hover {
         font-size: 3rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 2.4rem;
+    }
+    h3 {
+        font-size: 1.8rem;
     }
 }
 @media (max-width: $tablet-width) {
+    body {
+        font-size: 1.3rem;
+    }
     h1 {
         font-size: 2.4rem;
     }
     h2 {
         font-size: 1.6rem;
     }
+    h3 {
+        font-size: 1.5rem;
+    }
 }
 @media (max-width: $mobile-big-width) {
+    body {
+        font-size: 1.2rem;
+    }
     h1 {
         font-size: 2.2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1.4rem;
     }
 }

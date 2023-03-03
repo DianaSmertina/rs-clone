@@ -1,6 +1,6 @@
 import Page from '../../patterns/pagePattern';
 import { createOurElement } from '../../patterns/createElement';
-// import route from '../../routing/router'; // РОУТИНГ с которым квизы не работают(
+// import route from '../../routing/router'; // РОУТИНГ
 
 const QuizLinks = [
     {
@@ -38,7 +38,7 @@ class Quizzes extends Page {
             menuItemBlock.append(header, cover);
             link.append(menuItemBlock);
 
-            // РОУТИНГ с которым квизы не работают(
+            // РОУТИНГ
             // link.addEventListener('click', (e) => {
             //     route(e);
             // });

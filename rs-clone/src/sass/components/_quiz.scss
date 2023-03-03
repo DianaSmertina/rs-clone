@@ -30,7 +30,7 @@
 }
 .menu__item {
     width: 210px;
-    height: 280px;
+    height: 290px;
     background: $color-light2;
     border-radius: 10px;
     text-align: center;
@@ -72,58 +72,6 @@
 .flag-cover {
     background-image: url(../assets/images/flag-cover.png);
 }
-
-@media (max-width: $content-small-width) {
-    .answers {
-        width: 430px;
-        height: 140px;
-    }
-    .title-and-round {
-        gap: 50px;
-    }
-}
-
-@media (max-width: $tablet-width) {
-    .menu {
-        padding-top: 10px;
-    }
-    #regions_div {
-        width: 500px;
-        height: 320px;
-    }
-    .title-and-round {
-        gap: 32px;
-    }
-}
-@media (max-width: $mobile-big-width) {
-    #regions_div {
-        width: 320px;
-        height: 170px;
-    }
-    .answers {
-        width: 300px;
-        height: 130px;
-        padding: 7px;
-    }
-    .title-and-round {
-        flex-direction: column;
-        gap: 0;
-    }
-    .quizz-round {
-        padding-bottom: 15px;
-    }
-}
-@media (max-width: $mobile-small-width) {
-    #regions_div {
-        width: 280px;
-        height: 140px;
-    }
-    .answers {
-        width: 280px;
-        height: 110px;
-    }
-}
-
 .form__wrapp {
     display: flex;
     flex-direction: column;
@@ -170,4 +118,59 @@
     -ms-transform: translateY(-10px) rotate(-45deg);
     -o-transform: translateY(-10px) rotate(-45deg);
     transform: translateY(-10px) rotate(-45deg);
+}
+
+@media (max-width: $content-small-width) {
+    .answers {
+        width: 430px;
+        height: 140px;
+    }
+    .title-and-round {
+        gap: 50px;
+    }
+}
+
+@media (max-width: $tablet-width) {
+    .menu {
+        padding-top: 10px;
+    }
+    #regions_div {
+        width: 500px;
+        height: 320px;
+    }
+    .title-and-round {
+        gap: 32px;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    #regions_div {
+        width: 320px;
+        height: 170px;
+    }
+    .answers {
+        width: 300px;
+        height: 130px;
+        padding: 7px;
+    }
+    .title-and-round {
+        flex-direction: column;
+        gap: 0;
+    }
+    .quizz-round {
+        padding-bottom: 15px;
+    }
+    .closeBtn {
+        top: 15px;
+        right: 15px;
+    }
+}
+@media (max-width: $mobile-small-width) {
+    #regions_div {
+        width: 280px;
+        height: 140px;
+    }
+    .answers {
+        width: 280px;
+        height: 110px;
+    }
 }
