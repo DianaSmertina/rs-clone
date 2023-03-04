@@ -1,0 +1,130 @@
+.modal {
+    background-color: rgba(28, 28, 28, 0.822);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 5;
+}
+
+.form-wrap {
+    width: 50%;
+    max-width: 400px;
+    height: calc(100vh * 0.65);
+    background-color: $color-light4;
+    position: absolute;
+    padding: 0 20px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+}
+
+.none {
+    display: none;
+}
+
+.input-wrap {
+    display: flex;
+    width: 80%;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form-wrap__label {
+    width: 70px;
+}
+
+.form-wrap__input {
+    height: 30px;
+    padding: 0;
+    padding-left: 10px;
+}
+
+.form-wrap__greetings {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-wrap__text {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-wrap > .btn {
+    margin-top: 30px;
+}
+
+.link-modal-btn {
+    color: $color-light4;
+}
+.link-modal-btn:hover {
+    color: $color-light4;
+}
+
+@media (max-width: $content-small-width) {
+    .form-wrap {
+        max-width: 350px;
+    }
+    .form-wrap__greetings {
+        margin-bottom: 15px;
+    }
+
+    .form-wrap__text {
+        margin-bottom: 15px;
+    }
+    .input-wrap {
+        gap: 14px;
+    }
+    .form-wrap__label {
+        width: 60px;
+    }
+    .form-wrap > .btn {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: $tablet-width) {
+    .form-wrap {
+        gap: 15px;
+    }
+    .form-wrap__greetings {
+        margin-bottom: 10px;
+    }
+
+    .form-wrap__text {
+        margin-bottom: 10px;
+    }
+    .input-wrap {
+        width: 100%;
+    }
+}
+@media (max-width: $mobile-big-width) {
+    .form-wrap {
+        gap: 12px;
+    }
+    .input-wrap {
+        gap: 5px;
+    }
+    .form-wrap__label {
+        width: 50px;
+    }
+
+    .form-wrap__input {
+        height: 25px;
+    }
+    .form-wrap > .btn {
+        margin-top: 15px;
+    }
+}

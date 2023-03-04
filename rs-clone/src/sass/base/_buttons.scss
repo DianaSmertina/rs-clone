@@ -1,0 +1,83 @@
+.btn {
+    width: 12rem;
+    height: 4rem;
+    padding: 0 15px;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: $color-hover;
+    border: 2px solid $color-hover;
+}
+
+.btn__colored {
+    background-color: $color-dark3;
+    color: $color-light4;
+    border: 2px solid $color-dark3;
+}
+
+.btn__bordered {
+    width: 42%;
+    height: 42%;
+    background-color: $color-light4;
+    border: 2px solid $color-dark1;
+    color: $color-dark1;
+}
+
+.account-btns {
+    gap: 10px;
+}
+
+.btn__next {
+    margin-top: 30px;
+}
+
+.btn__population {
+    width: 42%;
+    height: 42%;
+    background-color: $color-light4;
+    border: 2px solid $color-dark1;
+    color: $color-dark1;
+}
+
+.btn__next:disabled,
+.btn__check-population:disabled {
+    background-color: $color-disable1;
+    border: 2px solid $color-disable2;
+    color: $color-disable2;
+    cursor: auto;
+}
+
+.btn__right {
+    background-color: $color-rightAnsw;
+    pointer-events: none;
+}
+
+.btn__wrong {
+    background-color: $color-wrongAnsw;
+    pointer-events: none;
+}
+@media (max-width: $content-small-width) {
+    .btn {
+        font-size: 1.3rem;
+    }
+    .btn__autho {
+        height: 3.2rem;
+    }
+}
+
+@media (max-width: $mobile-big-width) {
+    .btn {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: $mobile-small-width) {
+    .btn {
+        font-size: 1rem;
+    }
+}
