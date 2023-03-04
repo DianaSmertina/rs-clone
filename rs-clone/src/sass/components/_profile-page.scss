@@ -60,6 +60,7 @@
 
 .achievement__name {
     margin-bottom: 20px;
+    text-align: left;
 }
 
 .achievement__img {
@@ -151,6 +152,11 @@
 
 .records {
     width: 100%;
+}
+
+.username,
+.p-reg-date {
+    text-align: left;
 }
 
 @media (max-width: $content-small-width) {

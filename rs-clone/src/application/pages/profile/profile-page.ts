@@ -43,9 +43,9 @@ export class ProfilePage {
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const year = date.getFullYear();
         const formattedDate = `${day}.${month}.${year}`;
-        const registrationDate = createOurElement('span', 'username', '', 'registration-date');
+        const registrationDate = createOurElement('span', 'span-reg-date', '', 'registration-date');
         const registrationDateSpan = createOurElement('span', '', `${formattedDate}`);
-        const containerRegistrationDate = createOurElement('p', '');
+        const containerRegistrationDate = createOurElement('p', 'p-reg-date');
         containerRegistrationDate.append(registrationDate, registrationDateSpan);
 
         input.addEventListener('change', async (e) => {

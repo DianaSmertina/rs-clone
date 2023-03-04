@@ -87,7 +87,7 @@ export const i18Obj = {
         'achiev-record-population': 'TOP 10 in the quiz guess the population',
         'achiev-record-flags': 'TOP 10 in the quiz guess the country by the flag',
         'photo-limit': 'please select an image that is 500 kb or smaller',
-        'btnText': 'Submit',
+        'submit-text': 'Submit',
     },
 
     'ru': {
@@ -166,7 +166,7 @@ export const i18Obj = {
         'achiev-record-population': 'ТОП-10 в квизе угадай население',
         'achiev-record-flags': 'ТОП-10 в квизе угадай флаг',
         'photo-limit': 'пожалуйста, выберете изображение размером 500 кб или меньше',
-        'btnText': 'Отправить',
+        'submit-text': 'Отправить',
     },
 };
 
