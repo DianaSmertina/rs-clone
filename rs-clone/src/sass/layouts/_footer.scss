@@ -1,0 +1,23 @@
+.footer {
+    background-color: $color-light1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.rs-icon {
+    background-image: url(../assets/icons/rs-logo.svg);
+    width: 135px;
+    height: 50px;
+}
+.rs-icon:hover {
+    transform: scale(1.08);
+}
+.developers-list {
+    padding-left: 30px;
+}
+@media (max-width: $mobile-big-width) {
+    .footer__wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
